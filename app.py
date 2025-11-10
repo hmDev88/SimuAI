@@ -132,14 +132,14 @@ if nb_errors:
             st.code(e)
 
 # ------------------------------------------------
-# Model Trainer
+# Model Trainer  (robust to object/categorical cols)
 # ------------------------------------------------
 st.subheader("⚙️ Train Machine Learning Model")
 
 st.markdown(
     """
-Train a simple **XGBoost classifier** on your dataset to predict catalyst performance.
-Select the input features (X) and target column (y).  
+Train an **XGBoost** classifier and see Accuracy, Macro-F1, a Confusion Matrix, and a full classification report.
+This trainer automatically one-hot encodes non-numeric columns and cleans NaNs/booleans for you.
 """
 )
 
@@ -149,41 +149,79 @@ if len(cols) < 2:
 else:
     c1, c2 = st.columns(2)
     with c1:
+        # Let the user pick any columns; we'll encode non-numerics automatically
         x_cols = st.multiselect("Feature columns (X)", cols[:-1], default=cols[:-1])
     with c2:
         y_col = st.selectbox("Target column (y)", cols, index=len(cols) - 1)
 
     test_size = st.slider("Test size (%)", 10, 50, 20) / 100.0
+    max_depth = st.slider("XGBoost max_depth", 2, 12, 6)
+    n_estimators = st.slider("XGBoost n_estimators", 50, 500, 200, step=50)
+    learning_rate = st.slider("XGBoost learning_rate", 0.01, 0.5, 0.1)
 
     if st.button("🚀 Train Model"):
         if len(x_cols) == 0 or y_col not in df.columns:
-            st.warning("Please select valid features and target.")
+            st.warning("Please select valid features and a target.")
         else:
-            X = df[x_cols]
-            y = df[y_col]
+            X_raw = df[x_cols].copy()
+            y_raw = df[y_col].copy()
 
-            # Handle missing values
+            # --- Clean X ---
+            # Convert booleans to ints
+            for c in X_raw.columns:
+                if pd.api.types.is_bool_dtype(X_raw[c]):
+                    X_raw[c] = X_raw[c].astype(int)
+
+            # One-hot encode all non-numeric columns in one go (safe & simple)
+            # Keep NaNs as a separate dummy column to avoid dropping rows
+            X = pd.get_dummies(X_raw, dummy_na=True)
+
+            # Replace any remaining NaNs in numeric columns
             X = X.fillna(0)
-            if y.dtype == "object":
-                y = y.astype("category").cat.codes
 
+            # --- Clean y ---
+            y = y_raw.copy()
+            label_mapping = None
+            if y.dtype == "object" or pd.api.types.is_categorical_dtype(y):
+                y = y.astype("category")
+                label_mapping = {k: v for v, k in enumerate(y.cat.categories)}
+                y = y.cat.codes  # integers 0..K-1
+
+            # Train/test split
             X_train, X_test, y_train, y_test = train_test_split(
-                X, y, test_size=test_size, random_state=42
+                X, y, test_size=test_size, random_state=42, stratify=y if len(np.unique(y))>1 else None
             )
 
-            model = XGBClassifier(use_label_encoder=False, eval_metric="mlogloss")
+            # XGBoost model
+            model = XGBClassifier(
+                use_label_encoder=False,
+                eval_metric="mlogloss",
+                max_depth=max_depth,
+                n_estimators=n_estimators,
+                learning_rate=learning_rate,
+                subsample=1.0,
+                colsample_bytree=1.0,
+                n_jobs=-1,
+            )
+
             model.fit(X_train, y_train)
             y_pred = model.predict(X_test)
 
+            # Metrics
             acc = accuracy_score(y_test, y_pred)
             f1m = f1_score(y_test, y_pred, average="macro")
 
-            st.success(f"✅ Training complete! Accuracy: **{acc*100:.2f}%**, Macro F1: **{f1m*100:.2f}%**")
+            cA, cB = st.columns(2)
+            with cA:
+                st.metric("Accuracy", f"{acc*100:.2f}%")
+            with cB:
+                st.metric("Macro F1", f"{f1m*100:.2f}%")
 
+            # Confusion Matrix
             cm = confusion_matrix(y_test, y_pred)
             st.markdown("### Confusion Matrix")
             fig, ax = plt.subplots()
-            im = ax.imshow(cm, cmap="Blues")
+            im = ax.imshow(cm)  # don't set colors explicitly per your plotting rules
             ax.set_xlabel("Predicted")
             ax.set_ylabel("True")
             for i in range(cm.shape[0]):
@@ -191,17 +229,26 @@ else:
                     ax.text(j, i, str(cm[i, j]), ha="center", va="center")
             st.pyplot(fig)
 
+            # Classification report (map integers back to labels if we encoded y)
             st.markdown("### Classification Report")
-            report = classification_report(y_test, y_pred, digits=3)
+            if label_mapping:
+                inv_map = {v: k for k, v in label_mapping.items()}
+                # Convert to strings so sklearn prints label names in order
+                y_test_named = pd.Series(y_test).map(inv_map).astype(str)
+                y_pred_named = pd.Series(y_pred).map(inv_map).astype(str)
+                report = classification_report(y_test_named, y_pred_named, digits=3)
+            else:
+                report = classification_report(y_test, y_pred, digits=3)
             st.code(report, language="text")
 
             # Allow download of predictions
-            res_df = pd.DataFrame(
-                {"y_true": y_test, "y_pred": y_pred}
-            ).reset_index(drop=True)
+            out = pd.DataFrame({
+                "y_true": y_test if label_mapping is None else pd.Series(y_test).map(inv_map),
+                "y_pred": y_pred if label_mapping is None else pd.Series(y_pred).map(inv_map),
+            }).reset_index(drop=True)
             st.download_button(
                 "Download predictions CSV",
-                data=res_df.to_csv(index=False).encode("utf-8"),
+                data=out.to_csv(index=False).encode("utf-8"),
                 file_name="model_predictions.csv",
                 mime="text/csv",
             )
