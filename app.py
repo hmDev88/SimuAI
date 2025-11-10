@@ -3,7 +3,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import io, nbformat, types, json
+import io, nbformat, types, json, os
+
 
 NOTEBOOK_PATH = "Catalyst.ipynb"
 CSV_PATH = "Catalyst Database.csv"
