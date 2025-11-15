@@ -464,10 +464,10 @@ with tab2:
     st.header("🧪 Li–CO₂ RAG Question Answering")
 
     provider = st.selectbox(
-        "Answer mode",
-        ["Local only (no LLM)", "Gemini"],
-        index=0,
+    "Answer mode",
+    ["Local RAG only", "Gemini"],
     )
+
 
     question = st.text_area(
         "Ask about Li–CO₂ catalysts, mechanisms, design rules:",
