@@ -463,18 +463,21 @@ The app automatically encodes text columns and handles missing data.
 with tab2:
     st.header("🧪 Li–CO₂ RAG Question Answering")
 
+    # Gemini default
     provider = st.selectbox(
-    "Answer mode",
-    ["Local RAG only", "Gemini"],
+        "Answer mode",
+        ["Local only (no LLM)", "Gemini"],
+        index=1,
     )
-
 
     question = st.text_area(
         "Ask about Li–CO₂ catalysts, mechanisms, design rules:",
         height=100,
     )
-    top_k = st.slider("Number of retrieved documents", 3, 10, 5)
+
+    # fixed semantic retrieval
     mode = "semantic"
+    top_k = st.slider("Number of retrieved documents", 1, 12, 5)
 
     if st.button("🔍 Retrieve & Answer", key="rag_answer"):
         if not question.strip():
@@ -495,10 +498,15 @@ with tab2:
                 )
                 st.markdown("---")
 
-            st.subheader("🧠 Local Extractive Answer")
-            st.markdown(build_extractive_answer(question, docs))
+            if provider == "Local only (no LLM)":
+                st.subheader("🧠 Local Extractive Answer")
+                st.markdown(build_extractive_answer(question, docs))
 
-            if provider == "Gemini":
+            elif provider == "Gemini":
+                # optional: show extractive answer in an expander
+                with st.expander("Show supporting extractive snippets"):
+                    st.markdown(build_extractive_answer(question, docs))
+
                 with st.spinner("Calling Gemini…"):
                     st.subheader("🚀 LLM Answer (Gemini)")
                     st.markdown(llm_answer_gemini(question, docs))
