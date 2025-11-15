@@ -8,7 +8,7 @@ from rag_config import PERSIST_DIR, get_embedding_model
 
 # NOTE: we don't call st.set_page_config here because app.py already does it
 
-st.title("🔋 Li–CO₂ RAG Assistant (local, no OpenAI)")
+st.title("🔋 Li–CO₂ RAG Assistant")
 
 st.markdown(
     """
@@ -19,8 +19,7 @@ This assistant searches over your curated **Li–CO₂ knowledge base**:
 - Design rules  
 - Background  
 
-It retrieves the most relevant text chunks and shows them to you.  
-Everything runs **locally**: no OpenAI / external API calls.
+It retrieves the most relevant text chunks and shows them to you. 
 """
 )
 

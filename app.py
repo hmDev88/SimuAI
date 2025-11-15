@@ -260,3 +260,136 @@ else:
                 file_name="full_classified_dataset.csv",
                 mime="text/csv",
             )
+
+# ============================================================
+# Extra tools: Explore & filter + simple recommendation agent
+# ============================================================
+
+st.markdown("---")
+st.header("🔍 Explore & filter catalysts")
+
+# work on a copy of the original dataframe
+df_view = df.copy()
+
+# --- auto-detect key columns by name ---
+lower_cols = {c.lower(): c for c in df_view.columns}
+
+def find_col(substrings):
+    for lc, orig in lower_cols.items():
+        if any(s in lc for s in substrings):
+            return orig
+    return None
+
+cap_col    = find_col(["capacity", "mah"])         # e.g. Discharge_capacity_mAh_g
+over_col   = find_col(["overpot", "overpotential"])
+delta_col  = find_col(["adsorption", "deltae"])
+barrier_col= find_col(["barrier"])
+
+col_f1, col_f2, col_f3, col_f4 = st.columns(4)
+
+# Capacity slider
+if cap_col is not None and pd.api.types.is_numeric_dtype(df_view[cap_col]):
+    with col_f1:
+        cap_min = float(df_view[cap_col].min())
+        cap_max = float(df_view[cap_col].max())
+        min_cap = st.slider(f"Min {cap_col}", cap_min, cap_max, cap_min)
+else:
+    min_cap = None
+
+# Overpotential slider
+if over_col is not None and pd.api.types.is_numeric_dtype(df_view[over_col]):
+    with col_f2:
+        over_min = float(df_view[over_col].min())
+        over_max = float(df_view[over_col].max())
+        max_over = st.slider(f"Max {over_col}", over_min, over_max, over_max)
+else:
+    max_over = None
+
+# ΔE adsorption slider
+if delta_col is not None and pd.api.types.is_numeric_dtype(df_view[delta_col]):
+    with col_f3:
+        dmin = float(df_view[delta_col].min())
+        dmax = float(df_view[delta_col].max())
+        max_delta = st.slider(f"Max {delta_col}", dmin, dmax, dmax)
+else:
+    max_delta = None
+
+# Reaction barrier slider
+if barrier_col is not None and pd.api.types.is_numeric_dtype(df_view[barrier_col]):
+    with col_f4:
+        bmin = float(df_view[barrier_col].min())
+        bmax = float(df_view[barrier_col].max())
+        max_barrier = st.slider(f"Max {barrier_col}", bmin, bmax, bmax)
+else:
+    max_barrier = None
+
+# Apply filters
+filt = df_view.copy()
+if min_cap is not None and cap_col in filt.columns:
+    filt = filt[filt[cap_col] >= min_cap]
+if max_over is not None and over_col in filt.columns:
+    filt = filt[filt[over_col] <= max_over]
+if max_delta is not None and delta_col in filt.columns:
+    filt = filt[filt[delta_col] <= max_delta]
+if max_barrier is not None and barrier_col in filt.columns:
+    filt = filt[filt[barrier_col] <= max_barrier]
+
+st.caption(f"{len(filt)} / {len(df_view)} rows match the current filters.")
+st.dataframe(filt.head(30), use_container_width=True)
+
+# ------------------------------------------------------------
+# Agent-style recommendations (rule-based, no API)
+# ------------------------------------------------------------
+st.markdown("## 🤖 Agent-style recommendations (rule based, no API)")
+
+def simple_agent(query: str, df_in: pd.DataFrame):
+    q = query.lower()
+    d = df_in.copy()
+    expl = []
+
+    # high capacity
+    if cap_col and cap_col in d.columns and ("high capacity" in q or "large capacity" in q):
+        thr = d[cap_col].quantile(0.75)
+        d = d[d[cap_col] >= thr]
+        expl.append(f"{cap_col} ≥ {thr:.0f}")
+
+    # low overpotential
+    if over_col and over_col in d.columns and ("low overpotential" in q or "small overpotential" in q):
+        thr = d[over_col].quantile(0.25)
+        d = d[d[over_col] <= thr]
+        expl.append(f"{over_col} ≤ {thr:.2f}")
+
+    # favourable adsorption
+    if delta_col and delta_col in d.columns and (
+        "low adsorption" in q
+        or "strong adsorption" in q
+        or "favourable adsorption" in q
+    ):
+        thr = d[delta_col].quantile(0.25)
+        d = d[d[delta_col] <= thr]
+        expl.append(f"{delta_col} ≤ {thr:.2f}")
+
+    # low barrier
+    if barrier_col and barrier_col in d.columns and ("low barrier" in q or "small barrier" in q):
+        thr = d[barrier_col].quantile(0.25)
+        d = d[d[barrier_col] <= thr]
+        expl.append(f"{barrier_col} ≤ {thr:.2f}")
+
+    # final ranking: by capacity if we have it, otherwise leave as-is
+    if cap_col and cap_col in d.columns and pd.api.types.is_numeric_dtype(d[cap_col]):
+        d = d.sort_values(cap_col, ascending=False)
+
+    return d, expl
+
+user_q = st.text_area(
+    "Describe what you want the system to find:",
+    "High capacity and low overpotential catalysts with low reaction barrier.",
+)
+
+if st.button("Run recommendation agent"):
+    recs, expl = simple_agent(user_q, df_view)
+    if expl:
+        st.write("Applied filters: " + "; ".join(expl))
+    else:
+        st.write("No specific keywords detected, showing top rows.")
+    st.dataframe(recs.head(15), use_container_width=True)
