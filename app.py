@@ -474,7 +474,7 @@ with tab2:
         height=100,
     )
     top_k = st.slider("Number of retrieved documents", 3, 10, 5)
-    mode = st.selectbox("Retrieval mode", ["semantic", "mmr"])
+    mode = "semantic"
 
     if st.button("🔍 Retrieve & Answer", key="rag_answer"):
         if not question.strip():
