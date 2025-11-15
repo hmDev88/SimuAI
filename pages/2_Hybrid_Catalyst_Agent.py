@@ -24,8 +24,6 @@ This agent combines:
    - mechanisms,
    - design rules,
    - background.
-
-Everything runs **locally** (HuggingFace embeddings + Chroma), with **no OpenAI / API calls**.
 """
 )
 

@@ -23,6 +23,93 @@ It retrieves the most relevant text chunks and shows them to you.
 """
 )
 
+def build_extractive_answer(question: str, docs: list[Document]) -> str:
+    """
+    Build a human-readable answer using only the retrieved docs.
+    No LLM, just simple heuristics + metadata.
+    """
+    catalysts = []
+    design_rules = []
+    mechanisms = []
+    background = []
+
+    for d in docs:
+        meta = d.metadata or {}
+        ctype = meta.get("chunk_type", "")
+        text = (d.page_content or "").strip()
+
+        # Catalyst cards
+        if "catalyst" in ctype:
+            name = meta.get("name") or meta.get("catalyst_name")
+            cap = meta.get("capacity_mAh_g") or meta.get("discharge_capacity_mAh_g")
+            over = meta.get("overpotential_V") or meta.get("measured_overpotential_v")
+            perf = meta.get("performance_label_text") or meta.get("performance_label")
+
+            desc_parts = []
+            if name:
+                desc_parts.append(f"**{name}**")
+            if cap is not None:
+                desc_parts.append(f"capacity ≈ {cap} mAh g⁻¹")
+            if over is not None:
+                desc_parts.append(f"overpotential ≈ {over} V")
+            if perf:
+                desc_parts.append(f"performance: {perf}")
+
+            if desc_parts:
+                catalysts.append(" – " + ", ".join(desc_parts))
+
+        # Design rules: take the first sentence
+        elif ctype == "design_rule":
+            sent = text.split(". ")[0]
+            if sent:
+                design_rules.append(" – " + sent.strip())
+
+        # Mechanisms: also first sentence
+        elif ctype == "mechanism":
+            sent = text.split(". ")[0]
+            if sent:
+                mechanisms.append(" – " + sent.strip())
+
+        # Background: keep a couple of sentences
+        elif ctype == "background":
+            sent = text.split(". ")[0]
+            if sent:
+                background.append(" – " + sent.strip())
+
+    lines = []
+    lines.append(f"### 🧾 Answer (no LLM, built from {len(docs)} retrieved chunks)\n")
+
+    if catalysts:
+        lines.append("**Promising catalysts mentioned:**")
+        for c in catalysts[:5]:
+            lines.append(c)
+        lines.append("")  # blank line
+
+    if design_rules:
+        lines.append("**Key design principles found:**")
+        for r in design_rules[:5]:
+            lines.append(r)
+        lines.append("")
+
+    if mechanisms:
+        lines.append("**Mechanistic insights:**")
+        for m in mechanisms[:5]:
+            lines.append(m)
+        lines.append("")
+
+    if background and not (catalysts or design_rules or mechanisms):
+        # fallback if the question was more general
+        lines.append("**Background information:**")
+        for b in background[:5]:
+            lines.append(b)
+        lines.append("")
+
+    if len(lines) <= 1:
+        lines.append("I couldn’t extract a clear answer from the retrieved chunks. "
+                     "Try rephrasing your question or being more specific.")
+
+    return "\n".join(lines)
+
 
 @st.cache_resource
 def get_vectorstore() -> Chroma:
@@ -121,3 +208,8 @@ if st.button("🔍 Retrieve"):
                 text = d.page_content
                 st.write(text if len(text) < 1200 else text[:1200] + " ...")
                 st.markdown("---")
+                    # --- Build an extractive answer from the retrieved docs ---
+            st.subheader("🧠 Synthesized answer (local, no LLM)")
+            answer_md = build_extractive_answer(question, docs)
+            st.markdown(answer_md)
+
