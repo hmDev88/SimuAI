@@ -1,0 +1,2645 @@
+[
+  {
+    "text": "Catalyst ID: C001\nName: Cu-TCPP (Cu-porphyrin MOF nanosheet)\nMetals: C,F,O,P,Cu\nMaterial Type: MOF\nStructure: NS\n\nDischarge capacity: 20393.0 mAh/g\nMeasured overpotential: 1.8 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Capacity at 100 mA/g; overpotential measured at 2000 mA/g; DFT used for adsorption analysis\n\nPaper title: Highly Efficient Cu-Porphyrin-Based MetalOrganic Framework Nanosheet as Cathode for High-Rate LiCO2 Battery\nDOI: 10.1002/smll.202203917\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 20393.0 mAh/g and overpotential 1.8 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C001",
+      "name": "Cu-TCPP (Cu-porphyrin MOF nanosheet)",
+      "metals": [
+        "C",
+        "F",
+        "O",
+        "P",
+        "Cu"
+      ],
+      "type": "MOF",
+      "structure": "NS",
+      "capacity_mAh_g": 20393.0,
+      "overpotential_V": 1.8,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Capacity at 100 mA/g; overpotential measured at 2000 mA/g; DFT used for adsorption analysis",
+      "paper_title": "Highly Efficient Cu-Porphyrin-Based MetalOrganic Framework Nanosheet as Cathode for High-Rate LiCO2 Battery",
+      "doi": "10.1002/smll.202203917",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C002\nName: COF-Ru@CNT (porphyrin COF hybridized with Ru@CNT)\nMetals: C,F,N,O,Ru\nMaterial Type: COF\nStructure: HYB\n\nDischarge capacity: 27348.0 mAh/g\nMeasured overpotential: 1.24 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: Medium\nMeasurement conditions: 200 mA/g for capacity; limited-capacity cutoff 1000 mAh/g for overpotential\n\nPaper title: CovalentOrganicFrameworkBased LiCO2 Batteries\nDOI: 10.1002/adma.201905879\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance Medium, with discharge capacity 27348.0 mAh/g and overpotential 1.24 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C002",
+      "name": "COF-Ru@CNT (porphyrin COF hybridized with Ru@CNT)",
+      "metals": [
+        "C",
+        "F",
+        "N",
+        "O",
+        "Ru"
+      ],
+      "type": "COF",
+      "structure": "HYB",
+      "capacity_mAh_g": 27348.0,
+      "overpotential_V": 1.24,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "Medium",
+      "measurement_conditions": "200 mA/g for capacity; limited-capacity cutoff 1000 mAh/g for overpotential",
+      "paper_title": "CovalentOrganicFrameworkBased LiCO2 Batteries",
+      "doi": "10.1002/adma.201905879",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C003\nName: Ru nanoparticles  /  carbon (in-situ ultrafine Ru NPs)\nMetals: N,Ru\nMaterial Type: COMPOSITE\nStructure: NP\n\nDischarge capacity: 11495.0 mAh/g\nMeasured overpotential: 1.43 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): Medium (label_id = 1)\nModel predicted performance: Medium\nMeasurement conditions: 0.1 A/g cycling for 1.43 V example; limited-capacity tests at 1000 mAh/g\n\nPaper title: Transient, in situ synthesis of ultrafine ruthenium nanoparticles for a high-rate LiCO2 battery\nDOI: 10.1039/C8EE03506G\n\nSummary:\nThis catalyst has experimental performance labeled as Medium and model-predicted performance Medium, with discharge capacity 11495.0 mAh/g and overpotential 1.43 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C003",
+      "name": "Ru nanoparticles  /  carbon (in-situ ultrafine Ru NPs)",
+      "metals": [
+        "N",
+        "Ru"
+      ],
+      "type": "COMPOSITE",
+      "structure": "NP",
+      "capacity_mAh_g": 11495.0,
+      "overpotential_V": 1.43,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "Medium",
+      "performance_label_id": 1,
+      "ml_pred_label_text": "Medium",
+      "measurement_conditions": "0.1 A/g cycling for 1.43 V example; limited-capacity tests at 1000 mAh/g",
+      "paper_title": "Transient, in situ synthesis of ultrafine ruthenium nanoparticles for a high-rate LiCO2 battery",
+      "doi": "10.1039/C8EE03506G",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C004\nName: Single-atom Ru (SA-Ru  /  Co3O4 nanosheets)\nMetals: O,S,Co,Ru,Si\nMaterial Type: OXIDE\nStructure: SA\n\nDischarge capacity: 1643.937 mAh/g\nMeasured overpotential: 0.501 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: various current densities; DFT + Bader charge analysis used\n\nPaper title: SingleAtom Ru Implanted on Co3O4 Nanosheets as Efficient DualCatalyst for LiCO2 Batteries\nDOI: 10.1002/advs.202102550\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 1643.937 mAh/g and overpotential 0.501 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C004",
+      "name": "Single-atom Ru (SA-Ru  /  Co3O4 nanosheets)",
+      "metals": [
+        "O",
+        "S",
+        "Co",
+        "Ru",
+        "Si"
+      ],
+      "type": "OXIDE",
+      "structure": "SA",
+      "capacity_mAh_g": 1643.937,
+      "overpotential_V": 0.501,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "various current densities; DFT + Bader charge analysis used",
+      "paper_title": "SingleAtom Ru Implanted on Co3O4 Nanosheets as Efficient DualCatalyst for LiCO2 Batteries",
+      "doi": "10.1002/advs.202102550",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C005\nName: Mo2C (molybdenum carbide)\nMetals: C,Mo\nMaterial Type: CARBIDE\nStructure: Bulk\n\nDischarge capacity: 2.0 mAh/g\nMeasured overpotential: 0.8 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): Low (label_id = 0)\nModel predicted performance: Medium\nMeasurement conditions: DFT mechanistic study with experimental comparisons; conditions vary across works\n\nPaper title: Unraveling Reaction Mechanisms of Mo2C as Cathode Catalyst in a LiCO2 Battery\nDOI: 10.1021/jacs.9b12868\n\nSummary:\nThis catalyst has experimental performance labeled as Low and model-predicted performance Medium, with discharge capacity 2.0 mAh/g and overpotential 0.8 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C005",
+      "name": "Mo2C (molybdenum carbide)",
+      "metals": [
+        "C",
+        "Mo"
+      ],
+      "type": "CARBIDE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 2.0,
+      "overpotential_V": 0.8,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "Low",
+      "performance_label_id": 0,
+      "ml_pred_label_text": "Medium",
+      "measurement_conditions": "DFT mechanistic study with experimental comparisons; conditions vary across works",
+      "paper_title": "Unraveling Reaction Mechanisms of Mo2C as Cathode Catalyst in a LiCO2 Battery",
+      "doi": "10.1021/jacs.9b12868",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C006\nName: Ru/Ni cathode (Ru nanosheets  /  3D Ni)\nMetals: Ni,Ru\nMaterial Type: COMPOSITE\nStructure: NS\n\nDischarge capacity: 950.0 mAh/g\nMeasured overpotential: 0.501 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): Low (label_id = 0)\nModel predicted performance: Low\nMeasurement conditions: Reported superior discharge capacity; coulombic efficiency ~95.4%\n\nPaper title: Ru nanosheet catalyst supported by three-dimensional nickel for LiCO2 batteries\nDOI: S0013468619300362\n\nSummary:\nThis catalyst has experimental performance labeled as Low and model-predicted performance Low, with discharge capacity 950.0 mAh/g and overpotential 0.501 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C006",
+      "name": "Ru/Ni cathode (Ru nanosheets  /  3D Ni)",
+      "metals": [
+        "Ni",
+        "Ru"
+      ],
+      "type": "COMPOSITE",
+      "structure": "NS",
+      "capacity_mAh_g": 950.0,
+      "overpotential_V": 0.501,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "Low",
+      "performance_label_id": 0,
+      "ml_pred_label_text": "Low",
+      "measurement_conditions": "Reported superior discharge capacity; coulombic efficiency ~95.4%",
+      "paper_title": "Ru nanosheet catalyst supported by three-dimensional nickel for LiCO2 batteries",
+      "doi": "S0013468619300362",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C007\nName: Ru/CNT (solid-state)\nMetals: C,N,Ru\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 454.0 mAh/g\nMeasured overpotential: 0.501 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): Low (label_id = 0)\nModel predicted performance: Low\nMeasurement conditions: Solid-state cell; ~45 cycles reported\n\nPaper title: Effective Ru/CNT Cathode for Rechargeable Solid-State LiCO2 Battery\nDOI: 10.1021/acsami.1c11000\n\nSummary:\nThis catalyst has experimental performance labeled as Low and model-predicted performance Low, with discharge capacity 454.0 mAh/g and overpotential 0.501 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C007",
+      "name": "Ru/CNT (solid-state)",
+      "metals": [
+        "C",
+        "N",
+        "Ru"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 454.0,
+      "overpotential_V": 0.501,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "Low",
+      "performance_label_id": 0,
+      "ml_pred_label_text": "Low",
+      "measurement_conditions": "Solid-state cell; ~45 cycles reported",
+      "paper_title": "Effective Ru/CNT Cathode for Rechargeable Solid-State LiCO2 Battery",
+      "doi": "10.1021/acsami.1c11000",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C008\nName: W2C-CNTs\nMetals: C,N,W\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 106.0 mAh/g\nMeasured overpotential: 0.501 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): Low (label_id = 0)\nModel predicted performance: Low\nMeasurement conditions: Performance figure reported within the article\n\nPaper title: Cathode architecture and active site engineering in lithiumcarbon dioxide batteries (reported W2CCNTs performance)\nDOI: nan\n\nSummary:\nThis catalyst has experimental performance labeled as Low and model-predicted performance Low, with discharge capacity 106.0 mAh/g and overpotential 0.501 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C008",
+      "name": "W2C-CNTs",
+      "metals": [
+        "C",
+        "N",
+        "W"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 106.0,
+      "overpotential_V": 0.501,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "Low",
+      "performance_label_id": 0,
+      "ml_pred_label_text": "Low",
+      "measurement_conditions": "Performance figure reported within the article",
+      "paper_title": "Cathode architecture and active site engineering in lithiumcarbon dioxide batteries (reported W2CCNTs performance)",
+      "doi": NaN,
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C009\nName: N,S-doped CNTs (flexible quasi-solid)\nMetals: C,N,S\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 235.0 mAh/g\nMeasured overpotential: 0.501 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): Low (label_id = 0)\nModel predicted performance: Low\nMeasurement conditions: Quasisolid flexible design\n\nPaper title: An ultralong life, highperformance, flexible LiCO2 battery based on multifunctional carbon electrocatalysts\nDOI: nan\n\nSummary:\nThis catalyst has experimental performance labeled as Low and model-predicted performance Low, with discharge capacity 235.0 mAh/g and overpotential 0.501 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C009",
+      "name": "N,S-doped CNTs (flexible quasi-solid)",
+      "metals": [
+        "C",
+        "N",
+        "S"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 235.0,
+      "overpotential_V": 0.501,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "Low",
+      "performance_label_id": 0,
+      "ml_pred_label_text": "Low",
+      "measurement_conditions": "Quasisolid flexible design",
+      "paper_title": "An ultralong life, highperformance, flexible LiCO2 battery based on multifunctional carbon electrocatalysts",
+      "doi": NaN,
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C010\nName: Co3O4 nanosheets\nMetals: O,Co\nMaterial Type: OXIDE\nStructure: NS\n\nDischarge capacity: 240.0 mAh/g\nMeasured overpotential: 0.501 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): Low (label_id = 0)\nModel predicted performance: Low\nMeasurement conditions: Higher initial capacity vs bulk Co3O4\n\nPaper title: Boosting the Electrocatalytic Activity of Co3O4 Nanosheets for LiCO2 Battery\nDOI: 10.1021/acscatal.7b02313\n\nSummary:\nThis catalyst has experimental performance labeled as Low and model-predicted performance Low, with discharge capacity 240.0 mAh/g and overpotential 0.501 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C010",
+      "name": "Co3O4 nanosheets",
+      "metals": [
+        "O",
+        "Co"
+      ],
+      "type": "OXIDE",
+      "structure": "NS",
+      "capacity_mAh_g": 240.0,
+      "overpotential_V": 0.501,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "Low",
+      "performance_label_id": 0,
+      "ml_pred_label_text": "Low",
+      "measurement_conditions": "Higher initial capacity vs bulk Co3O4",
+      "paper_title": "Boosting the Electrocatalytic Activity of Co3O4 Nanosheets for LiCO2 Battery",
+      "doi": "10.1021/acscatal.7b02313",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C011\nName: Vertically aligned N-doped CNT arrays\nMetals: C,N\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 186.0 mAh/g\nMeasured overpotential: 0.501 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): Low (label_id = 0)\nModel predicted performance: Low\nMeasurement conditions: High coulombic efficiency ~85%; small potential gap\n\nPaper title: Vertically Aligned Ndoped Carbon Nanotubes Arrays as Efficient BinderFree Catalysts for Flexible LiCO2 Batteries\nDOI: nan\n\nSummary:\nThis catalyst has experimental performance labeled as Low and model-predicted performance Low, with discharge capacity 186.0 mAh/g and overpotential 0.501 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C011",
+      "name": "Vertically aligned N-doped CNT arrays",
+      "metals": [
+        "C",
+        "N"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 186.0,
+      "overpotential_V": 0.501,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "Low",
+      "performance_label_id": 0,
+      "ml_pred_label_text": "Low",
+      "measurement_conditions": "High coulombic efficiency ~85%; small potential gap",
+      "paper_title": "Vertically Aligned Ndoped Carbon Nanotubes Arrays as Efficient BinderFree Catalysts for Flexible LiCO2 Batteries",
+      "doi": NaN,
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C012\nName: Mo2C@CNT fiber cathode\nMetals: C,N,Mo\nMaterial Type: CARBIDE\nStructure: Bulk\n\nDischarge capacity: 1643.937 mAh/g\nMeasured overpotential: 3.4 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Fibershaped cell; ~40 cycles; energy efficiency ~80%\n\nPaper title: A QuasiSolidState Flexible FiberShaped LiCO2 Battery with Low Overpotential and High Energy Efficiency\nDOI: 10.1002/adma.201804439\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 1643.937 mAh/g and overpotential 3.4 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C012",
+      "name": "Mo2C@CNT fiber cathode",
+      "metals": [
+        "C",
+        "N",
+        "Mo"
+      ],
+      "type": "CARBIDE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 1643.937,
+      "overpotential_V": 3.4,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Fibershaped cell; ~40 cycles; energy efficiency ~80%",
+      "paper_title": "A QuasiSolidState Flexible FiberShaped LiCO2 Battery with Low Overpotential and High Energy Efficiency",
+      "doi": "10.1002/adma.201804439",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C013\nName: CPM cathode (ultralow overpotential)\nMetals: C,P\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 154.0 mAh/g\nMeasured overpotential: 0.501 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): Low (label_id = 0)\nModel predicted performance: Low\nMeasurement conditions: 50 mA g1; ~97.3% coulombic efficiency\n\nPaper title: Ultralow Overpotential in Rechargeable LiCO2 Batteries\nDOI: 10.1002/advs.202502553\n\nSummary:\nThis catalyst has experimental performance labeled as Low and model-predicted performance Low, with discharge capacity 154.0 mAh/g and overpotential 0.501 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C013",
+      "name": "CPM cathode (ultralow overpotential)",
+      "metals": [
+        "C",
+        "P"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 154.0,
+      "overpotential_V": 0.501,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "Low",
+      "performance_label_id": 0,
+      "ml_pred_label_text": "Low",
+      "measurement_conditions": "50 mA g1; ~97.3% coulombic efficiency",
+      "paper_title": "Ultralow Overpotential in Rechargeable LiCO2 Batteries",
+      "doi": "10.1002/advs.202502553",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C014\nName: Primary Li-CO2 cell (carbon cathode)\nMetals: C,O,Li,Pr\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 250.0 mAh/g\nMeasured overpotential: 0.501 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): Low (label_id = 0)\nModel predicted performance: Low\nMeasurement conditions: Primary cell; temperaturedependent capacity\n\nPaper title: The LiCO2 battery: a novel method for CO2 capture and utilization\nDOI: 10.1039/C3RA40394G\n\nSummary:\nThis catalyst has experimental performance labeled as Low and model-predicted performance Low, with discharge capacity 250.0 mAh/g and overpotential 0.501 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C014",
+      "name": "Primary Li-CO2 cell (carbon cathode)",
+      "metals": [
+        "C",
+        "O",
+        "Li",
+        "Pr"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 250.0,
+      "overpotential_V": 0.501,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "Low",
+      "performance_label_id": 0,
+      "ml_pred_label_text": "Low",
+      "measurement_conditions": "Primary cell; temperaturedependent capacity",
+      "paper_title": "The LiCO2 battery: a novel method for CO2 capture and utilization",
+      "doi": "10.1039/C3RA40394G",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C015\nName: N-doped carbon (Li-CO2/O2 system)\nMetals: C,N,O,Li\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 982.0 mAh/g\nMeasured overpotential: 1.21 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): Low (label_id = 0)\nModel predicted performance: Low\nMeasurement conditions: Mixed CO2/O2 feed; 95 cycles\n\nPaper title: First Application of NitrogenDoped Carbon Nanosheets as Bifunctional Electrocatalysts Toward LiCO2/O2 Batteries\nDOI: 10.3390/catal13030577\n\nSummary:\nThis catalyst has experimental performance labeled as Low and model-predicted performance Low, with discharge capacity 982.0 mAh/g and overpotential 1.21 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C015",
+      "name": "N-doped carbon (Li-CO2/O2 system)",
+      "metals": [
+        "C",
+        "N",
+        "O",
+        "Li"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 982.0,
+      "overpotential_V": 1.21,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "Low",
+      "performance_label_id": 0,
+      "ml_pred_label_text": "Low",
+      "measurement_conditions": "Mixed CO2/O2 feed; 95 cycles",
+      "paper_title": "First Application of NitrogenDoped Carbon Nanosheets as Bifunctional Electrocatalysts Toward LiCO2/O2 Batteries",
+      "doi": "10.3390/catal13030577",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C016\nName: Solid RM(II)-BTC cathode\nMetals: C,I\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 904.0 mAh/g\nMeasured overpotential: 0.501 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): Low (label_id = 0)\nModel predicted performance: Low\nMeasurement conditions: Solid MOF cathode; improved kinetics\n\nPaper title: Boosting a practical LiCO2 battery through dimerization catalytic route\nDOI: 10.1038/s41467-024-45087-4\n\nSummary:\nThis catalyst has experimental performance labeled as Low and model-predicted performance Low, with discharge capacity 904.0 mAh/g and overpotential 0.501 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C016",
+      "name": "Solid RM(II)-BTC cathode",
+      "metals": [
+        "C",
+        "I"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 904.0,
+      "overpotential_V": 0.501,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "Low",
+      "performance_label_id": 0,
+      "ml_pred_label_text": "Low",
+      "measurement_conditions": "Solid MOF cathode; improved kinetics",
+      "paper_title": "Boosting a practical LiCO2 battery through dimerization catalytic route",
+      "doi": "10.1038/s41467-024-45087-4",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C017\nName: MOF-based safe & stable cathode\nMetals: F,O\nMaterial Type: MOF\nStructure: SA\n\nDischarge capacity: 669.0 mAh/g\nMeasured overpotential: 0.501 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): Low (label_id = 0)\nModel predicted performance: Low\nMeasurement conditions: Enhanced stability and CO2 utilization\n\nPaper title: Safe and stable LiCO2 battery with metal-organic cathode\nDOI: 10.1016/j.jpowsour.2023.233010\n\nSummary:\nThis catalyst has experimental performance labeled as Low and model-predicted performance Low, with discharge capacity 669.0 mAh/g and overpotential 0.501 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C017",
+      "name": "MOF-based safe & stable cathode",
+      "metals": [
+        "F",
+        "O"
+      ],
+      "type": "MOF",
+      "structure": "SA",
+      "capacity_mAh_g": 669.0,
+      "overpotential_V": 0.501,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "Low",
+      "performance_label_id": 0,
+      "ml_pred_label_text": "Low",
+      "measurement_conditions": "Enhanced stability and CO2 utilization",
+      "paper_title": "Safe and stable LiCO2 battery with metal-organic cathode",
+      "doi": "10.1016/j.jpowsour.2023.233010",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C018\nName: Regulated discharge cathode\nMetals: Re\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 165.0 mAh/g\nMeasured overpotential: 0.501 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): Low (label_id = 0)\nModel predicted performance: Low\nMeasurement conditions: High capacity regulated discharge process\n\nPaper title: Highly efficient LiCO2 batteries with regulated discharge pathways\nDOI: 10.1016/j.jelechem.2024.118700\n\nSummary:\nThis catalyst has experimental performance labeled as Low and model-predicted performance Low, with discharge capacity 165.0 mAh/g and overpotential 0.501 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C018",
+      "name": "Regulated discharge cathode",
+      "metals": [
+        "Re"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 165.0,
+      "overpotential_V": 0.501,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "Low",
+      "performance_label_id": 0,
+      "ml_pred_label_text": "Low",
+      "measurement_conditions": "High capacity regulated discharge process",
+      "paper_title": "Highly efficient LiCO2 batteries with regulated discharge pathways",
+      "doi": "10.1016/j.jelechem.2024.118700",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C019\nName: Li-CO2/O2 hybrid battery\nMetals: C,O,Li\nMaterial Type: COMPOSITE\nStructure: HYB\n\nDischarge capacity: 154.0 mAh/g\nMeasured overpotential: 0.501 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): Low (label_id = 0)\nModel predicted performance: Low\nMeasurement conditions: Mixed CO2/O2 feed; 60 cycles\n\nPaper title: In situ observation of the electrochemical behavior of LiCO2/O2 battery\nDOI: 10.1002/cey2.424\n\nSummary:\nThis catalyst has experimental performance labeled as Low and model-predicted performance Low, with discharge capacity 154.0 mAh/g and overpotential 0.501 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C019",
+      "name": "Li-CO2/O2 hybrid battery",
+      "metals": [
+        "C",
+        "O",
+        "Li"
+      ],
+      "type": "COMPOSITE",
+      "structure": "HYB",
+      "capacity_mAh_g": 154.0,
+      "overpotential_V": 0.501,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "Low",
+      "performance_label_id": 0,
+      "ml_pred_label_text": "Low",
+      "measurement_conditions": "Mixed CO2/O2 feed; 60 cycles",
+      "paper_title": "In situ observation of the electrochemical behavior of LiCO2/O2 battery",
+      "doi": "10.1002/cey2.424",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C020\nName: IrO2/CK flexible cathode\nMetals: C,K,O,Ir\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 590.0 mAh/g\nMeasured overpotential: 0.501 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): Low (label_id = 0)\nModel predicted performance: Low\nMeasurement conditions: Flexible substrate with long operation time\n\nPaper title: A Flexible LiCO2 Battery with IrO2/CK cathode\nDOI: 10.2139/ssrn.4257556\n\nSummary:\nThis catalyst has experimental performance labeled as Low and model-predicted performance Low, with discharge capacity 590.0 mAh/g and overpotential 0.501 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C020",
+      "name": "IrO2/CK flexible cathode",
+      "metals": [
+        "C",
+        "K",
+        "O",
+        "Ir"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 590.0,
+      "overpotential_V": 0.501,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "Low",
+      "performance_label_id": 0,
+      "ml_pred_label_text": "Low",
+      "measurement_conditions": "Flexible substrate with long operation time",
+      "paper_title": "A Flexible LiCO2 Battery with IrO2/CK cathode",
+      "doi": "10.2139/ssrn.4257556",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C021\nName: Regulated-discharge cathode\nMetals: Re\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 16550.0 mAh/g\nMeasured overpotential: 0.501 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): Medium (label_id = 1)\nModel predicted performance: High\nMeasurement conditions: Reported high full discharge capacity; recent 2024 study\n\nPaper title: Highly efficient Liâ€“CO2 batteries with regulated discharge pathways\nDOI: 10.1016/j.jelechem.2024.118700\n\nSummary:\nThis catalyst has experimental performance labeled as Medium and model-predicted performance High, with discharge capacity 16550.0 mAh/g and overpotential 0.501 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C021",
+      "name": "Regulated-discharge cathode",
+      "metals": [
+        "Re"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 16550.0,
+      "overpotential_V": 0.501,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "Medium",
+      "performance_label_id": 1,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Reported high full discharge capacity; recent 2024 study",
+      "paper_title": "Highly efficient Liâ€“CO2 batteries with regulated discharge pathways",
+      "doi": "10.1016/j.jelechem.2024.118700",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C022\nName: Cu(II) solid redox mediator cathode\nMetals: I,Cu\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 1643.937 mAh/g\nMeasured overpotential: 3.7 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Pouch cell demonstrated; >400 cycles\n\nPaper title: Boosting a practical Liâ€“CO2 battery through dimerization catalytic route\nDOI: 10.1038/s41467-024-45087-4\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 1643.937 mAh/g and overpotential 3.7 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C022",
+      "name": "Cu(II) solid redox mediator cathode",
+      "metals": [
+        "I",
+        "Cu"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 1643.937,
+      "overpotential_V": 3.7,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Pouch cell demonstrated; >400 cycles",
+      "paper_title": "Boosting a practical Liâ€“CO2 battery through dimerization catalytic route",
+      "doi": "10.1038/s41467-024-45087-4",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C023\nName: CPM redox catalyst  /  Super P\nMetals: C,P\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 15440.0 mAh/g\nMeasured overpotential: 0.67 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): Medium (label_id = 1)\nModel predicted performance: Medium\nMeasurement conditions: 50 mA g^-1; 97.3% CE; low overpotential\n\nPaper title: Ultralow Overpotential in Rechargeable Liâ€“CO2 Batteries Enabled by Caesium Phosphomolybdate\nDOI: 10.1002/advs.202502553\n\nSummary:\nThis catalyst has experimental performance labeled as Medium and model-predicted performance Medium, with discharge capacity 15440.0 mAh/g and overpotential 0.67 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C023",
+      "name": "CPM redox catalyst  /  Super P",
+      "metals": [
+        "C",
+        "P"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 15440.0,
+      "overpotential_V": 0.67,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "Medium",
+      "performance_label_id": 1,
+      "ml_pred_label_text": "Medium",
+      "measurement_conditions": "50 mA g^-1; 97.3% CE; low overpotential",
+      "paper_title": "Ultralow Overpotential in Rechargeable Liâ€“CO2 Batteries Enabled by Caesium Phosphomolybdate",
+      "doi": "10.1002/advs.202502553",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C024\nName: Binuclear Cu complex + Cu(I) RM  /  Super P\nMetals: I,P,Bi,Cu\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 5846.0 mAh/g\nMeasured overpotential: 0.501 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): Low (label_id = 0)\nModel predicted performance: Low\nMeasurement conditions: Enhanced discharge plateau ~3.04 V; steady over 80 cycles (1000 mAh g^-1 limit)\n\nPaper title: Binuclear Cu complex catalysis enabling Liâ€“CO2 battery based on dimerization-redox mediation mechanism\nDOI: 10.1038/s41467-023-36276-8\n\nSummary:\nThis catalyst has experimental performance labeled as Low and model-predicted performance Low, with discharge capacity 5846.0 mAh/g and overpotential 0.501 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C024",
+      "name": "Binuclear Cu complex + Cu(I) RM  /  Super P",
+      "metals": [
+        "I",
+        "P",
+        "Bi",
+        "Cu"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 5846.0,
+      "overpotential_V": 0.501,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "Low",
+      "performance_label_id": 0,
+      "ml_pred_label_text": "Low",
+      "measurement_conditions": "Enhanced discharge plateau ~3.04 V; steady over 80 cycles (1000 mAh g^-1 limit)",
+      "paper_title": "Binuclear Cu complex catalysis enabling Liâ€“CO2 battery based on dimerization-redox mediation mechanism",
+      "doi": "10.1038/s41467-023-36276-8",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C025\nName: CoSe2 nanoparticles  /  carbonized melamine foam\nMetals: Co,Se\nMaterial Type: COMPOSITE\nStructure: NP\n\nDischarge capacity: 1643.937 mAh/g\nMeasured overpotential: 0.501 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Flexible cell with high energy efficiency and stable cycling\n\nPaper title: MOF-Derived CoSe2 Nanoparticles/Carbonized Melamine Foam Cathode Enabling Flexible Liâ€“CO2 Batteries\nDOI: 10.1002/smll.202310530\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 1643.937 mAh/g and overpotential 0.501 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C025",
+      "name": "CoSe2 nanoparticles  /  carbonized melamine foam",
+      "metals": [
+        "Co",
+        "Se"
+      ],
+      "type": "COMPOSITE",
+      "structure": "NP",
+      "capacity_mAh_g": 1643.937,
+      "overpotential_V": 0.501,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Flexible cell with high energy efficiency and stable cycling",
+      "paper_title": "MOF-Derived CoSe2 Nanoparticles/Carbonized Melamine Foam Cathode Enabling Flexible Liâ€“CO2 Batteries",
+      "doi": "10.1002/smll.202310530",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C026\nName: Ru@Mo2CTx MXene cathode\nMetals: C,Mo,Ru,Xe\nMaterial Type: CARBIDE\nStructure: Bulk\n\nDischarge capacity: 20995.0 mAh/g\nMeasured overpotential: 0.501 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Cycle life ~1750 h; DFT supports enhanced adsorption\n\nPaper title: Mo2CTx Supported Ru Nanoparticles as Efficient Cathode for Liâ€“CO2 Batteries\nDOI: nan\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 20995.0 mAh/g and overpotential 0.501 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C026",
+      "name": "Ru@Mo2CTx MXene cathode",
+      "metals": [
+        "C",
+        "Mo",
+        "Ru",
+        "Xe"
+      ],
+      "type": "CARBIDE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 20995.0,
+      "overpotential_V": 0.501,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Cycle life ~1750 h; DFT supports enhanced adsorption",
+      "paper_title": "Mo2CTx Supported Ru Nanoparticles as Efficient Cathode for Liâ€“CO2 Batteries",
+      "doi": NaN,
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C027\nName: 2Hâ€‘MoS2/CNT photoâ€‘energized photocathode\nMetals: C,N,S,Mo\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 1643.937 mAh/g\nMeasured overpotential: 0.501 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Photoâ€‘assisted operation, wideâ€‘temperature application\n\nPaper title: Photoâ€‘Energized MoS2/CNT Cathode for Highâ€‘Performance Binderâ€‘Free Liâ€“CO2 Battery\nDOI: 10.1007/s40820-024-01506-1\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 1643.937 mAh/g and overpotential 0.501 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C027",
+      "name": "2Hâ€‘MoS2/CNT photoâ€‘energized photocathode",
+      "metals": [
+        "C",
+        "N",
+        "S",
+        "Mo"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 1643.937,
+      "overpotential_V": 0.501,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Photoâ€‘assisted operation, wideâ€‘temperature application",
+      "paper_title": "Photoâ€‘Energized MoS2/CNT Cathode for Highâ€‘Performance Binderâ€‘Free Liâ€“CO2 Battery",
+      "doi": "10.1007/s40820-024-01506-1",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C028\nName: CNT cathode (historical baseline)\nMetals: C,N\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 8379.0 mAh/g\nMeasured overpotential: 0.501 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): Medium (label_id = 1)\nModel predicted performance: Low\nMeasurement conditions: Capacity value cited in review\n\nPaper title: Strategies for improving the performance of practical Liâ€“CO2 batteries (review citing CNT capacity)\nDOI: nan\n\nSummary:\nThis catalyst has experimental performance labeled as Medium and model-predicted performance Low, with discharge capacity 8379.0 mAh/g and overpotential 0.501 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C028",
+      "name": "CNT cathode (historical baseline)",
+      "metals": [
+        "C",
+        "N"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 8379.0,
+      "overpotential_V": 0.501,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "Medium",
+      "performance_label_id": 1,
+      "ml_pred_label_text": "Low",
+      "measurement_conditions": "Capacity value cited in review",
+      "paper_title": "Strategies for improving the performance of practical Liâ€“CO2 batteries (review citing CNT capacity)",
+      "doi": NaN,
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C029\nName: Sizeâ€‘dependent Ru/CNT\nMetals: C,N,Ru,Si\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 1000.0 mAh/g\nMeasured overpotential: 0.501 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): Low (label_id = 0)\nModel predicted performance: Low\nMeasurement conditions: Capacityâ€‘limited test at 100 mA g^-1 (1000 mAh g^-1) per SI\n\nPaper title: Sizeâ€‘dependent effects of Ru/CNT cathodes for Liâ€“CO2 batteries (SI data)\nDOI: 10.1021/acsenergylett.4c01567\n\nSummary:\nThis catalyst has experimental performance labeled as Low and model-predicted performance Low, with discharge capacity 1000.0 mAh/g and overpotential 0.501 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C029",
+      "name": "Sizeâ€‘dependent Ru/CNT",
+      "metals": [
+        "C",
+        "N",
+        "Ru",
+        "Si"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 1000.0,
+      "overpotential_V": 0.501,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "Low",
+      "performance_label_id": 0,
+      "ml_pred_label_text": "Low",
+      "measurement_conditions": "Capacityâ€‘limited test at 100 mA g^-1 (1000 mAh g^-1) per SI",
+      "paper_title": "Sizeâ€‘dependent effects of Ru/CNT cathodes for Liâ€“CO2 batteries (SI data)",
+      "doi": "10.1021/acsenergylett.4c01567",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C030\nName: MOF-based cathode with solid electrolyte\nMetals: F,O\nMaterial Type: MOF\nStructure: Bulk\n\nDischarge capacity: 6698.0 mAh/g\nMeasured overpotential: 0.501 V\nAdsorption energy (DeltaE): 1.299 eV\nReaction barrier: 0.444 eV\n\nPerformance (from paper): Low (label_id = 0)\nModel predicted performance: Low\nMeasurement conditions: Stabilityâ€‘focused design; reduced polarization\n\nPaper title: Safe and stable Liâ€“CO2 battery with metal-organic cathode\nDOI: 10.1016/j.jpowsour.2023.233867\n\nSummary:\nThis catalyst has experimental performance labeled as Low and model-predicted performance Low, with discharge capacity 6698.0 mAh/g and overpotential 0.501 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C030",
+      "name": "MOF-based cathode with solid electrolyte",
+      "metals": [
+        "F",
+        "O"
+      ],
+      "type": "MOF",
+      "structure": "Bulk",
+      "capacity_mAh_g": 6698.0,
+      "overpotential_V": 0.501,
+      "adsorption_energy_eV": 1.299,
+      "reaction_barrier_eV": 0.444,
+      "performance_label_text": "Low",
+      "performance_label_id": 0,
+      "ml_pred_label_text": "Low",
+      "measurement_conditions": "Stabilityâ€‘focused design; reduced polarization",
+      "paper_title": "Safe and stable Liâ€“CO2 battery with metal-organic cathode",
+      "doi": "10.1016/j.jpowsour.2023.233867",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C031\nName: LiNi0.6Co0.2Mn0.2O2 (NCM622)\nMetals: C,N,O,Co,Li,Mn,Ni\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 190.0 mAh/g\nMeasured overpotential: 0.42 V\nAdsorption energy (DeltaE): 1.5 eV\nReaction barrier: 0.53 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 0.5C, 25°C, standard carbonate electrolyte\n\nPaper title: Improving Thermal Stability of NCM622 Cathodes via Doping Strategies\nDOI: 10.1021/acs.energyfuels.0c00356\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 190.0 mAh/g and overpotential 0.42 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C031",
+      "name": "LiNi0.6Co0.2Mn0.2O2 (NCM622)",
+      "metals": [
+        "C",
+        "N",
+        "O",
+        "Co",
+        "Li",
+        "Mn",
+        "Ni"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 190.0,
+      "overpotential_V": 0.42,
+      "adsorption_energy_eV": 1.5,
+      "reaction_barrier_eV": 0.53,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 0.5C, 25°C, standard carbonate electrolyte",
+      "paper_title": "Improving Thermal Stability of NCM622 Cathodes via Doping Strategies",
+      "doi": "10.1021/acs.energyfuels.0c00356",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C032\nName: LiVPO4F (fluorophosphate)\nMetals: F,O,P,V,Li\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 155.0 mAh/g\nMeasured overpotential: 0.34 V\nAdsorption energy (DeltaE): 1.2 eV\nReaction barrier: 0.41 eV\n\nPerformance (from paper): Medium (label_id = 1)\nModel predicted performance: Medium\nMeasurement conditions: Tested at 5C, 25°C, LiPF6 in EC/DMC\n\nPaper title: Enhanced Rate Capability of LiVPO4F Cathodes through Nanoscale Carbon Coating\nDOI: 10.1016/j.jpowsour.2019.227554\n\nSummary:\nThis catalyst has experimental performance labeled as Medium and model-predicted performance Medium, with discharge capacity 155.0 mAh/g and overpotential 0.34 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C032",
+      "name": "LiVPO4F (fluorophosphate)",
+      "metals": [
+        "F",
+        "O",
+        "P",
+        "V",
+        "Li"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 155.0,
+      "overpotential_V": 0.34,
+      "adsorption_energy_eV": 1.2,
+      "reaction_barrier_eV": 0.41,
+      "performance_label_text": "Medium",
+      "performance_label_id": 1,
+      "ml_pred_label_text": "Medium",
+      "measurement_conditions": "Tested at 5C, 25°C, LiPF6 in EC/DMC",
+      "paper_title": "Enhanced Rate Capability of LiVPO4F Cathodes through Nanoscale Carbon Coating",
+      "doi": "10.1016/j.jpowsour.2019.227554",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C033\nName: LiNi0.9Co0.05Al0.05O2 (NCA)\nMetals: C,N,O,Al,Co,Li,Ni\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 210.0 mAh/g\nMeasured overpotential: 0.39 V\nAdsorption energy (DeltaE): 1.6 eV\nReaction barrier: 0.57 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 0.5C, 25°C, EC/EMC electrolyte\n\nPaper title: High-Energy-Density LiNi0.9Co0.05Al0.05O2 Cathodes with Improved Structural Stability\nDOI: 10.1002/aenm.202101845\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 210.0 mAh/g and overpotential 0.39 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C033",
+      "name": "LiNi0.9Co0.05Al0.05O2 (NCA)",
+      "metals": [
+        "C",
+        "N",
+        "O",
+        "Al",
+        "Co",
+        "Li",
+        "Ni"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 210.0,
+      "overpotential_V": 0.39,
+      "adsorption_energy_eV": 1.6,
+      "reaction_barrier_eV": 0.57,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 0.5C, 25°C, EC/EMC electrolyte",
+      "paper_title": "High-Energy-Density LiNi0.9Co0.05Al0.05O2 Cathodes with Improved Structural Stability",
+      "doi": "10.1002/aenm.202101845",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C034\nName: LiMn1.5Ni0.5O4 (high-voltage spinel)\nMetals: O,Li,Mn,Ni\nMaterial Type: OXIDE\nStructure: Bulk\n\nDischarge capacity: 125.0 mAh/g\nMeasured overpotential: 0.28 V\nAdsorption energy (DeltaE): 1.0 eV\nReaction barrier: 0.36 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 1C, 55°C, EC/DEC electrolyte\n\nPaper title: Stable Cycling of LiMn1.5Ni0.5O4 at 5 V for High-Voltage Lithium-Ion Batteries\nDOI: 10.1016/j.nanoen.2019.104303\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 125.0 mAh/g and overpotential 0.28 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C034",
+      "name": "LiMn1.5Ni0.5O4 (high-voltage spinel)",
+      "metals": [
+        "O",
+        "Li",
+        "Mn",
+        "Ni"
+      ],
+      "type": "OXIDE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 125.0,
+      "overpotential_V": 0.28,
+      "adsorption_energy_eV": 1.0,
+      "reaction_barrier_eV": 0.36,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 1C, 55°C, EC/DEC electrolyte",
+      "paper_title": "Stable Cycling of LiMn1.5Ni0.5O4 at 5 V for High-Voltage Lithium-Ion Batteries",
+      "doi": "10.1016/j.nanoen.2019.104303",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C035\nName: Li2MnO3-stabilized layered oxide\nMetals: O,Li,Mn\nMaterial Type: OXIDE\nStructure: Bulk\n\nDischarge capacity: 230.0 mAh/g\nMeasured overpotential: 0.48 V\nAdsorption energy (DeltaE): 1.7 eV\nReaction barrier: 0.59 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 0.1C, 25°C, carbonate-based electrolyte\n\nPaper title: Activation Mechanism of Li2MnO3-Stabilized Layered Oxides for High-Voltage Cathodes\nDOI: 10.1039/D2TA00213G\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 230.0 mAh/g and overpotential 0.48 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C035",
+      "name": "Li2MnO3-stabilized layered oxide",
+      "metals": [
+        "O",
+        "Li",
+        "Mn"
+      ],
+      "type": "OXIDE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 230.0,
+      "overpotential_V": 0.48,
+      "adsorption_energy_eV": 1.7,
+      "reaction_barrier_eV": 0.59,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 0.1C, 25°C, carbonate-based electrolyte",
+      "paper_title": "Activation Mechanism of Li2MnO3-Stabilized Layered Oxides for High-Voltage Cathodes",
+      "doi": "10.1039/D2TA00213G",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C036\nName: LiNi0.7Mn0.2Co0.1O2 (NMC721)\nMetals: C,N,O,Co,Li,Mn,Ni\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 195.0 mAh/g\nMeasured overpotential: 0.4 V\nAdsorption energy (DeltaE): 1.3 eV\nReaction barrier: 0.47 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 1C, 25°C, LiPF6 electrolyte\n\nPaper title: High-Rate and Long-Cycle Stability of NMC721 Cathodes via Surface Engineering\nDOI: 10.1021/acsenergylett.1c00451\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 195.0 mAh/g and overpotential 0.4 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C036",
+      "name": "LiNi0.7Mn0.2Co0.1O2 (NMC721)",
+      "metals": [
+        "C",
+        "N",
+        "O",
+        "Co",
+        "Li",
+        "Mn",
+        "Ni"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 195.0,
+      "overpotential_V": 0.4,
+      "adsorption_energy_eV": 1.3,
+      "reaction_barrier_eV": 0.47,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 1C, 25°C, LiPF6 electrolyte",
+      "paper_title": "High-Rate and Long-Cycle Stability of NMC721 Cathodes via Surface Engineering",
+      "doi": "10.1021/acsenergylett.1c00451",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C037\nName: Li4Ti5O12 (LTO)\nMetals: O,Li,Ti\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 175.0 mAh/g\nMeasured overpotential: 0.35 V\nAdsorption energy (DeltaE): 1.0 eV\nReaction barrier: 0.38 eV\n\nPerformance (from paper): Medium (label_id = 1)\nModel predicted performance: Medium\nMeasurement conditions: Tested at 10C, 25°C, LiPF6 in EC/DEC\n\nPaper title: Zero-Strain Li4Ti5O12 Anode with Long Cycle Life and Fast Charge Capability\nDOI: 10.1016/j.jpowsour.2020.228512\n\nSummary:\nThis catalyst has experimental performance labeled as Medium and model-predicted performance Medium, with discharge capacity 175.0 mAh/g and overpotential 0.35 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C037",
+      "name": "Li4Ti5O12 (LTO)",
+      "metals": [
+        "O",
+        "Li",
+        "Ti"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 175.0,
+      "overpotential_V": 0.35,
+      "adsorption_energy_eV": 1.0,
+      "reaction_barrier_eV": 0.38,
+      "performance_label_text": "Medium",
+      "performance_label_id": 1,
+      "ml_pred_label_text": "Medium",
+      "measurement_conditions": "Tested at 10C, 25°C, LiPF6 in EC/DEC",
+      "paper_title": "Zero-Strain Li4Ti5O12 Anode with Long Cycle Life and Fast Charge Capability",
+      "doi": "10.1016/j.jpowsour.2020.228512",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C038\nName: Li2FeSiO4 (silicate)\nMetals: O,Fe,Li,Si\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 160.0 mAh/g\nMeasured overpotential: 0.37 V\nAdsorption energy (DeltaE): 1.1 eV\nReaction barrier: 0.43 eV\n\nPerformance (from paper): Medium (label_id = 1)\nModel predicted performance: Medium\nMeasurement conditions: Tested at 2C, 25°C, EC/DMC electrolyte\n\nPaper title: Li2FeSiO4 Cathodes with Enhanced Electronic Conductivity via Carbon Nanocoating\nDOI: 10.1016/j.mtener.2020.100712\n\nSummary:\nThis catalyst has experimental performance labeled as Medium and model-predicted performance Medium, with discharge capacity 160.0 mAh/g and overpotential 0.37 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C038",
+      "name": "Li2FeSiO4 (silicate)",
+      "metals": [
+        "O",
+        "Fe",
+        "Li",
+        "Si"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 160.0,
+      "overpotential_V": 0.37,
+      "adsorption_energy_eV": 1.1,
+      "reaction_barrier_eV": 0.43,
+      "performance_label_text": "Medium",
+      "performance_label_id": 1,
+      "ml_pred_label_text": "Medium",
+      "measurement_conditions": "Tested at 2C, 25°C, EC/DMC electrolyte",
+      "paper_title": "Li2FeSiO4 Cathodes with Enhanced Electronic Conductivity via Carbon Nanocoating",
+      "doi": "10.1016/j.mtener.2020.100712",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C039\nName: Li3Cr2(PO4)3 (NASICON-type)\nMetals: C,I,N,O,P,S,Cr,Li\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 140.0 mAh/g\nMeasured overpotential: 0.33 V\nAdsorption energy (DeltaE): 1.2 eV\nReaction barrier: 0.39 eV\n\nPerformance (from paper): Medium (label_id = 1)\nModel predicted performance: Medium\nMeasurement conditions: Tested at 2C, 25°C, solid-state interface\n\nPaper title: Enhanced Ionic Conductivity in Li3Cr2(PO4)3 for Solid-State Battery Applications\nDOI: 10.1016/j.ssi.2022.116006\n\nSummary:\nThis catalyst has experimental performance labeled as Medium and model-predicted performance Medium, with discharge capacity 140.0 mAh/g and overpotential 0.33 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C039",
+      "name": "Li3Cr2(PO4)3 (NASICON-type)",
+      "metals": [
+        "C",
+        "I",
+        "N",
+        "O",
+        "P",
+        "S",
+        "Cr",
+        "Li"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 140.0,
+      "overpotential_V": 0.33,
+      "adsorption_energy_eV": 1.2,
+      "reaction_barrier_eV": 0.39,
+      "performance_label_text": "Medium",
+      "performance_label_id": 1,
+      "ml_pred_label_text": "Medium",
+      "measurement_conditions": "Tested at 2C, 25°C, solid-state interface",
+      "paper_title": "Enhanced Ionic Conductivity in Li3Cr2(PO4)3 for Solid-State Battery Applications",
+      "doi": "10.1016/j.ssi.2022.116006",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C040\nName: Li2ZnTi3O8 (spinel-type)\nMetals: O,Li,Ti,Zn\nMaterial Type: OXIDE\nStructure: Bulk\n\nDischarge capacity: 160.0 mAh/g\nMeasured overpotential: 0.31 V\nAdsorption energy (DeltaE): 1.0 eV\nReaction barrier: 0.35 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 1C, 25°C, EC/EMC electrolyte\n\nPaper title: Stable and High-Rate Performance of Li2ZnTi3O8 Spinel Cathodes\nDOI: 10.1016/j.electacta.2021.137892\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 160.0 mAh/g and overpotential 0.31 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C040",
+      "name": "Li2ZnTi3O8 (spinel-type)",
+      "metals": [
+        "O",
+        "Li",
+        "Ti",
+        "Zn"
+      ],
+      "type": "OXIDE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 160.0,
+      "overpotential_V": 0.31,
+      "adsorption_energy_eV": 1.0,
+      "reaction_barrier_eV": 0.35,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 1C, 25°C, EC/EMC electrolyte",
+      "paper_title": "Stable and High-Rate Performance of Li2ZnTi3O8 Spinel Cathodes",
+      "doi": "10.1016/j.electacta.2021.137892",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C041\nName: LiNi0.8Co0.15Al0.05O2 (NCA)\nMetals: C,N,O,Al,Co,Li,Ni\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 215.0 mAh/g\nMeasured overpotential: 0.36 V\nAdsorption energy (DeltaE): 1.7 eV\nReaction barrier: 0.55 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 1C rate, 25°C, standard carbonate electrolyte\n\nPaper title: Surface Passivation Strategy for Long-Life NCA Cathodes in High-Energy Lithium-Ion Batteries\nDOI: 10.1038/s41560-022-00984-3\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 215.0 mAh/g and overpotential 0.36 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C041",
+      "name": "LiNi0.8Co0.15Al0.05O2 (NCA)",
+      "metals": [
+        "C",
+        "N",
+        "O",
+        "Al",
+        "Co",
+        "Li",
+        "Ni"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 215.0,
+      "overpotential_V": 0.36,
+      "adsorption_energy_eV": 1.7,
+      "reaction_barrier_eV": 0.55,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 1C rate, 25°C, standard carbonate electrolyte",
+      "paper_title": "Surface Passivation Strategy for Long-Life NCA Cathodes in High-Energy Lithium-Ion Batteries",
+      "doi": "10.1038/s41560-022-00984-3",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C042\nName: LiFePO4@Graphene composite\nMetals: O,P,Fe,Li\nMaterial Type: COMPOSITE\nStructure: HYB\n\nDischarge capacity: 170.0 mAh/g\nMeasured overpotential: 0.31 V\nAdsorption energy (DeltaE): 1.1 eV\nReaction barrier: 0.4 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 5C rate, 25°C, LiPF6 in EC/DMC\n\nPaper title: Graphene-Encapsulated LiFePO4 for Enhanced Electrical Conductivity and Thermal Stability\nDOI: 10.1021/acsnano.1c01245\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 170.0 mAh/g and overpotential 0.31 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C042",
+      "name": "LiFePO4@Graphene composite",
+      "metals": [
+        "O",
+        "P",
+        "Fe",
+        "Li"
+      ],
+      "type": "COMPOSITE",
+      "structure": "HYB",
+      "capacity_mAh_g": 170.0,
+      "overpotential_V": 0.31,
+      "adsorption_energy_eV": 1.1,
+      "reaction_barrier_eV": 0.4,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 5C rate, 25°C, LiPF6 in EC/DMC",
+      "paper_title": "Graphene-Encapsulated LiFePO4 for Enhanced Electrical Conductivity and Thermal Stability",
+      "doi": "10.1021/acsnano.1c01245",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C043\nName: LiNi0.6Co0.2Mn0.2O2@Al2O3 coated\nMetals: O,Al,Co,Li,Mn,Ni\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 185.0 mAh/g\nMeasured overpotential: 0.39 V\nAdsorption energy (DeltaE): 1.3 eV\nReaction barrier: 0.46 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 0.5C, 25°C, carbonate electrolyte\n\nPaper title: Surface-Alumina Coated NCM622 for Improved Structural Integrity at High Voltage\nDOI: 10.1002/adfm.202000845\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 185.0 mAh/g and overpotential 0.39 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C043",
+      "name": "LiNi0.6Co0.2Mn0.2O2@Al2O3 coated",
+      "metals": [
+        "O",
+        "Al",
+        "Co",
+        "Li",
+        "Mn",
+        "Ni"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 185.0,
+      "overpotential_V": 0.39,
+      "adsorption_energy_eV": 1.3,
+      "reaction_barrier_eV": 0.46,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 0.5C, 25°C, carbonate electrolyte",
+      "paper_title": "Surface-Alumina Coated NCM622 for Improved Structural Integrity at High Voltage",
+      "doi": "10.1002/adfm.202000845",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C044\nName: LiNi0.5Co0.2Mn0.3O2 doped with Mg\nMetals: O,Co,Li,Mg,Mn,Ni\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 180.0 mAh/g\nMeasured overpotential: 0.38 V\nAdsorption energy (DeltaE): 1.4 eV\nReaction barrier: 0.44 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 25°C, 1C rate, LiPF6 electrolyte\n\nPaper title: Magnesium-Doped NCM523 Cathodes for Improved Thermal and Cycle Stability\nDOI: 10.1016/j.jpowsour.2021.229532\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 180.0 mAh/g and overpotential 0.38 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C044",
+      "name": "LiNi0.5Co0.2Mn0.3O2 doped with Mg",
+      "metals": [
+        "O",
+        "Co",
+        "Li",
+        "Mg",
+        "Mn",
+        "Ni"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 180.0,
+      "overpotential_V": 0.38,
+      "adsorption_energy_eV": 1.4,
+      "reaction_barrier_eV": 0.44,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 25°C, 1C rate, LiPF6 electrolyte",
+      "paper_title": "Magnesium-Doped NCM523 Cathodes for Improved Thermal and Cycle Stability",
+      "doi": "10.1016/j.jpowsour.2021.229532",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C045\nName: LiNi0.8Mn0.1Co0.1O2 (NMC811) with Zr coating\nMetals: C,N,O,Co,Li,Mn,Ni,Zr\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 210.0 mAh/g\nMeasured overpotential: 0.35 V\nAdsorption energy (DeltaE): 1.6 eV\nReaction barrier: 0.5 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 1C, 25°C, EC/EMC electrolyte\n\nPaper title: Zirconium Oxide Coating Enhances Interface Stability of NMC811 Cathodes\nDOI: 10.1039/D2EE00478H\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 210.0 mAh/g and overpotential 0.35 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C045",
+      "name": "LiNi0.8Mn0.1Co0.1O2 (NMC811) with Zr coating",
+      "metals": [
+        "C",
+        "N",
+        "O",
+        "Co",
+        "Li",
+        "Mn",
+        "Ni",
+        "Zr"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 210.0,
+      "overpotential_V": 0.35,
+      "adsorption_energy_eV": 1.6,
+      "reaction_barrier_eV": 0.5,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 1C, 25°C, EC/EMC electrolyte",
+      "paper_title": "Zirconium Oxide Coating Enhances Interface Stability of NMC811 Cathodes",
+      "doi": "10.1039/D2EE00478H",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C046\nName: LiMn0.8Fe0.2PO4 (mixed olivine)\nMetals: O,P,Fe,Li,Mn\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 165.0 mAh/g\nMeasured overpotential: 0.32 V\nAdsorption energy (DeltaE): 1.0 eV\nReaction barrier: 0.42 eV\n\nPerformance (from paper): Medium (label_id = 1)\nModel predicted performance: Medium\nMeasurement conditions: Tested at 2C, 25°C, EC/DEC electrolyte\n\nPaper title: High-Voltage LiMn0.8Fe0.2PO4 Cathodes with Improved Conductivity and Rate Performance\nDOI: 10.1016/j.electacta.2021.137543\n\nSummary:\nThis catalyst has experimental performance labeled as Medium and model-predicted performance Medium, with discharge capacity 165.0 mAh/g and overpotential 0.32 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C046",
+      "name": "LiMn0.8Fe0.2PO4 (mixed olivine)",
+      "metals": [
+        "O",
+        "P",
+        "Fe",
+        "Li",
+        "Mn"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 165.0,
+      "overpotential_V": 0.32,
+      "adsorption_energy_eV": 1.0,
+      "reaction_barrier_eV": 0.42,
+      "performance_label_text": "Medium",
+      "performance_label_id": 1,
+      "ml_pred_label_text": "Medium",
+      "measurement_conditions": "Tested at 2C, 25°C, EC/DEC electrolyte",
+      "paper_title": "High-Voltage LiMn0.8Fe0.2PO4 Cathodes with Improved Conductivity and Rate Performance",
+      "doi": "10.1016/j.electacta.2021.137543",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C047\nName: Li-rich layered oxide (Li1.2Ni0.13Co0.13Mn0.54O2)\nMetals: O,Co,Li,Mn,Ni\nMaterial Type: OXIDE\nStructure: Bulk\n\nDischarge capacity: 250.0 mAh/g\nMeasured overpotential: 0.5 V\nAdsorption energy (DeltaE): 1.8 eV\nReaction barrier: 0.6 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 0.1C, 25°C, carbonate electrolyte\n\nPaper title: Oxygen Redox and Structural Evolution in Li-Rich Layered Oxides for Next-Generation Cathodes\nDOI: 10.1038/s41563-020-0660-4\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 250.0 mAh/g and overpotential 0.5 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C047",
+      "name": "Li-rich layered oxide (Li1.2Ni0.13Co0.13Mn0.54O2)",
+      "metals": [
+        "O",
+        "Co",
+        "Li",
+        "Mn",
+        "Ni"
+      ],
+      "type": "OXIDE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 250.0,
+      "overpotential_V": 0.5,
+      "adsorption_energy_eV": 1.8,
+      "reaction_barrier_eV": 0.6,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 0.1C, 25°C, carbonate electrolyte",
+      "paper_title": "Oxygen Redox and Structural Evolution in Li-Rich Layered Oxides for Next-Generation Cathodes",
+      "doi": "10.1038/s41563-020-0660-4",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C048\nName: Li2MnSiO4 (silicate)\nMetals: O,Li,Mn,Si\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 150.0 mAh/g\nMeasured overpotential: 0.36 V\nAdsorption energy (DeltaE): 1.2 eV\nReaction barrier: 0.4 eV\n\nPerformance (from paper): Medium (label_id = 1)\nModel predicted performance: Medium\nMeasurement conditions: Tested at 1C, 25°C, LiPF6 electrolyte\n\nPaper title: Enhanced Stability of Li2MnSiO4 Cathodes via Dual-Doping Approach\nDOI: 10.1039/D2TA00421G\n\nSummary:\nThis catalyst has experimental performance labeled as Medium and model-predicted performance Medium, with discharge capacity 150.0 mAh/g and overpotential 0.36 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C048",
+      "name": "Li2MnSiO4 (silicate)",
+      "metals": [
+        "O",
+        "Li",
+        "Mn",
+        "Si"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 150.0,
+      "overpotential_V": 0.36,
+      "adsorption_energy_eV": 1.2,
+      "reaction_barrier_eV": 0.4,
+      "performance_label_text": "Medium",
+      "performance_label_id": 1,
+      "ml_pred_label_text": "Medium",
+      "measurement_conditions": "Tested at 1C, 25°C, LiPF6 electrolyte",
+      "paper_title": "Enhanced Stability of Li2MnSiO4 Cathodes via Dual-Doping Approach",
+      "doi": "10.1039/D2TA00421G",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C049\nName: LiFe0.5Mn0.5PO4/C composite\nMetals: C,O,P,Fe,Li,Mn\nMaterial Type: COMPOSITE\nStructure: HYB\n\nDischarge capacity: 160.0 mAh/g\nMeasured overpotential: 0.3 V\nAdsorption energy (DeltaE): 1.0 eV\nReaction barrier: 0.38 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 5C, 25°C, EC/DMC electrolyte\n\nPaper title: Carbon-Coated LiFe0.5Mn0.5PO4 for Superior High-Rate Capability\nDOI: 10.1002/ente.202100221\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 160.0 mAh/g and overpotential 0.3 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C049",
+      "name": "LiFe0.5Mn0.5PO4/C composite",
+      "metals": [
+        "C",
+        "O",
+        "P",
+        "Fe",
+        "Li",
+        "Mn"
+      ],
+      "type": "COMPOSITE",
+      "structure": "HYB",
+      "capacity_mAh_g": 160.0,
+      "overpotential_V": 0.3,
+      "adsorption_energy_eV": 1.0,
+      "reaction_barrier_eV": 0.38,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 5C, 25°C, EC/DMC electrolyte",
+      "paper_title": "Carbon-Coated LiFe0.5Mn0.5PO4 for Superior High-Rate Capability",
+      "doi": "10.1002/ente.202100221",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C050\nName: LiNi0.9Mn0.05Co0.05O2 (ultra-high Ni)\nMetals: O,Co,Li,Mn,Ni\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 225.0 mAh/g\nMeasured overpotential: 0.33 V\nAdsorption energy (DeltaE): 1.7 eV\nReaction barrier: 0.52 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 0.5C, 25°C, EC/EMC electrolyte\n\nPaper title: Ultra-High Nickel Content Cathodes for Energy-Dense Lithium-Ion Batteries\nDOI: 10.1038/s41467-023-38542-7\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 225.0 mAh/g and overpotential 0.33 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C050",
+      "name": "LiNi0.9Mn0.05Co0.05O2 (ultra-high Ni)",
+      "metals": [
+        "O",
+        "Co",
+        "Li",
+        "Mn",
+        "Ni"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 225.0,
+      "overpotential_V": 0.33,
+      "adsorption_energy_eV": 1.7,
+      "reaction_barrier_eV": 0.52,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 0.5C, 25°C, EC/EMC electrolyte",
+      "paper_title": "Ultra-High Nickel Content Cathodes for Energy-Dense Lithium-Ion Batteries",
+      "doi": "10.1038/s41467-023-38542-7",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C051\nName: LiNi0.8Co0.1Mn0.1O2 with boron doping\nMetals: O,Co,Li,Mn,Ni\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 210.0 mAh/g\nMeasured overpotential: 0.37 V\nAdsorption energy (DeltaE): 1.6 eV\nReaction barrier: 0.48 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 1C, 25°C, carbonate electrolyte\n\nPaper title: Boron-Doped NMC811 Cathodes with Improved Thermal and Structural Stability\nDOI: 10.1021/acs.nanolett.3c00985\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 210.0 mAh/g and overpotential 0.37 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C051",
+      "name": "LiNi0.8Co0.1Mn0.1O2 with boron doping",
+      "metals": [
+        "O",
+        "Co",
+        "Li",
+        "Mn",
+        "Ni"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 210.0,
+      "overpotential_V": 0.37,
+      "adsorption_energy_eV": 1.6,
+      "reaction_barrier_eV": 0.48,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 1C, 25°C, carbonate electrolyte",
+      "paper_title": "Boron-Doped NMC811 Cathodes with Improved Thermal and Structural Stability",
+      "doi": "10.1021/acs.nanolett.3c00985",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C052\nName: LiCoPO4 (high-voltage phosphate)\nMetals: O,P,Co,Li\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 145.0 mAh/g\nMeasured overpotential: 0.5 V\nAdsorption energy (DeltaE): 1.4 eV\nReaction barrier: 0.55 eV\n\nPerformance (from paper): Medium (label_id = 1)\nModel predicted performance: Medium\nMeasurement conditions: Tested at 0.1C, 25°C, LiPF6 in EC/DMC\n\nPaper title: LiCoPO4 as a 4.8 V Cathode for Advanced Lithium-Ion Batteries\nDOI: 10.1016/j.jpowsour.2022.230452\n\nSummary:\nThis catalyst has experimental performance labeled as Medium and model-predicted performance Medium, with discharge capacity 145.0 mAh/g and overpotential 0.5 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C052",
+      "name": "LiCoPO4 (high-voltage phosphate)",
+      "metals": [
+        "O",
+        "P",
+        "Co",
+        "Li"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 145.0,
+      "overpotential_V": 0.5,
+      "adsorption_energy_eV": 1.4,
+      "reaction_barrier_eV": 0.55,
+      "performance_label_text": "Medium",
+      "performance_label_id": 1,
+      "ml_pred_label_text": "Medium",
+      "measurement_conditions": "Tested at 0.1C, 25°C, LiPF6 in EC/DMC",
+      "paper_title": "LiCoPO4 as a 4.8 V Cathode for Advanced Lithium-Ion Batteries",
+      "doi": "10.1016/j.jpowsour.2022.230452",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C053\nName: LiV3O8 (vanadate)\nMetals: O,V,Li\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 290.0 mAh/g\nMeasured overpotential: 0.45 V\nAdsorption energy (DeltaE): 1.2 eV\nReaction barrier: 0.43 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 0.5C, 25°C, LiClO4 in EC/DEC\n\nPaper title: Electrochemical Performance of LiV3O8 as a Cathode for Rechargeable Lithium Batteries\nDOI: 10.1016/j.electacta.2021.137788\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 290.0 mAh/g and overpotential 0.45 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C053",
+      "name": "LiV3O8 (vanadate)",
+      "metals": [
+        "O",
+        "V",
+        "Li"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 290.0,
+      "overpotential_V": 0.45,
+      "adsorption_energy_eV": 1.2,
+      "reaction_barrier_eV": 0.43,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 0.5C, 25°C, LiClO4 in EC/DEC",
+      "paper_title": "Electrochemical Performance of LiV3O8 as a Cathode for Rechargeable Lithium Batteries",
+      "doi": "10.1016/j.electacta.2021.137788",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C054\nName: Li2MnO2F (oxyfluoride)\nMetals: F,O,Li,Mn\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 280.0 mAh/g\nMeasured overpotential: 0.41 V\nAdsorption energy (DeltaE): 1.5 eV\nReaction barrier: 0.52 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 0.2C, 25°C, LiPF6 in EC/EMC\n\nPaper title: Li2MnO2F Oxyfluoride Cathodes with High Energy Density and Stable Voltage\nDOI: 10.1016/j.ensm.2022.02.013\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 280.0 mAh/g and overpotential 0.41 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C054",
+      "name": "Li2MnO2F (oxyfluoride)",
+      "metals": [
+        "F",
+        "O",
+        "Li",
+        "Mn"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 280.0,
+      "overpotential_V": 0.41,
+      "adsorption_energy_eV": 1.5,
+      "reaction_barrier_eV": 0.52,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 0.2C, 25°C, LiPF6 in EC/EMC",
+      "paper_title": "Li2MnO2F Oxyfluoride Cathodes with High Energy Density and Stable Voltage",
+      "doi": "10.1016/j.ensm.2022.02.013",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C055\nName: LiFeBO3 (borate)\nMetals: O,Fe,Li\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 190.0 mAh/g\nMeasured overpotential: 0.38 V\nAdsorption energy (DeltaE): 1.3 eV\nReaction barrier: 0.46 eV\n\nPerformance (from paper): Medium (label_id = 1)\nModel predicted performance: High\nMeasurement conditions: Tested at 1C, 25°C, LiPF6 electrolyte\n\nPaper title: Investigation of LiFeBO3 as a Novel Cathode Material for Lithium-Ion Batteries\nDOI: 10.1149/1945-7111/ab8d23\n\nSummary:\nThis catalyst has experimental performance labeled as Medium and model-predicted performance High, with discharge capacity 190.0 mAh/g and overpotential 0.38 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C055",
+      "name": "LiFeBO3 (borate)",
+      "metals": [
+        "O",
+        "Fe",
+        "Li"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 190.0,
+      "overpotential_V": 0.38,
+      "adsorption_energy_eV": 1.3,
+      "reaction_barrier_eV": 0.46,
+      "performance_label_text": "Medium",
+      "performance_label_id": 1,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 1C, 25°C, LiPF6 electrolyte",
+      "paper_title": "Investigation of LiFeBO3 as a Novel Cathode Material for Lithium-Ion Batteries",
+      "doi": "10.1149/1945-7111/ab8d23",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C056\nName: LiNi0.5Co0.3Mn0.2O2 coated with TiO2\nMetals: O,Co,Li,Mn,Ni,Ti\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 180.0 mAh/g\nMeasured overpotential: 0.34 V\nAdsorption energy (DeltaE): 1.2 eV\nReaction barrier: 0.44 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 25°C, 1C, EC/DEC electrolyte\n\nPaper title: Titanium Oxide Coated NCM532 for Improved Cycle Life in Lithium-Ion Batteries\nDOI: 10.1021/acsaem.1c01462\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 180.0 mAh/g and overpotential 0.34 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C056",
+      "name": "LiNi0.5Co0.3Mn0.2O2 coated with TiO2",
+      "metals": [
+        "O",
+        "Co",
+        "Li",
+        "Mn",
+        "Ni",
+        "Ti"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 180.0,
+      "overpotential_V": 0.34,
+      "adsorption_energy_eV": 1.2,
+      "reaction_barrier_eV": 0.44,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 25°C, 1C, EC/DEC electrolyte",
+      "paper_title": "Titanium Oxide Coated NCM532 for Improved Cycle Life in Lithium-Ion Batteries",
+      "doi": "10.1021/acsaem.1c01462",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C057\nName: LiNi0.9Mn0.05Co0.05O2@SiO2\nMetals: O,Co,Li,Mn,Ni,Si\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 220.0 mAh/g\nMeasured overpotential: 0.32 V\nAdsorption energy (DeltaE): 1.5 eV\nReaction barrier: 0.48 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 0.5C, 25°C, EC/EMC electrolyte\n\nPaper title: Silica-Coated High-Nickel Cathodes with Suppressed Side Reactions\nDOI: 10.1002/aenm.202300321\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 220.0 mAh/g and overpotential 0.32 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C057",
+      "name": "LiNi0.9Mn0.05Co0.05O2@SiO2",
+      "metals": [
+        "O",
+        "Co",
+        "Li",
+        "Mn",
+        "Ni",
+        "Si"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 220.0,
+      "overpotential_V": 0.32,
+      "adsorption_energy_eV": 1.5,
+      "reaction_barrier_eV": 0.48,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 0.5C, 25°C, EC/EMC electrolyte",
+      "paper_title": "Silica-Coated High-Nickel Cathodes with Suppressed Side Reactions",
+      "doi": "10.1002/aenm.202300321",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C058\nName: Li2FeSiS4 (sulfide-silicate)\nMetals: S,Fe,Li,Si\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 180.0 mAh/g\nMeasured overpotential: 0.35 V\nAdsorption energy (DeltaE): 1.1 eV\nReaction barrier: 0.41 eV\n\nPerformance (from paper): Medium (label_id = 1)\nModel predicted performance: Medium\nMeasurement conditions: Tested at 2C, 25°C, ether-based electrolyte\n\nPaper title: High Energy Density Li2FeSiS4 Cathodes with Sulfur Substitution\nDOI: 10.1039/D1TA01756A\n\nSummary:\nThis catalyst has experimental performance labeled as Medium and model-predicted performance Medium, with discharge capacity 180.0 mAh/g and overpotential 0.35 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C058",
+      "name": "Li2FeSiS4 (sulfide-silicate)",
+      "metals": [
+        "S",
+        "Fe",
+        "Li",
+        "Si"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 180.0,
+      "overpotential_V": 0.35,
+      "adsorption_energy_eV": 1.1,
+      "reaction_barrier_eV": 0.41,
+      "performance_label_text": "Medium",
+      "performance_label_id": 1,
+      "ml_pred_label_text": "Medium",
+      "measurement_conditions": "Tested at 2C, 25°C, ether-based electrolyte",
+      "paper_title": "High Energy Density Li2FeSiS4 Cathodes with Sulfur Substitution",
+      "doi": "10.1039/D1TA01756A",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C059\nName: LiNi0.7Co0.1Mn0.2O2 with W-doping\nMetals: O,W,Co,Li,Mn,Ni\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 200.0 mAh/g\nMeasured overpotential: 0.33 V\nAdsorption energy (DeltaE): 1.4 eV\nReaction barrier: 0.45 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 1C, 25°C, carbonate electrolyte\n\nPaper title: Tungsten Doping in NCM712 Cathodes Enhances Electronic Conductivity and Structural Stability\nDOI: 10.1016/j.jpowsour.2022.231121\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 200.0 mAh/g and overpotential 0.33 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C059",
+      "name": "LiNi0.7Co0.1Mn0.2O2 with W-doping",
+      "metals": [
+        "O",
+        "W",
+        "Co",
+        "Li",
+        "Mn",
+        "Ni"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 200.0,
+      "overpotential_V": 0.33,
+      "adsorption_energy_eV": 1.4,
+      "reaction_barrier_eV": 0.45,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 1C, 25°C, carbonate electrolyte",
+      "paper_title": "Tungsten Doping in NCM712 Cathodes Enhances Electronic Conductivity and Structural Stability",
+      "doi": "10.1016/j.jpowsour.2022.231121",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C060\nName: LiMnPO4/CNT hybrid\nMetals: C,N,O,P,Li,Mn\nMaterial Type: COMPOSITE\nStructure: HYB\n\nDischarge capacity: 165.0 mAh/g\nMeasured overpotential: 0.3 V\nAdsorption energy (DeltaE): 1.0 eV\nReaction barrier: 0.38 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 5C, 25°C, LiPF6 in EC/DMC\n\nPaper title: Carbon Nanotube Enhanced LiMnPO4 Cathodes for High-Rate Performance\nDOI: 10.1016/j.nanoen.2020.104862\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 165.0 mAh/g and overpotential 0.3 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C060",
+      "name": "LiMnPO4/CNT hybrid",
+      "metals": [
+        "C",
+        "N",
+        "O",
+        "P",
+        "Li",
+        "Mn"
+      ],
+      "type": "COMPOSITE",
+      "structure": "HYB",
+      "capacity_mAh_g": 165.0,
+      "overpotential_V": 0.3,
+      "adsorption_energy_eV": 1.0,
+      "reaction_barrier_eV": 0.38,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 5C, 25°C, LiPF6 in EC/DMC",
+      "paper_title": "Carbon Nanotube Enhanced LiMnPO4 Cathodes for High-Rate Performance",
+      "doi": "10.1016/j.nanoen.2020.104862",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C061\nName: LiNi0.85Co0.10Mn0.05O2 (ultra-high Ni)\nMetals: O,Co,Li,Mn,Ni\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 225.0 mAh/g\nMeasured overpotential: 0.34 V\nAdsorption energy (DeltaE): 1.6 eV\nReaction barrier: 0.5 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 0.5C, 25°C, EC/EMC electrolyte\n\nPaper title: Design of Ultra-High Nickel Cathodes for Improved Energy Density in Li-Ion Batteries\nDOI: 10.1038/s41467-023-40210-5\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 225.0 mAh/g and overpotential 0.34 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C061",
+      "name": "LiNi0.85Co0.10Mn0.05O2 (ultra-high Ni)",
+      "metals": [
+        "O",
+        "Co",
+        "Li",
+        "Mn",
+        "Ni"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 225.0,
+      "overpotential_V": 0.34,
+      "adsorption_energy_eV": 1.6,
+      "reaction_barrier_eV": 0.5,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 0.5C, 25°C, EC/EMC electrolyte",
+      "paper_title": "Design of Ultra-High Nickel Cathodes for Improved Energy Density in Li-Ion Batteries",
+      "doi": "10.1038/s41467-023-40210-5",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C062\nName: LiFe0.3Mn0.7PO4 (olivine)\nMetals: O,P,Fe,Li,Mn\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 165.0 mAh/g\nMeasured overpotential: 0.31 V\nAdsorption energy (DeltaE): 1.2 eV\nReaction barrier: 0.42 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 2C, 25°C, LiPF6 in EC/DMC\n\nPaper title: Structural and Electrochemical Optimization of LiFe0.3Mn0.7PO4 Cathodes for High-Voltage Applications\nDOI: 10.1016/j.electacta.2021.137777\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 165.0 mAh/g and overpotential 0.31 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C062",
+      "name": "LiFe0.3Mn0.7PO4 (olivine)",
+      "metals": [
+        "O",
+        "P",
+        "Fe",
+        "Li",
+        "Mn"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 165.0,
+      "overpotential_V": 0.31,
+      "adsorption_energy_eV": 1.2,
+      "reaction_barrier_eV": 0.42,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 2C, 25°C, LiPF6 in EC/DMC",
+      "paper_title": "Structural and Electrochemical Optimization of LiFe0.3Mn0.7PO4 Cathodes for High-Voltage Applications",
+      "doi": "10.1016/j.electacta.2021.137777",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C063\nName: Li2MnO3-LiMO2 composite\nMetals: O,Li,Mn\nMaterial Type: COMPOSITE\nStructure: HYB\n\nDischarge capacity: 240.0 mAh/g\nMeasured overpotential: 0.47 V\nAdsorption energy (DeltaE): 1.8 eV\nReaction barrier: 0.58 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 0.2C, 25°C, carbonate electrolyte\n\nPaper title: Stabilized Li2MnO3–LiMO2 Composite Cathodes for High Capacity and Long Life\nDOI: 10.1002/aenm.202201011\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 240.0 mAh/g and overpotential 0.47 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C063",
+      "name": "Li2MnO3-LiMO2 composite",
+      "metals": [
+        "O",
+        "Li",
+        "Mn"
+      ],
+      "type": "COMPOSITE",
+      "structure": "HYB",
+      "capacity_mAh_g": 240.0,
+      "overpotential_V": 0.47,
+      "adsorption_energy_eV": 1.8,
+      "reaction_barrier_eV": 0.58,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 0.2C, 25°C, carbonate electrolyte",
+      "paper_title": "Stabilized Li2MnO3–LiMO2 Composite Cathodes for High Capacity and Long Life",
+      "doi": "10.1002/aenm.202201011",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C064\nName: LiNi0.6Mn0.2Co0.2O2 doped with Al\nMetals: O,Al,Co,Li,Mn,Ni\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 190.0 mAh/g\nMeasured overpotential: 0.39 V\nAdsorption energy (DeltaE): 1.4 eV\nReaction barrier: 0.45 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 1C, 25°C, EC/EMC electrolyte\n\nPaper title: Aluminum-Doped NCM622 for Enhanced Cycle Stability and Reduced Gas Evolution\nDOI: 10.1016/j.jpowsour.2022.231221\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 190.0 mAh/g and overpotential 0.39 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C064",
+      "name": "LiNi0.6Mn0.2Co0.2O2 doped with Al",
+      "metals": [
+        "O",
+        "Al",
+        "Co",
+        "Li",
+        "Mn",
+        "Ni"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 190.0,
+      "overpotential_V": 0.39,
+      "adsorption_energy_eV": 1.4,
+      "reaction_barrier_eV": 0.45,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 1C, 25°C, EC/EMC electrolyte",
+      "paper_title": "Aluminum-Doped NCM622 for Enhanced Cycle Stability and Reduced Gas Evolution",
+      "doi": "10.1016/j.jpowsour.2022.231221",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C065\nName: LiMn1.5Ni0.5O4 with Nb-doping\nMetals: O,Li,Mn,Nb,Ni\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 130.0 mAh/g\nMeasured overpotential: 0.29 V\nAdsorption energy (DeltaE): 1.0 eV\nReaction barrier: 0.36 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 55°C, 1C rate, EC/DEC electrolyte\n\nPaper title: Niobium-Doped High-Voltage LiMn1.5Ni0.5O4 Cathodes with Improved Electronic Conductivity\nDOI: 10.1016/j.nanoen.2021.105073\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 130.0 mAh/g and overpotential 0.29 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C065",
+      "name": "LiMn1.5Ni0.5O4 with Nb-doping",
+      "metals": [
+        "O",
+        "Li",
+        "Mn",
+        "Nb",
+        "Ni"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 130.0,
+      "overpotential_V": 0.29,
+      "adsorption_energy_eV": 1.0,
+      "reaction_barrier_eV": 0.36,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 55°C, 1C rate, EC/DEC electrolyte",
+      "paper_title": "Niobium-Doped High-Voltage LiMn1.5Ni0.5O4 Cathodes with Improved Electronic Conductivity",
+      "doi": "10.1016/j.nanoen.2021.105073",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C066\nName: Li2Fe(SO4)2 (sulfate)\nMetals: O,S,Fe,Li\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 170.0 mAh/g\nMeasured overpotential: 0.4 V\nAdsorption energy (DeltaE): 1.1 eV\nReaction barrier: 0.43 eV\n\nPerformance (from paper): Medium (label_id = 1)\nModel predicted performance: Medium\nMeasurement conditions: Tested at 25°C, 0.5C, LiPF6 electrolyte\n\nPaper title: Exploring Li2Fe(SO4)2 as a New Polyanionic Cathode for Lithium-Ion Batteries\nDOI: 10.1021/acs.chemmater.0c01073\n\nSummary:\nThis catalyst has experimental performance labeled as Medium and model-predicted performance Medium, with discharge capacity 170.0 mAh/g and overpotential 0.4 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C066",
+      "name": "Li2Fe(SO4)2 (sulfate)",
+      "metals": [
+        "O",
+        "S",
+        "Fe",
+        "Li"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 170.0,
+      "overpotential_V": 0.4,
+      "adsorption_energy_eV": 1.1,
+      "reaction_barrier_eV": 0.43,
+      "performance_label_text": "Medium",
+      "performance_label_id": 1,
+      "ml_pred_label_text": "Medium",
+      "measurement_conditions": "Tested at 25°C, 0.5C, LiPF6 electrolyte",
+      "paper_title": "Exploring Li2Fe(SO4)2 as a New Polyanionic Cathode for Lithium-Ion Batteries",
+      "doi": "10.1021/acs.chemmater.0c01073",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C067\nName: LiNi0.7Mn0.15Co0.15O2@AlPO4 coated\nMetals: O,P,Al,Co,Li,Mn,Ni\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 205.0 mAh/g\nMeasured overpotential: 0.35 V\nAdsorption energy (DeltaE): 1.5 eV\nReaction barrier: 0.46 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 25°C, 1C, LiPF6 in EC/DMC\n\nPaper title: AlPO4 Coating Enhances Surface Stability and Cycle Life of NCM71515 Cathodes\nDOI: 10.1016/j.ensm.2023.102115\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 205.0 mAh/g and overpotential 0.35 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C067",
+      "name": "LiNi0.7Mn0.15Co0.15O2@AlPO4 coated",
+      "metals": [
+        "O",
+        "P",
+        "Al",
+        "Co",
+        "Li",
+        "Mn",
+        "Ni"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 205.0,
+      "overpotential_V": 0.35,
+      "adsorption_energy_eV": 1.5,
+      "reaction_barrier_eV": 0.46,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 25°C, 1C, LiPF6 in EC/DMC",
+      "paper_title": "AlPO4 Coating Enhances Surface Stability and Cycle Life of NCM71515 Cathodes",
+      "doi": "10.1016/j.ensm.2023.102115",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C068\nName: Li2MnSiO4 doped with Fe\nMetals: O,Fe,Li,Mn,Si\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 155.0 mAh/g\nMeasured overpotential: 0.33 V\nAdsorption energy (DeltaE): 1.2 eV\nReaction barrier: 0.41 eV\n\nPerformance (from paper): Medium (label_id = 1)\nModel predicted performance: Medium\nMeasurement conditions: Tested at 1C, 25°C, LiPF6 electrolyte\n\nPaper title: Fe-Doped Li2MnSiO4 Cathodes for Improved Conductivity and Structural Stability\nDOI: 10.1039/D1TA03218A\n\nSummary:\nThis catalyst has experimental performance labeled as Medium and model-predicted performance Medium, with discharge capacity 155.0 mAh/g and overpotential 0.33 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C068",
+      "name": "Li2MnSiO4 doped with Fe",
+      "metals": [
+        "O",
+        "Fe",
+        "Li",
+        "Mn",
+        "Si"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 155.0,
+      "overpotential_V": 0.33,
+      "adsorption_energy_eV": 1.2,
+      "reaction_barrier_eV": 0.41,
+      "performance_label_text": "Medium",
+      "performance_label_id": 1,
+      "ml_pred_label_text": "Medium",
+      "measurement_conditions": "Tested at 1C, 25°C, LiPF6 electrolyte",
+      "paper_title": "Fe-Doped Li2MnSiO4 Cathodes for Improved Conductivity and Structural Stability",
+      "doi": "10.1039/D1TA03218A",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C069\nName: LiNi0.5Co0.2Mn0.3O2 with SiO2 coating\nMetals: O,Co,Li,Mn,Ni,Si\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 185.0 mAh/g\nMeasured overpotential: 0.38 V\nAdsorption energy (DeltaE): 1.3 eV\nReaction barrier: 0.44 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 0.5C, 25°C, carbonate electrolyte\n\nPaper title: Surface SiO2 Modification for Improved Thermal Stability of NCM523 Cathodes\nDOI: 10.1002/adfm.202201241\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 185.0 mAh/g and overpotential 0.38 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C069",
+      "name": "LiNi0.5Co0.2Mn0.3O2 with SiO2 coating",
+      "metals": [
+        "O",
+        "Co",
+        "Li",
+        "Mn",
+        "Ni",
+        "Si"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 185.0,
+      "overpotential_V": 0.38,
+      "adsorption_energy_eV": 1.3,
+      "reaction_barrier_eV": 0.44,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 0.5C, 25°C, carbonate electrolyte",
+      "paper_title": "Surface SiO2 Modification for Improved Thermal Stability of NCM523 Cathodes",
+      "doi": "10.1002/adfm.202201241",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C070\nName: LiFe0.5Co0.5PO4 (mixed phosphate)\nMetals: O,P,Co,Fe,Li\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 175.0 mAh/g\nMeasured overpotential: 0.31 V\nAdsorption energy (DeltaE): 1.1 eV\nReaction barrier: 0.39 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 25°C, 1C, LiPF6 in EC/DEC\n\nPaper title: LiFe0.5Co0.5PO4: A Mixed Transition Metal Phosphate with Enhanced Voltage and Rate Capability\nDOI: 10.1016/j.jpowsour.2021.230115\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 175.0 mAh/g and overpotential 0.31 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C070",
+      "name": "LiFe0.5Co0.5PO4 (mixed phosphate)",
+      "metals": [
+        "O",
+        "P",
+        "Co",
+        "Fe",
+        "Li"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 175.0,
+      "overpotential_V": 0.31,
+      "adsorption_energy_eV": 1.1,
+      "reaction_barrier_eV": 0.39,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 25°C, 1C, LiPF6 in EC/DEC",
+      "paper_title": "LiFe0.5Co0.5PO4: A Mixed Transition Metal Phosphate with Enhanced Voltage and Rate Capability",
+      "doi": "10.1016/j.jpowsour.2021.230115",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C071\nName: LiNi0.9Co0.05Mn0.05O2 with Al2O3 coating\nMetals: O,Al,Co,Li,Mn,Ni\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 225.0 mAh/g\nMeasured overpotential: 0.33 V\nAdsorption energy (DeltaE): 1.6 eV\nReaction barrier: 0.49 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 0.5C, 25°C, carbonate electrolyte\n\nPaper title: Improved Interface Stability of Ultra-High Nickel Cathodes via Atomic Layer Al2O3 Coating\nDOI: 10.1016/j.nanoen.2023.108045\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 225.0 mAh/g and overpotential 0.33 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C071",
+      "name": "LiNi0.9Co0.05Mn0.05O2 with Al2O3 coating",
+      "metals": [
+        "O",
+        "Al",
+        "Co",
+        "Li",
+        "Mn",
+        "Ni"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 225.0,
+      "overpotential_V": 0.33,
+      "adsorption_energy_eV": 1.6,
+      "reaction_barrier_eV": 0.49,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 0.5C, 25°C, carbonate electrolyte",
+      "paper_title": "Improved Interface Stability of Ultra-High Nickel Cathodes via Atomic Layer Al2O3 Coating",
+      "doi": "10.1016/j.nanoen.2023.108045",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C072\nName: LiFe0.4Mn0.6PO4/C composite\nMetals: C,O,P,Fe,Li,Mn\nMaterial Type: COMPOSITE\nStructure: HYB\n\nDischarge capacity: 165.0 mAh/g\nMeasured overpotential: 0.32 V\nAdsorption energy (DeltaE): 1.2 eV\nReaction barrier: 0.4 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 2C, 25°C, LiPF6 in EC/DMC\n\nPaper title: Enhanced High-Rate Performance of LiFe0.4Mn0.6PO4 Cathodes through Carbon Integration\nDOI: 10.1016/j.electacta.2021.137912\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 165.0 mAh/g and overpotential 0.32 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C072",
+      "name": "LiFe0.4Mn0.6PO4/C composite",
+      "metals": [
+        "C",
+        "O",
+        "P",
+        "Fe",
+        "Li",
+        "Mn"
+      ],
+      "type": "COMPOSITE",
+      "structure": "HYB",
+      "capacity_mAh_g": 165.0,
+      "overpotential_V": 0.32,
+      "adsorption_energy_eV": 1.2,
+      "reaction_barrier_eV": 0.4,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 2C, 25°C, LiPF6 in EC/DMC",
+      "paper_title": "Enhanced High-Rate Performance of LiFe0.4Mn0.6PO4 Cathodes through Carbon Integration",
+      "doi": "10.1016/j.electacta.2021.137912",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C073\nName: Li2NiO2 (nickelate)\nMetals: O,Li,Ni\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 250.0 mAh/g\nMeasured overpotential: 0.45 V\nAdsorption energy (DeltaE): 1.7 eV\nReaction barrier: 0.55 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 0.1C, 25°C, EC/EMC electrolyte\n\nPaper title: Electrochemical Analysis of Li2NiO2 as a High-Capacity Cathode Material\nDOI: 10.1002/aenm.202200851\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 250.0 mAh/g and overpotential 0.45 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C073",
+      "name": "Li2NiO2 (nickelate)",
+      "metals": [
+        "O",
+        "Li",
+        "Ni"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 250.0,
+      "overpotential_V": 0.45,
+      "adsorption_energy_eV": 1.7,
+      "reaction_barrier_eV": 0.55,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 0.1C, 25°C, EC/EMC electrolyte",
+      "paper_title": "Electrochemical Analysis of Li2NiO2 as a High-Capacity Cathode Material",
+      "doi": "10.1002/aenm.202200851",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C074\nName: LiCo0.5Fe0.5PO4 (bimetal phosphate)\nMetals: O,P,Co,Fe,Li\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 180.0 mAh/g\nMeasured overpotential: 0.31 V\nAdsorption energy (DeltaE): 1.3 eV\nReaction barrier: 0.42 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 25°C, 1C rate, LiPF6 electrolyte\n\nPaper title: High-Voltage Performance of LiCo0.5Fe0.5PO4 Cathodes for Next-Gen Lithium Batteries\nDOI: 10.1039/D3TA00565B\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 180.0 mAh/g and overpotential 0.31 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C074",
+      "name": "LiCo0.5Fe0.5PO4 (bimetal phosphate)",
+      "metals": [
+        "O",
+        "P",
+        "Co",
+        "Fe",
+        "Li"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 180.0,
+      "overpotential_V": 0.31,
+      "adsorption_energy_eV": 1.3,
+      "reaction_barrier_eV": 0.42,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 25°C, 1C rate, LiPF6 electrolyte",
+      "paper_title": "High-Voltage Performance of LiCo0.5Fe0.5PO4 Cathodes for Next-Gen Lithium Batteries",
+      "doi": "10.1039/D3TA00565B",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C075\nName: LiNi0.6Mn0.3Co0.1O2 (NCM6311)\nMetals: C,N,O,Co,Li,Mn,Ni\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 195.0 mAh/g\nMeasured overpotential: 0.37 V\nAdsorption energy (DeltaE): 1.4 eV\nReaction barrier: 0.46 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 1C, 25°C, EC/DEC electrolyte\n\nPaper title: Cycle Life Improvement of NCM6311 Cathodes through Gradient Composition Design\nDOI: 10.1016/j.jpowsour.2021.230672\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 195.0 mAh/g and overpotential 0.37 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C075",
+      "name": "LiNi0.6Mn0.3Co0.1O2 (NCM6311)",
+      "metals": [
+        "C",
+        "N",
+        "O",
+        "Co",
+        "Li",
+        "Mn",
+        "Ni"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 195.0,
+      "overpotential_V": 0.37,
+      "adsorption_energy_eV": 1.4,
+      "reaction_barrier_eV": 0.46,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 1C, 25°C, EC/DEC electrolyte",
+      "paper_title": "Cycle Life Improvement of NCM6311 Cathodes through Gradient Composition Design",
+      "doi": "10.1016/j.jpowsour.2021.230672",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C076\nName: LiMnPO4 doped with Ni\nMetals: O,P,Li,Mn,Ni\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 160.0 mAh/g\nMeasured overpotential: 0.35 V\nAdsorption energy (DeltaE): 1.1 eV\nReaction barrier: 0.39 eV\n\nPerformance (from paper): Medium (label_id = 1)\nModel predicted performance: Medium\nMeasurement conditions: Tested at 25°C, 2C rate, EC/DMC electrolyte\n\nPaper title: Nickel Doping in LiMnPO4 Cathodes for Enhanced Electronic Conductivity and Voltage Output\nDOI: 10.1016/j.ensm.2022.02.092\n\nSummary:\nThis catalyst has experimental performance labeled as Medium and model-predicted performance Medium, with discharge capacity 160.0 mAh/g and overpotential 0.35 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C076",
+      "name": "LiMnPO4 doped with Ni",
+      "metals": [
+        "O",
+        "P",
+        "Li",
+        "Mn",
+        "Ni"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 160.0,
+      "overpotential_V": 0.35,
+      "adsorption_energy_eV": 1.1,
+      "reaction_barrier_eV": 0.39,
+      "performance_label_text": "Medium",
+      "performance_label_id": 1,
+      "ml_pred_label_text": "Medium",
+      "measurement_conditions": "Tested at 25°C, 2C rate, EC/DMC electrolyte",
+      "paper_title": "Nickel Doping in LiMnPO4 Cathodes for Enhanced Electronic Conductivity and Voltage Output",
+      "doi": "10.1016/j.ensm.2022.02.092",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C077\nName: LiNi0.8Co0.1Mn0.1O2@ZrO2 coated\nMetals: O,Co,Li,Mn,Ni,Zr\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 215.0 mAh/g\nMeasured overpotential: 0.34 V\nAdsorption energy (DeltaE): 1.6 eV\nReaction barrier: 0.47 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 1C, 25°C, carbonate electrolyte\n\nPaper title: Zirconia Coating Suppresses Interface Degradation in NMC811 Cathodes\nDOI: 10.1038/s41560-023-01041-9\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 215.0 mAh/g and overpotential 0.34 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C077",
+      "name": "LiNi0.8Co0.1Mn0.1O2@ZrO2 coated",
+      "metals": [
+        "O",
+        "Co",
+        "Li",
+        "Mn",
+        "Ni",
+        "Zr"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 215.0,
+      "overpotential_V": 0.34,
+      "adsorption_energy_eV": 1.6,
+      "reaction_barrier_eV": 0.47,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 1C, 25°C, carbonate electrolyte",
+      "paper_title": "Zirconia Coating Suppresses Interface Degradation in NMC811 Cathodes",
+      "doi": "10.1038/s41560-023-01041-9",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C078\nName: Li2FePO4F (fluorophosphate)\nMetals: F,O,P,Fe,Li\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 170.0 mAh/g\nMeasured overpotential: 0.36 V\nAdsorption energy (DeltaE): 1.3 eV\nReaction barrier: 0.43 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 0.5C, 25°C, LiPF6 electrolyte\n\nPaper title: High-Voltage Li2FePO4F Cathodes for Long-Life Lithium-Ion Batteries\nDOI: 10.1002/adfm.202100663\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 170.0 mAh/g and overpotential 0.36 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C078",
+      "name": "Li2FePO4F (fluorophosphate)",
+      "metals": [
+        "F",
+        "O",
+        "P",
+        "Fe",
+        "Li"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 170.0,
+      "overpotential_V": 0.36,
+      "adsorption_energy_eV": 1.3,
+      "reaction_barrier_eV": 0.43,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 0.5C, 25°C, LiPF6 electrolyte",
+      "paper_title": "High-Voltage Li2FePO4F Cathodes for Long-Life Lithium-Ion Batteries",
+      "doi": "10.1002/adfm.202100663",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C079\nName: LiNi0.9Mn0.05Co0.05O2 doped with Ti\nMetals: O,Co,Li,Mn,Ni,Ti\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 220.0 mAh/g\nMeasured overpotential: 0.32 V\nAdsorption energy (DeltaE): 1.7 eV\nReaction barrier: 0.48 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: Tested at 25°C, 1C rate, EC/EMC electrolyte\n\nPaper title: Titanium Doping Improves the Structural Integrity of High-Nickel Cathodes\nDOI: 10.1039/D3TA01045F\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 220.0 mAh/g and overpotential 0.32 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C079",
+      "name": "LiNi0.9Mn0.05Co0.05O2 doped with Ti",
+      "metals": [
+        "O",
+        "Co",
+        "Li",
+        "Mn",
+        "Ni",
+        "Ti"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 220.0,
+      "overpotential_V": 0.32,
+      "adsorption_energy_eV": 1.7,
+      "reaction_barrier_eV": 0.48,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "Tested at 25°C, 1C rate, EC/EMC electrolyte",
+      "paper_title": "Titanium Doping Improves the Structural Integrity of High-Nickel Cathodes",
+      "doi": "10.1039/D3TA01045F",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C080\nName: Li2TiSiO5 (orthosilicate)\nMetals: O,Li,Si,Ti\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 150.0 mAh/g\nMeasured overpotential: 0.4 V\nAdsorption energy (DeltaE): 1.2 eV\nReaction barrier: 0.44 eV\n\nPerformance (from paper): Medium (label_id = 1)\nModel predicted performance: Medium\nMeasurement conditions: Tested at 25°C, 1C rate, LiPF6 electrolyte\n\nPaper title: Novel Orthosilicate Li2TiSiO5 as a Cathode with Stable Cycle Performance\nDOI: 10.1016/j.ssi.2020.115602\n\nSummary:\nThis catalyst has experimental performance labeled as Medium and model-predicted performance Medium, with discharge capacity 150.0 mAh/g and overpotential 0.4 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C080",
+      "name": "Li2TiSiO5 (orthosilicate)",
+      "metals": [
+        "O",
+        "Li",
+        "Si",
+        "Ti"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 150.0,
+      "overpotential_V": 0.4,
+      "adsorption_energy_eV": 1.2,
+      "reaction_barrier_eV": 0.44,
+      "performance_label_text": "Medium",
+      "performance_label_id": 1,
+      "ml_pred_label_text": "Medium",
+      "measurement_conditions": "Tested at 25°C, 1C rate, LiPF6 electrolyte",
+      "paper_title": "Novel Orthosilicate Li2TiSiO5 as a Cathode with Stable Cycle Performance",
+      "doi": "10.1016/j.ssi.2020.115602",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C081\nName: LiNi0.8Co0.1Mn0.1O2 gradient single crystal\nMetals: O,Co,Li,Mn,Ni\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 210.0 mAh/g\nMeasured overpotential: 0.35 V\nAdsorption energy (DeltaE): 1.55 eV\nReaction barrier: 0.48 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: 0.5C, 25°C, EC/EMC 1M LiPF6\n\nPaper title: Single-Crystal Gradient NMC811 with Enhanced Crack Resistance\nDOI: 10.1039/D0EE00788K\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 210.0 mAh/g and overpotential 0.35 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C081",
+      "name": "LiNi0.8Co0.1Mn0.1O2 gradient single crystal",
+      "metals": [
+        "O",
+        "Co",
+        "Li",
+        "Mn",
+        "Ni"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 210.0,
+      "overpotential_V": 0.35,
+      "adsorption_energy_eV": 1.55,
+      "reaction_barrier_eV": 0.48,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "0.5C, 25°C, EC/EMC 1M LiPF6",
+      "paper_title": "Single-Crystal Gradient NMC811 with Enhanced Crack Resistance",
+      "doi": "10.1039/D0EE00788K",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C082\nName: LiFePO4 nanoplates\nMetals: O,P,Fe,Li\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 165.0 mAh/g\nMeasured overpotential: 0.32 V\nAdsorption energy (DeltaE): 1.1 eV\nReaction barrier: 0.41 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: 5C, 25°C, EC/DMC 1M LiPF6\n\nPaper title: Nanoplate LiFePO4 Cathodes for High-Rate Lithium-Ion Batteries\nDOI: 10.1016/j.jpowsour.2018.01.072\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 165.0 mAh/g and overpotential 0.32 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C082",
+      "name": "LiFePO4 nanoplates",
+      "metals": [
+        "O",
+        "P",
+        "Fe",
+        "Li"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 165.0,
+      "overpotential_V": 0.32,
+      "adsorption_energy_eV": 1.1,
+      "reaction_barrier_eV": 0.41,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "5C, 25°C, EC/DMC 1M LiPF6",
+      "paper_title": "Nanoplate LiFePO4 Cathodes for High-Rate Lithium-Ion Batteries",
+      "doi": "10.1016/j.jpowsour.2018.01.072",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C083\nName: Li2S-C composite (Li-S)\nMetals: C,S,Li\nMaterial Type: COMPOSITE\nStructure: HYB\n\nDischarge capacity: 820.0 mAh/g\nMeasured overpotential: 0.23 V\nAdsorption energy (DeltaE): 0.85 eV\nReaction barrier: 0.34 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: 0.2C, ether-based electrolyte, 25°C\n\nPaper title: Conductive Carbon-Embedded Li2S for Low-Overpotential Lithium–Sulfur Batteries\nDOI: 10.1016/j.nanoen.2019.104274\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 820.0 mAh/g and overpotential 0.23 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C083",
+      "name": "Li2S-C composite (Li-S)",
+      "metals": [
+        "C",
+        "S",
+        "Li"
+      ],
+      "type": "COMPOSITE",
+      "structure": "HYB",
+      "capacity_mAh_g": 820.0,
+      "overpotential_V": 0.23,
+      "adsorption_energy_eV": 0.85,
+      "reaction_barrier_eV": 0.34,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "0.2C, ether-based electrolyte, 25°C",
+      "paper_title": "Conductive Carbon-Embedded Li2S for Low-Overpotential Lithium–Sulfur Batteries",
+      "doi": "10.1016/j.nanoen.2019.104274",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C084\nName: Li-O2 with Ru/CNT cathode\nMetals: C,N,O,Li,Ru\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 600.0 mAh/g\nMeasured overpotential: 0.5 V\nAdsorption energy (DeltaE): 0.95 eV\nReaction barrier: 0.4 eV\n\nPerformance (from paper): Medium (label_id = 1)\nModel predicted performance: Medium\nMeasurement conditions: Pure O2, TEGDME-based electrolyte\n\nPaper title: Ruthenium Catalysis for Reversible Li–O2 Batteries with Reduced Charge Overpotential\nDOI: 10.1021/acsaem.1c01234\n\nSummary:\nThis catalyst has experimental performance labeled as Medium and model-predicted performance Medium, with discharge capacity 600.0 mAh/g and overpotential 0.5 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C084",
+      "name": "Li-O2 with Ru/CNT cathode",
+      "metals": [
+        "C",
+        "N",
+        "O",
+        "Li",
+        "Ru"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 600.0,
+      "overpotential_V": 0.5,
+      "adsorption_energy_eV": 0.95,
+      "reaction_barrier_eV": 0.4,
+      "performance_label_text": "Medium",
+      "performance_label_id": 1,
+      "ml_pred_label_text": "Medium",
+      "measurement_conditions": "Pure O2, TEGDME-based electrolyte",
+      "paper_title": "Ruthenium Catalysis for Reversible Li–O2 Batteries with Reduced Charge Overpotential",
+      "doi": "10.1021/acsaem.1c01234",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C085\nName: Sulfide solid electrolyte + NMC811 (solid-state)\nMetals: C,N\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 200.0 mAh/g\nMeasured overpotential: 0.29 V\nAdsorption energy (DeltaE): 1.4 eV\nReaction barrier: 0.44 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: SSB coin cell, 30°C, stack pressure 20 MPa\n\nPaper title: Interfacial Engineering of Sulfide Solid-State Electrolytes with High-Nickel Cathodes\nDOI: 10.1038/s41563-022-01211-9\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 200.0 mAh/g and overpotential 0.29 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C085",
+      "name": "Sulfide solid electrolyte + NMC811 (solid-state)",
+      "metals": [
+        "C",
+        "N"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 200.0,
+      "overpotential_V": 0.29,
+      "adsorption_energy_eV": 1.4,
+      "reaction_barrier_eV": 0.44,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "SSB coin cell, 30°C, stack pressure 20 MPa",
+      "paper_title": "Interfacial Engineering of Sulfide Solid-State Electrolytes with High-Nickel Cathodes",
+      "doi": "10.1038/s41563-022-01211-9",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C086\nName: LiNi0.7Co0.15Mn0.15O2 (NCM71515)\nMetals: C,N,O,Co,Li,Mn,Ni\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 200.0 mAh/g\nMeasured overpotential: 0.36 V\nAdsorption energy (DeltaE): 1.45 eV\nReaction barrier: 0.47 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: 1C, 25°C, EC/EMC\n\nPaper title: Gradient Microstructure NCM71515 for High-Rate Capability\nDOI: 10.1002/aenm.202300978\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 200.0 mAh/g and overpotential 0.36 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C086",
+      "name": "LiNi0.7Co0.15Mn0.15O2 (NCM71515)",
+      "metals": [
+        "C",
+        "N",
+        "O",
+        "Co",
+        "Li",
+        "Mn",
+        "Ni"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 200.0,
+      "overpotential_V": 0.36,
+      "adsorption_energy_eV": 1.45,
+      "reaction_barrier_eV": 0.47,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "1C, 25°C, EC/EMC",
+      "paper_title": "Gradient Microstructure NCM71515 for High-Rate Capability",
+      "doi": "10.1002/aenm.202300978",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C087\nName: Li3V2(PO4)3/C\nMetals: C,O,P,V,Li\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 185.0 mAh/g\nMeasured overpotential: 0.31 V\nAdsorption energy (DeltaE): 1.05 eV\nReaction barrier: 0.4 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: 2C, 25°C, LiPF6 in EC/DEC\n\nPaper title: High-Power Li3V2(PO4)3/C with Fast 3D Lithium Transport\nDOI: 10.1002/batt.202000211\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 185.0 mAh/g and overpotential 0.31 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C087",
+      "name": "Li3V2(PO4)3/C",
+      "metals": [
+        "C",
+        "O",
+        "P",
+        "V",
+        "Li"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 185.0,
+      "overpotential_V": 0.31,
+      "adsorption_energy_eV": 1.05,
+      "reaction_barrier_eV": 0.4,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "2C, 25°C, LiPF6 in EC/DEC",
+      "paper_title": "High-Power Li3V2(PO4)3/C with Fast 3D Lithium Transport",
+      "doi": "10.1002/batt.202000211",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C088\nName: LiNi0.9Co0.05Mn0.05O2 single crystal\nMetals: O,Co,Li,Mn,Ni\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 220.0 mAh/g\nMeasured overpotential: 0.33 V\nAdsorption energy (DeltaE): 1.6 eV\nReaction barrier: 0.49 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: 0.5C, 25°C\n\nPaper title: Single-Crystal High-Ni Cathodes Suppress Intergranular Cracking\nDOI: 10.1016/j.joule.2019.07.012\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 220.0 mAh/g and overpotential 0.33 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C088",
+      "name": "LiNi0.9Co0.05Mn0.05O2 single crystal",
+      "metals": [
+        "O",
+        "Co",
+        "Li",
+        "Mn",
+        "Ni"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 220.0,
+      "overpotential_V": 0.33,
+      "adsorption_energy_eV": 1.6,
+      "reaction_barrier_eV": 0.49,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "0.5C, 25°C",
+      "paper_title": "Single-Crystal High-Ni Cathodes Suppress Intergranular Cracking",
+      "doi": "10.1016/j.joule.2019.07.012",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C089\nName: LiMn2O4 spinel with F-doping\nMetals: F,O,Li,Mn\nMaterial Type: OXIDE\nStructure: Bulk\n\nDischarge capacity: 125.0 mAh/g\nMeasured overpotential: 0.29 V\nAdsorption energy (DeltaE): 1.0 eV\nReaction barrier: 0.37 eV\n\nPerformance (from paper): Medium (label_id = 1)\nModel predicted performance: Medium\nMeasurement conditions: 1C, 55°C\n\nPaper title: Fluorine-Doped LiMn2O4 Cathodes with Improved High-Temperature Stability\nDOI: 10.1016/j.electacta.2018.03.145\n\nSummary:\nThis catalyst has experimental performance labeled as Medium and model-predicted performance Medium, with discharge capacity 125.0 mAh/g and overpotential 0.29 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C089",
+      "name": "LiMn2O4 spinel with F-doping",
+      "metals": [
+        "F",
+        "O",
+        "Li",
+        "Mn"
+      ],
+      "type": "OXIDE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 125.0,
+      "overpotential_V": 0.29,
+      "adsorption_energy_eV": 1.0,
+      "reaction_barrier_eV": 0.37,
+      "performance_label_text": "Medium",
+      "performance_label_id": 1,
+      "ml_pred_label_text": "Medium",
+      "measurement_conditions": "1C, 55°C",
+      "paper_title": "Fluorine-Doped LiMn2O4 Cathodes with Improved High-Temperature Stability",
+      "doi": "10.1016/j.electacta.2018.03.145",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C090\nName: LiNi0.8Mn0.1Co0.1O2@LiNbO3\nMetals: O,Co,Li,Mn,Nb,Ni\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 210.0 mAh/g\nMeasured overpotential: 0.34 V\nAdsorption energy (DeltaE): 1.5 eV\nReaction barrier: 0.46 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: 4.4 V cutoff, 0.5C, 25°C\n\nPaper title: LiNbO3 Interface Layer Stabilizes NMC811 at High Voltage\nDOI: 10.1021/acsenergylett.1c00567\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 210.0 mAh/g and overpotential 0.34 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C090",
+      "name": "LiNi0.8Mn0.1Co0.1O2@LiNbO3",
+      "metals": [
+        "O",
+        "Co",
+        "Li",
+        "Mn",
+        "Nb",
+        "Ni"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 210.0,
+      "overpotential_V": 0.34,
+      "adsorption_energy_eV": 1.5,
+      "reaction_barrier_eV": 0.46,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "4.4 V cutoff, 0.5C, 25°C",
+      "paper_title": "LiNbO3 Interface Layer Stabilizes NMC811 at High Voltage",
+      "doi": "10.1021/acsenergylett.1c00567",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C091\nName: Li-S with Co-N-C catalytic host\nMetals: C,N,S,Co,Li\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 900.0 mAh/g\nMeasured overpotential: 0.22 V\nAdsorption energy (DeltaE): 0.8 eV\nReaction barrier: 0.33 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: 0.2C, ether electrolyte, 25°C\n\nPaper title: Single-Atom Co–N–C Hosts for Polysulfide Trapping in Li–S Batteries\nDOI: 10.1002/adfm.202000612\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 900.0 mAh/g and overpotential 0.22 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C091",
+      "name": "Li-S with Co-N-C catalytic host",
+      "metals": [
+        "C",
+        "N",
+        "S",
+        "Co",
+        "Li"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 900.0,
+      "overpotential_V": 0.22,
+      "adsorption_energy_eV": 0.8,
+      "reaction_barrier_eV": 0.33,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "0.2C, ether electrolyte, 25°C",
+      "paper_title": "Single-Atom Co–N–C Hosts for Polysulfide Trapping in Li–S Batteries",
+      "doi": "10.1002/adfm.202000612",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C092\nName: Garnet LLZO solid electrolyte + LFP\nMetals: F,O,P,Ga\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 160.0 mAh/g\nMeasured overpotential: 0.27 V\nAdsorption energy (DeltaE): 1.1 eV\nReaction barrier: 0.38 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: SSB symmetric stack, 25°C, 10 MPa\n\nPaper title: Room-Temperature All-Solid-State LFP|LLZO|Li Cells with Low Overpotential\nDOI: 10.1002/aenm.201902045\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 160.0 mAh/g and overpotential 0.27 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C092",
+      "name": "Garnet LLZO solid electrolyte + LFP",
+      "metals": [
+        "F",
+        "O",
+        "P",
+        "Ga"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 160.0,
+      "overpotential_V": 0.27,
+      "adsorption_energy_eV": 1.1,
+      "reaction_barrier_eV": 0.38,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "SSB symmetric stack, 25°C, 10 MPa",
+      "paper_title": "Room-Temperature All-Solid-State LFP|LLZO|Li Cells with Low Overpotential",
+      "doi": "10.1002/aenm.201902045",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C093\nName: Li-O2 with MnOx catalyst\nMetals: O,Li,Mn\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 500.0 mAh/g\nMeasured overpotential: 0.55 V\nAdsorption energy (DeltaE): 0.9 eV\nReaction barrier: 0.42 eV\n\nPerformance (from paper): Medium (label_id = 1)\nModel predicted performance: Medium\nMeasurement conditions: Pure O2, 25°C, TEGDME-based electrolyte\n\nPaper title: Manganese Oxide Catalysts for Low-Overpotential Li–O2 Batteries\nDOI: 10.1149/2.1231806jes\n\nSummary:\nThis catalyst has experimental performance labeled as Medium and model-predicted performance Medium, with discharge capacity 500.0 mAh/g and overpotential 0.55 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C093",
+      "name": "Li-O2 with MnOx catalyst",
+      "metals": [
+        "O",
+        "Li",
+        "Mn"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 500.0,
+      "overpotential_V": 0.55,
+      "adsorption_energy_eV": 0.9,
+      "reaction_barrier_eV": 0.42,
+      "performance_label_text": "Medium",
+      "performance_label_id": 1,
+      "ml_pred_label_text": "Medium",
+      "measurement_conditions": "Pure O2, 25°C, TEGDME-based electrolyte",
+      "paper_title": "Manganese Oxide Catalysts for Low-Overpotential Li–O2 Batteries",
+      "doi": "10.1149/2.1231806jes",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C094\nName: LiNi0.7Co0.2Mn0.1O2 with FEC additive\nMetals: C,F,O,Co,Li,Mn,Ni\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 205.0 mAh/g\nMeasured overpotential: 0.36 V\nAdsorption energy (DeltaE): 1.45 eV\nReaction barrier: 0.45 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: 1C, 25°C, EC/EMC + FEC\n\nPaper title: Electrolyte Additive Engineering for High-Ni Cathodes\nDOI: 10.1039/D2TA01567A\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 205.0 mAh/g and overpotential 0.36 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C094",
+      "name": "LiNi0.7Co0.2Mn0.1O2 with FEC additive",
+      "metals": [
+        "C",
+        "F",
+        "O",
+        "Co",
+        "Li",
+        "Mn",
+        "Ni"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 205.0,
+      "overpotential_V": 0.36,
+      "adsorption_energy_eV": 1.45,
+      "reaction_barrier_eV": 0.45,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "1C, 25°C, EC/EMC + FEC",
+      "paper_title": "Electrolyte Additive Engineering for High-Ni Cathodes",
+      "doi": "10.1039/D2TA01567A",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C095\nName: Li3Fe2(PO4)3 NASICON\nMetals: C,I,N,O,P,S,Fe,Li\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 145.0 mAh/g\nMeasured overpotential: 0.34 V\nAdsorption energy (DeltaE): 1.05 eV\nReaction barrier: 0.39 eV\n\nPerformance (from paper): Medium (label_id = 1)\nModel predicted performance: Medium\nMeasurement conditions: 2C, 25°C\n\nPaper title: NASICON-Type Li3Fe2(PO4)3 with Superior Rate Capability\nDOI: 10.1016/j.ssi.2019.115103\n\nSummary:\nThis catalyst has experimental performance labeled as Medium and model-predicted performance Medium, with discharge capacity 145.0 mAh/g and overpotential 0.34 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C095",
+      "name": "Li3Fe2(PO4)3 NASICON",
+      "metals": [
+        "C",
+        "I",
+        "N",
+        "O",
+        "P",
+        "S",
+        "Fe",
+        "Li"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 145.0,
+      "overpotential_V": 0.34,
+      "adsorption_energy_eV": 1.05,
+      "reaction_barrier_eV": 0.39,
+      "performance_label_text": "Medium",
+      "performance_label_id": 1,
+      "ml_pred_label_text": "Medium",
+      "measurement_conditions": "2C, 25°C",
+      "paper_title": "NASICON-Type Li3Fe2(PO4)3 with Superior Rate Capability",
+      "doi": "10.1016/j.ssi.2019.115103",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C096\nName: LiNi0.8Co0.1Mn0.1O2 with Sr doping\nMetals: O,Co,Li,Mn,Ni,Sr\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 212.0 mAh/g\nMeasured overpotential: 0.33 V\nAdsorption energy (DeltaE): 1.58 eV\nReaction barrier: 0.47 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: 0.5C, 25°C\n\nPaper title: Strontium-Doped NMC811 Mitigates Surface Reconstruction\nDOI: 10.1002/adfm.202401234\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 212.0 mAh/g and overpotential 0.33 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C096",
+      "name": "LiNi0.8Co0.1Mn0.1O2 with Sr doping",
+      "metals": [
+        "O",
+        "Co",
+        "Li",
+        "Mn",
+        "Ni",
+        "Sr"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 212.0,
+      "overpotential_V": 0.33,
+      "adsorption_energy_eV": 1.58,
+      "reaction_barrier_eV": 0.47,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "0.5C, 25°C",
+      "paper_title": "Strontium-Doped NMC811 Mitigates Surface Reconstruction",
+      "doi": "10.1002/adfm.202401234",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C097\nName: LiCoO2 with Al-doping (4.5 V)\nMetals: O,V,Al,Co,Li\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 160.0 mAh/g\nMeasured overpotential: 0.44 V\nAdsorption energy (DeltaE): 1.35 eV\nReaction barrier: 0.52 eV\n\nPerformance (from paper): Medium (label_id = 1)\nModel predicted performance: Medium\nMeasurement conditions: 0.5C, 25°C, LiPF6 in EC/DEC\n\nPaper title: Al-Doped LiCoO2 for Extended High-Voltage Cycling up to 4.6 V\nDOI: 10.1016/j.jpowsour.2020.228221\n\nSummary:\nThis catalyst has experimental performance labeled as Medium and model-predicted performance Medium, with discharge capacity 160.0 mAh/g and overpotential 0.44 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C097",
+      "name": "LiCoO2 with Al-doping (4.5 V)",
+      "metals": [
+        "O",
+        "V",
+        "Al",
+        "Co",
+        "Li"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 160.0,
+      "overpotential_V": 0.44,
+      "adsorption_energy_eV": 1.35,
+      "reaction_barrier_eV": 0.52,
+      "performance_label_text": "Medium",
+      "performance_label_id": 1,
+      "ml_pred_label_text": "Medium",
+      "measurement_conditions": "0.5C, 25°C, LiPF6 in EC/DEC",
+      "paper_title": "Al-Doped LiCoO2 for Extended High-Voltage Cycling up to 4.6 V",
+      "doi": "10.1016/j.jpowsour.2020.228221",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C098\nName: LiNi0.5Mn1.5O4 with carbon coating\nMetals: O,Li,Mn,Ni\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 130.0 mAh/g\nMeasured overpotential: 0.3 V\nAdsorption energy (DeltaE): 1.02 eV\nReaction barrier: 0.37 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: 3C, 25°C\n\nPaper title: Carbon-Coated LNMO for High-Voltage Fast Charging\nDOI: 10.1016/j.ensm.2021.02.041\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 130.0 mAh/g and overpotential 0.3 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C098",
+      "name": "LiNi0.5Mn1.5O4 with carbon coating",
+      "metals": [
+        "O",
+        "Li",
+        "Mn",
+        "Ni"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 130.0,
+      "overpotential_V": 0.3,
+      "adsorption_energy_eV": 1.02,
+      "reaction_barrier_eV": 0.37,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "3C, 25°C",
+      "paper_title": "Carbon-Coated LNMO for High-Voltage Fast Charging",
+      "doi": "10.1016/j.ensm.2021.02.041",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C099\nName: Li-S with VOx polar hosts\nMetals: S,V,Li\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 950.0 mAh/g\nMeasured overpotential: 0.21 V\nAdsorption energy (DeltaE): 0.78 eV\nReaction barrier: 0.32 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: 0.2C, ether-based electrolyte\n\nPaper title: Vanadium-Oxide Polar Hosts Accelerate Redox Kinetics in Li–S Cells\nDOI: 10.1002/aenm.202201765\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 950.0 mAh/g and overpotential 0.21 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C099",
+      "name": "Li-S with VOx polar hosts",
+      "metals": [
+        "S",
+        "V",
+        "Li"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 950.0,
+      "overpotential_V": 0.21,
+      "adsorption_energy_eV": 0.78,
+      "reaction_barrier_eV": 0.32,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "0.2C, ether-based electrolyte",
+      "paper_title": "Vanadium-Oxide Polar Hosts Accelerate Redox Kinetics in Li–S Cells",
+      "doi": "10.1002/aenm.202201765",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  },
+  {
+    "text": "Catalyst ID: C100\nName: LiNi0.8Co0.1Mn0.1O2@AlF3 surface layer\nMetals: F,O,Al,Co,Li,Mn,Ni\nMaterial Type: COMPOSITE\nStructure: Bulk\n\nDischarge capacity: 212.0 mAh/g\nMeasured overpotential: 0.34 V\nAdsorption energy (DeltaE): 1.55 eV\nReaction barrier: 0.46 eV\n\nPerformance (from paper): High (label_id = 2)\nModel predicted performance: High\nMeasurement conditions: 1C, 25°C, EC/EMC + LiPF6\n\nPaper title: AlF3 Surface Fluorination Stabilizes High-Ni Cathodes at High Voltage\nDOI: 10.1021/acsami.3c04567\n\nSummary:\nThis catalyst has experimental performance labeled as High and model-predicted performance High, with discharge capacity 212.0 mAh/g and overpotential 0.34 V under the reported conditions.\n",
+    "metadata": {
+      "catalyst_id": "C100",
+      "name": "LiNi0.8Co0.1Mn0.1O2@AlF3 surface layer",
+      "metals": [
+        "F",
+        "O",
+        "Al",
+        "Co",
+        "Li",
+        "Mn",
+        "Ni"
+      ],
+      "type": "COMPOSITE",
+      "structure": "Bulk",
+      "capacity_mAh_g": 212.0,
+      "overpotential_V": 0.34,
+      "adsorption_energy_eV": 1.55,
+      "reaction_barrier_eV": 0.46,
+      "performance_label_text": "High",
+      "performance_label_id": 2,
+      "ml_pred_label_text": "High",
+      "measurement_conditions": "1C, 25°C, EC/EMC + LiPF6",
+      "paper_title": "AlF3 Surface Fluorination Stabilizes High-Ni Cathodes at High Voltage",
+      "doi": "10.1021/acsami.3c04567",
+      "chunk_type": "catalyst_card_with_ml"
+    }
+  }
+]
