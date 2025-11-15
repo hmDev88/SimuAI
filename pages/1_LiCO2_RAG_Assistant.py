@@ -25,65 +25,77 @@ It retrieves the most relevant text chunks and shows them to you.
 
 def build_extractive_answer(question: str, docs: list[Document]) -> str:
     """
-    Build a human-readable answer using only the retrieved docs.
-    No LLM, just simple heuristics + metadata.
+    Build a human-readable answer using the retrieved docs.
+    Much more forgiving: if metadata is missing, we still use the text.
     """
+    if not docs:
+        return "I couldn't find any relevant documents for this question. Try rephrasing or broadening it."
+
     catalysts = []
     design_rules = []
     mechanisms = []
     background = []
+    generic = []
 
     for d in docs:
         meta = d.metadata or {}
-        ctype = meta.get("chunk_type", "")
+        ctype = (meta.get("chunk_type") or "").lower()
         text = (d.page_content or "").strip()
 
-        # Catalyst cards
+        # take first 1–2 sentences
+        sentences = text.split(". ")
+        short = ". ".join(sentences[:2]).strip()
+
+        # Catalyst-type docs
         if "catalyst" in ctype:
             name = meta.get("name") or meta.get("catalyst_name")
             cap = meta.get("capacity_mAh_g") or meta.get("discharge_capacity_mAh_g")
             over = meta.get("overpotential_V") or meta.get("measured_overpotential_v")
             perf = meta.get("performance_label_text") or meta.get("performance_label")
 
-            desc_parts = []
+            pieces = []
             if name:
-                desc_parts.append(f"**{name}**")
+                pieces.append(f"**{name}**")
             if cap is not None:
-                desc_parts.append(f"capacity ≈ {cap} mAh g⁻¹")
+                pieces.append(f"capacity ≈ {cap} mAh g⁻¹")
             if over is not None:
-                desc_parts.append(f"overpotential ≈ {over} V")
+                pieces.append(f"overpotential ≈ {over} V")
             if perf:
-                desc_parts.append(f"performance: {perf}")
+                pieces.append(f"performance: {perf}")
 
-            if desc_parts:
-                catalysts.append(" – " + ", ".join(desc_parts))
+            if not pieces and short:
+                pieces.append(short)
 
-        # Design rules: take the first sentence
-        elif ctype == "design_rule":
-            sent = text.split(". ")[0]
-            if sent:
-                design_rules.append(" – " + sent.strip())
+            catalysts.append(" – " + ", ".join(pieces))
 
-        # Mechanisms: also first sentence
-        elif ctype == "mechanism":
-            sent = text.split(". ")[0]
-            if sent:
-                mechanisms.append(" – " + sent.strip())
+        # Design rules
+        elif "design_rule" in ctype or "design" in ctype:
+            if short:
+                design_rules.append(" – " + short)
 
-        # Background: keep a couple of sentences
-        elif ctype == "background":
-            sent = text.split(". ")[0]
-            if sent:
-                background.append(" – " + sent.strip())
+        # Mechanisms
+        elif "mechanism" in ctype:
+            if short:
+                mechanisms.append(" – " + short)
+
+        # Background
+        elif "background" in ctype:
+            if short:
+                background.append(" – " + short)
+
+        # Fallback bucket
+        else:
+            if short:
+                generic.append(" – " + short)
 
     lines = []
-    lines.append(f"### 🧾 Answer (no LLM, built from {len(docs)} retrieved chunks)\n")
+    lines.append(f"### 🧾 Answer (built from {len(docs)} retrieved chunks)\n")
 
     if catalysts:
         lines.append("**Promising catalysts mentioned:**")
         for c in catalysts[:5]:
             lines.append(c)
-        lines.append("")  # blank line
+        lines.append("")
 
     if design_rules:
         lines.append("**Key design principles found:**")
@@ -97,18 +109,18 @@ def build_extractive_answer(question: str, docs: list[Document]) -> str:
             lines.append(m)
         lines.append("")
 
-    if background and not (catalysts or design_rules or mechanisms):
-        # fallback if the question was more general
-        lines.append("**Background information:**")
-        for b in background[:5]:
-            lines.append(b)
+    # If nothing classified nicely, show generic snippets
+    if not (catalysts or design_rules or mechanisms) and (background or generic):
+        lines.append("**Relevant information from the corpus:**")
+        for g in (background + generic)[:6]:
+            lines.append(g)
         lines.append("")
 
     if len(lines) <= 1:
-        lines.append("I couldn’t extract a clear answer from the retrieved chunks. "
-                     "Try rephrasing your question or being more specific.")
+        lines.append("I couldn't extract more detail, but you can inspect the retrieved context above.")
 
     return "\n".join(lines)
+
 
 
 @st.cache_resource
