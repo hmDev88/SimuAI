@@ -18,8 +18,7 @@ from xgboost import XGBClassifier
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import HuggingFaceEmbeddings
 
-# LLM providers
-from openai import OpenAI
+# Gemini LLM
 from google import genai
 
 # ------------------------------------------------
@@ -31,9 +30,11 @@ EMBED_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 CHROMA_DIR = "rag_index"
 CHROMA_COLLECTION = "lico2_unified_rag"
 
-# init LLM clients (they read keys from env)
-openai_client = OpenAI()  # uses OPENAI_API_KEY
-gemini_client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+# Init Gemini client (reads GEMINI_API_KEY from env)
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+gemini_client = None
+if GEMINI_API_KEY:
+    gemini_client = genai.Client(api_key=GEMINI_API_KEY)
 
 # ------------------------------------------------
 # Helpers: notebook loading & data
@@ -49,7 +50,11 @@ def load_nb_namespace(nb_path: str):
     for cell in nb.cells:
         if cell.cell_type == "code":
             src = "\n".join(
-                [line for line in cell.source.splitlines() if not line.strip().startswith(("%", "!"))]
+                [
+                    line
+                    for line in cell.source.splitlines()
+                    if not line.strip().startswith(("%", "!"))
+                ]
             )
             try:
                 exec(compile(src, nb_path, "exec"), ns)
@@ -135,59 +140,20 @@ def build_extractive_answer(question: str, docs):
         out.append("")
 
     if not any([catalysts, rules, mech, background]):
-        out.append("No clear structured information was extracted, but see retrieved context above.")
+        out.append(
+            "No clear structured information was extracted, but see retrieved context above."
+        )
 
     return "\n".join(out)
-
-
-def llm_answer_openai(question: str, docs) -> str:
-    """Use OpenAI to synthesize an answer from retrieved docs."""
-    if not docs:
-        return "No documents retrieved."
-
-    chunks = []
-    for i, d in enumerate(docs[:8]):
-        meta = d.metadata or {}
-        ctype = meta.get("chunk_type", "unknown")
-        text = (d.page_content or "").strip()
-        if len(text) > 800:
-            text = text[:800] + " ..."
-        chunks.append(f"[DOC {i+1} – {ctype}]\n{text}")
-
-    context = "\n\n".join(chunks)
-
-    messages = [
-        {
-            "role": "system",
-            "content": (
-                "You are a Li–CO₂ battery and catalyst expert. "
-                "Answer ONLY using the provided documents."
-            ),
-        },
-        {
-            "role": "user",
-            "content": (
-                f"QUESTION:\n{question}\n\n"
-                f"CONTEXT:\n{context}\n\n"
-                "Write a clear, technical answer (2–4 paragraphs). "
-                "Compare catalysts and mention design rules and mechanisms where relevant."
-            ),
-        },
-    ]
-
-    resp = openai_client.chat.completions.create(
-        model="gpt-4.1-mini",  # change if needed
-        messages=messages,
-        max_tokens=600,
-        temperature=0.2,
-    )
-    return resp.choices[0].message.content.strip()
 
 
 def llm_answer_gemini(question: str, docs) -> str:
     """Use Gemini to synthesize an answer from retrieved docs."""
     if not docs:
         return "No documents retrieved."
+
+    if gemini_client is None:
+        return "Gemini client not configured. Set GEMINI_API_KEY in the environment."
 
     chunks = []
     for i, d in enumerate(docs[:8]):
@@ -209,16 +175,21 @@ def llm_answer_gemini(question: str, docs) -> str:
         "summarising catalysts, design rules, and mechanisms."
     )
 
-    resp = gemini_client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=prompt,
-    )
-    return resp.text.strip()
+    try:
+        resp = gemini_client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt,
+        )
+        return resp.text.strip()
+    except Exception as e:
+        return f"Gemini error: {e}"
 
 # ------------------------------------------------
 # Streamlit page setup
 # ------------------------------------------------
-st.set_page_config(page_title="SimuAI – Li–CO₂ Catalyst Assistant", layout="wide")
+st.set_page_config(
+    page_title="SimuAI – Li–CO₂ Catalyst Assistant", layout="wide"
+)
 st.title("SimuAI – Li–CO₂ Catalyst Assistant")
 
 # load notebook namespace & CSV
@@ -231,26 +202,36 @@ if not os.path.exists(CSV_PATH):
 
 df = load_data(CSV_PATH)
 
-tab1, tab2 = st.tabs(["⚙️ Catalyst Explorer & Trainer", "🧪 RAG QA (Local / OpenAI / Gemini)"])
+tab1, tab2 = st.tabs(
+    ["⚙️ Catalyst Explorer & Trainer", "🧪 RAG QA (Local / Gemini)"]
+)
 
 # ------------------------------------------------
-# TAB 1: Your original Explorer & Trainer
+# TAB 1: Explorer & Trainer
 # ------------------------------------------------
 with tab1:
-    st.caption("Filter catalysts, parse names, train models, and download classified results.")
+    st.caption(
+        "Filter catalysts, parse names, train models, and download classified results."
+    )
 
     # Sidebar: Filters
     with st.sidebar:
         st.header("Filters")
-        txt_col = st.selectbox("Search column", df.select_dtypes("object").columns)
+        txt_col = st.selectbox(
+            "Search column", df.select_dtypes("object").columns
+        )
         query = st.text_input("Contains text")
         num_cols = df.select_dtypes("number").columns
-        selected_num = st.multiselect("Numeric filters", num_cols, default=list(num_cols))
+        selected_num = st.multiselect(
+            "Numeric filters", num_cols, default=list(num_cols)
+        )
         ranges = {}
         for c in selected_num:
             cmin, cmax = float(df[c].min()), float(df[c].max())
             ranges[c] = st.slider(c, cmin, cmax, (cmin, cmax))
-        show_cols = st.multiselect("Columns to show", list(df.columns), default=list(df.columns))
+        show_cols = st.multiselect(
+            "Columns to show", list(df.columns), default=list(df.columns)
+        )
 
     mask = pd.Series(True, index=df.index)
     if query:
@@ -273,7 +254,11 @@ with tab1:
     infer_structure = ns.get("infer_structure")
 
     row_list = filtered.index.tolist()
-    row = st.selectbox("Select a row", options=row_list) if len(row_list) > 0 else None
+    row = (
+        st.selectbox("Select a row", options=row_list)
+        if len(row_list) > 0
+        else None
+    )
     cat_input = ""
     if row is not None and "Catalyst" in filtered.columns:
         cat_input = filtered.loc[row, "Catalyst"]
@@ -282,12 +267,24 @@ with tab1:
     parsed = {}
     if cat_input:
         try:
-            parsed["normalized"] = normalize_text(cat_input) if normalize_text else cat_input
-            parsed["type"] = detect_type(parsed["normalized"]) if detect_type else None
-            parsed["form"] = extract_form(parsed["normalized"]) if extract_form else None
-            parsed["metals"] = extract_metals(parsed["normalized"]) if extract_metals else None
+            parsed["normalized"] = (
+                normalize_text(cat_input) if normalize_text else cat_input
+            )
+            parsed["type"] = (
+                detect_type(parsed["normalized"]) if detect_type else None
+            )
+            parsed["form"] = (
+                extract_form(parsed["normalized"]) if extract_form else None
+            )
+            parsed["metals"] = (
+                extract_metals(parsed["normalized"])
+                if extract_metals
+                else None
+            )
             parsed["structure"] = (
-                infer_structure(parsed["normalized"], "") if infer_structure else None
+                infer_structure(parsed["normalized"], "")
+                if infer_structure
+                else None
             )
         except Exception as e:
             parsed["error"] = repr(e)
@@ -314,13 +311,17 @@ The app automatically encodes text columns and handles missing data.
     else:
         c1, c2 = st.columns(2)
         with c1:
-            x_cols = st.multiselect("Feature columns (X)", cols[:-1], default=cols[:-1])
+            x_cols = st.multiselect(
+                "Feature columns (X)", cols[:-1], default=cols[:-1]
+            )
         with c2:
             y_col = st.selectbox("Target column (y)", cols, index=len(cols) - 1)
 
         test_size = st.slider("Test size (%)", 10, 50, 20) / 100.0
         max_depth = st.slider("max_depth", 2, 12, 6)
-        n_estimators = st.slider("n_estimators", 50, 500, 200, step=50)
+        n_estimators = st.slider(
+            "n_estimators", 50, 500, 200, step=50
+        )
         learning_rate = st.slider("learning_rate", 0.01, 0.5, 0.1)
 
         if st.button("🚀 Train Model"):
@@ -340,15 +341,23 @@ The app automatically encodes text columns and handles missing data.
                 # Clean y
                 y = y_raw.copy()
                 label_mapping = None
-                if y.dtype == "object" or pd.api.types.is_categorical_dtype(y):
+                if (
+                    y.dtype == "object"
+                    or pd.api.types.is_categorical_dtype(y)
+                ):
                     y = y.astype("category")
-                    label_mapping = {k: v for v, k in enumerate(y.cat.categories)}
+                    label_mapping = {
+                        k: v for v, k in enumerate(y.cat.categories)
+                    }
                     y = y.cat.codes
 
                 # Split data
                 X_train, X_test, y_train, y_test = train_test_split(
-                    X, y, test_size=test_size, random_state=42,
-                    stratify=y if len(np.unique(y)) > 1 else None
+                    X,
+                    y,
+                    test_size=test_size,
+                    random_state=42,
+                    stratify=y if len(np.unique(y)) > 1 else None,
                 )
 
                 # Train model
@@ -378,12 +387,18 @@ The app automatically encodes text columns and handles missing data.
                 cm = confusion_matrix(y_test, y_pred)
                 st.markdown("### Confusion Matrix")
                 fig, ax = plt.subplots()
-                im = ax.imshow(cm)
+                ax.imshow(cm)
                 ax.set_xlabel("Predicted")
                 ax.set_ylabel("True")
                 for i in range(cm.shape[0]):
                     for j in range(cm.shape[1]):
-                        ax.text(j, i, str(cm[i, j]), ha="center", va="center")
+                        ax.text(
+                            j,
+                            i,
+                            str(cm[i, j]),
+                            ha="center",
+                            va="center",
+                        )
                 st.pyplot(fig)
 
                 st.markdown("### Classification Report")
@@ -391,16 +406,29 @@ The app automatically encodes text columns and handles missing data.
                     inv_map = {v: k for k, v in label_mapping.items()}
                     y_test_named = pd.Series(y_test).map(inv_map).astype(str)
                     y_pred_named = pd.Series(y_pred).map(inv_map).astype(str)
-                    report = classification_report(y_test_named, y_pred_named, digits=3)
+                    report = classification_report(
+                        y_test_named, y_pred_named, digits=3
+                    )
                 else:
-                    report = classification_report(y_test, y_pred, digits=3)
+                    report = classification_report(
+                        y_test, y_pred, digits=3
+                    )
                 st.code(report, language="text")
 
                 # Download test predictions
-                out = pd.DataFrame({
-                    "y_true": y_test if label_mapping is None else pd.Series(y_test).map(inv_map),
-                    "y_pred": y_pred if label_mapping is None else pd.Series(y_pred).map(inv_map),
-                }).reset_index(drop=True)
+                out = (
+                    pd.DataFrame(
+                        {
+                            "y_true": y_test
+                            if label_mapping is None
+                            else pd.Series(y_test).map(inv_map),
+                            "y_pred": y_pred
+                            if label_mapping is None
+                            else pd.Series(y_pred).map(inv_map),
+                        }
+                    )
+                    .reset_index(drop=True)
+                )
                 st.download_button(
                     "Download Test Predictions (CSV)",
                     data=out.to_csv(index=False).encode("utf-8"),
@@ -418,7 +446,9 @@ The app automatically encodes text columns and handles missing data.
                 classified_df["Predicted_Label"] = y_all_pred
 
                 st.markdown("### 📁 Full Classified Dataset")
-                st.dataframe(classified_df.head(), use_container_width=True)
+                st.dataframe(
+                    classified_df.head(), use_container_width=True
+                )
 
                 st.download_button(
                     "⬇️ Download Full Classified Data (CSV)",
@@ -428,14 +458,14 @@ The app automatically encodes text columns and handles missing data.
                 )
 
 # ------------------------------------------------
-# TAB 2: RAG QA with provider toggle
+# TAB 2: RAG QA (Local / Gemini)
 # ------------------------------------------------
 with tab2:
     st.header("🧪 Li–CO₂ RAG Question Answering")
 
     provider = st.selectbox(
         "Answer mode",
-        ["Local only (no LLM)", "OpenAI", "Gemini"],
+        ["Local only (no LLM)", "Gemini"],
         index=0,
     )
 
@@ -456,20 +486,19 @@ with tab2:
             st.subheader("📚 Retrieved context")
             for i, d in enumerate(docs, 1):
                 meta = d.metadata or {}
-                st.markdown(f"**Doc {i} — {meta.get('chunk_type', 'unknown')}**")
+                st.markdown(
+                    f"**Doc {i} — {meta.get('chunk_type', 'unknown')}**"
+                )
                 text = d.page_content or ""
-                st.write(text if len(text) < 1000 else text[:1000] + " …")
+                st.write(
+                    text if len(text) < 1000 else text[:1000] + " …"
+                )
                 st.markdown("---")
 
             st.subheader("🧠 Local Extractive Answer")
             st.markdown(build_extractive_answer(question, docs))
 
-            if provider == "OpenAI":
-                with st.spinner("Calling OpenAI…"):
-                    st.subheader("🚀 LLM Answer (OpenAI)")
-                    st.markdown(llm_answer_openai(question, docs))
-
-            elif provider == "Gemini":
+            if provider == "Gemini":
                 with st.spinner("Calling Gemini…"):
                     st.subheader("🚀 LLM Answer (Gemini)")
                     st.markdown(llm_answer_gemini(question, docs))
