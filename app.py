@@ -96,9 +96,7 @@ def load_data():
     if os.path.exists("mof_database_2023_2025_synthetic_12000.csv"):
         df_list.append(read_csv_robust("mof_database_2023_2025_synthetic_12000.csv"))
 
-    # NEW dataset 2 (change filename to your real second file if needed)
-    if os.path.exists("convertcsv.csv"):
-        df_list.append(read_csv_robust("convertcsv.csv"))
+
 
     if not df_list:
         raise FileNotFoundError("No CSV files found to load.")
