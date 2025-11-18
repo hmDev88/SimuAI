@@ -24,7 +24,7 @@ from rag_query import retrieve_docs, call_llm, answer_with_rag
 # ------------------------------------------------
 # Paths & config
 # ------------------------------------------------
-NOTEBOOK_PATH = "Catalyst.ipynb"
+NOTEBOOK_PATH = "Untitled23.ipynb"
 CSV_PATH = "data.csv"
 
 

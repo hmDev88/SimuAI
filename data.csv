@@ -1,4 +1,4 @@
-Catalyst ID,Composition,Synthesis Method,Surface Area (m2/g),Pore Volume (cm3/g),Active Sites Density (sites/nm2),Reaction Temperature (�C),Pressure (bar),Time (h),Product Selectivity (%),Conversion (%),Performance
+﻿Catalyst ID,Composition,Synthesis Method,Surface Area (m2/g),Pore Volume (cm3/g),Active Sites Density (sites/nm2),Reaction Temperature (°C),Pressure (bar),Time (h),Product Selectivity (%),Conversion (%),Performance
 CAT-001,UiO-66(Zr),Solvothermal,1250.5,1.55,8.2,180,15,5,93.5,95.2,Excellent
 CAT-002,Pt/TiO2,Impregnation,250.8,0.35,3.1,350,5,12,75.1,68.1,Average
 CAT-003,ZIF-8,Hydrothermal,1890.3,2.20,10.5,150,10,8,89.0,85.5,Good
