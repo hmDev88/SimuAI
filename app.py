@@ -436,14 +436,36 @@ The app automatically encodes text columns and handles missing data.
                     }
                     y = y.cat.codes
 
-                # Split data
-                X_train, X_test, y_train, y_test = train_test_split(
-                    X,
-                    y,
-                    test_size=test_size,
-                    random_state=42,
-                    stratify=y if len(np.unique(y)) > 1 else None,
-                )
+                # Split data with safe stratification
+                stratify_arg = None
+
+                # check class distribution
+                unique, counts = np.unique(y, return_counts=True)
+
+                # Only stratify if:
+                #  - we have more than 1 class
+                #  - every class has at least 2 samples
+                if len(unique) > 1 and counts.min() >= 2:
+                    stratify_arg = y
+
+                try:
+                    X_train, X_test, y_train, y_test = train_test_split(
+                        X,
+                        y,
+                        test_size=test_size,
+                        random_state=42,
+                        stratify=stratify_arg,
+                    )
+                except ValueError:
+                    # Fallback: no stratification at all
+                    X_train, X_test, y_train, y_test = train_test_split(
+                        X,
+                        y,
+                        test_size=test_size,
+                        random_state=42,
+                        stratify=None,
+                    )
+
 
                 # Train model
                 model = XGBClassifier(
