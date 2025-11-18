@@ -160,38 +160,98 @@ def compute_similarity_scores(question: str, docs):
     sims = (d_vecs @ q_vec) / (d_norms * q_norm)
     return sims
 
-def agent_rank_mofs(df, score_col, top_k=5):
+def agent_rank_mofs(df, score_col="Performance", top_k=5):
     """
-    Agent 1: rank MOFs globally by performance (or after any filters
-    already applied in Tab 1). Returns (best_row, top_subset).
+    Agent 1: rank MOFs by a derived numeric performance score, then return best + top_k subset.
     """
     if df.empty or score_col not in df.columns:
         return None, df
 
-    subset_sorted = df.sort_values(by=score_col, ascending=False)
+    df_copy = df.copy()
+
+    # Map textual performance labels to numeric scores
+    perf_map = {
+        "Poor": 0,
+        "Average": 1,
+        "Good": 2,
+        "Excellent": 3,
+    }
+    df_copy[score_col] = df_copy[score_col].astype(str).str.strip()
+    df_copy["_perf_score"] = df_copy[score_col].map(perf_map)
+
+    # If any values are unmapped, set them to 0
+    df_copy["_perf_score"] = df_copy["_perf_score"].fillna(0)
+
+    # Sort by performance score, then maybe by Conversion (%) or Selectivity as tie-breaker
+    for extra_col in ["Conversion (%)", "Product Selectivity (%)"]:
+        if extra_col in df_copy.columns:
+            df_copy[extra_col] = pd.to_numeric(df_copy[extra_col], errors="coerce").fillna(0)
+
+    sort_cols = ["_perf_score"]
+    ascending = [False]
+
+    if "Conversion (%)" in df_copy.columns:
+        sort_cols.append("Conversion (%)")
+        ascending.append(False)
+
+    if "Product Selectivity (%)" in df_copy.columns:
+        sort_cols.append("Product Selectivity (%)")
+        ascending.append(False)
+
+    subset_sorted = df_copy.sort_values(by=sort_cols, ascending=ascending)
+
     best_row = subset_sorted.iloc[0]
     top_subset = subset_sorted.head(top_k)
+
     return best_row, top_subset
+
+
 def agent_pipeline_mof_recommendation(df, anode, cathode,
-                                      mof_name_col, score_col,
+                                      mof_name_col="Composition",
+                                      score_col="Performance",
                                       top_k=5):
     """
     Coordinator: run Agent 1 (rank) then Agent 2 (explain) sequentially.
     """
     best_row, top_subset = agent_rank_mofs(
         df,
-        score_col,
+        score_col=score_col,
         top_k=top_k,
     )
 
     if best_row is None:
-        return None, None, "No MOFs were found or the score column is missing.", ""
+        return None, None, "No MOFs were found or the Performance column is missing.", ""
 
     llm_answer, support = agent_explain_choice(
         anode, cathode, top_subset, mof_name_col
     )
 
     return best_row, top_subset, llm_answer, support
+
+def agent_explain_choice(anode, cathode, best_rows, mof_name_col):
+    """
+    Agent 2: use RAG + Gemini to explain *why* these MOFs are promising.
+    """
+    if best_rows is None or best_rows.empty:
+        return "No MOFs found to explain.", ""
+
+    mof_names = list(best_rows[mof_name_col].astype(str).unique())
+    mof_list_str = ", ".join(mof_names[:5])
+
+    question = (
+        "Given a Li–CO₂ battery system, analyse the following design:\n"
+        f"- Anode: {anode}\n"
+        f"- Cathode: {cathode}\n"
+        f"- Candidate MOF catalysts: {mof_list_str}\n\n"
+        "Explain which MOF(s) are most promising and why, based on mechanisms, "
+        "design rules, CO₂ reduction pathways, overpotential and stability."
+    )
+
+    docs = retrieve_docs(question, top_k=6, mode="all")
+    llm_answer = call_llm(question, docs)
+    support = build_extractive_answer(question, docs)
+    return llm_answer, support
+
 
 # ------------------------------------------------
 # PCA projection for semantic scatter plot
@@ -662,8 +722,8 @@ with tab2:
     st.subheader("🔮 Multi-Agent MOF Design Assistant")
 
     st.caption(
-        "Sequential workflow: (1) rank MOFs from the dataset by Performance, "
-        "(2) use RAG + Gemini to explain which are promising for your anode/cathode."
+        "Sequential workflow: (1) rank MOFs from the dataset using Performance/Conversion/Selectivity, "
+        "(2) use RAG + Gemini to explain which are promising for your chosen anode/cathode."
     )
 
     MOF_NAME_COL = "Composition"
@@ -693,8 +753,8 @@ with tab2:
                         df,
                         anode_input,
                         cathode_input,
-                        MOF_NAME_COL,
-                        SCORE_COL,
+                        mof_name_col=MOF_NAME_COL,
+                        score_col=SCORE_COL,
                         top_k=top_k_mofs,
                     )
 
@@ -703,12 +763,21 @@ with tab2:
                 else:
                     st.markdown("### 🏆 Best MOF candidate (Agent 1: Ranking)")
                     st.write(f"**{best_row[MOF_NAME_COL]}**")
-                    st.write(f"*Performance*: `{best_row[SCORE_COL]}`")
+                    st.write(f"*Performance*: `{best_row['Performance']}`")
+
+                    if "Conversion (%)" in best_row.index:
+                        st.write(f"*Conversion (%)*: `{best_row['Conversion (%)']}`")
+                    if "Product Selectivity (%)" in best_row.index:
+                        st.write(f"*Product Selectivity (%)*: `{best_row['Product Selectivity (%)']}`")
 
                     st.markdown("### 📊 Top-ranked MOF candidates (Agent 1 output)")
+                    cols_to_show = [MOF_NAME_COL, "Performance"]
+                    for extra in ["Conversion (%)", "Product Selectivity (%)"]:
+                        if extra in df.columns:
+                            cols_to_show.append(extra)
+
                     st.dataframe(
-                        top_subset[[MOF_NAME_COL, SCORE_COL]]
-                        .reset_index(drop=True),
+                        top_subset[cols_to_show].reset_index(drop=True),
                         use_container_width=True,
                     )
 
@@ -717,4 +786,5 @@ with tab2:
 
                     with st.expander("Show supporting extractive snippets (local RAG)"):
                         st.markdown(support)
+
 
