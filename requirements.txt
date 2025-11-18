@@ -9,3 +9,5 @@ langchain-core
 langchain-community
 google-genai
 chromadb
+sentence-transformers
+huggingface-hub
