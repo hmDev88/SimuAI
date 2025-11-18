@@ -6,8 +6,6 @@ import matplotlib.pyplot as plt
 import nbformat
 from collections import Counter
 from sklearn.decomposition import PCA
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
 
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import (
@@ -18,378 +16,608 @@ from sklearn.metrics import (
 )
 from xgboost import XGBClassifier
 
-# ------------------------------------------------
-# CONFIGURATION
-# ------------------------------------------------
-st.set_page_config(
-    page_title="SimuAI – Li–CO₂ Catalyst Assistant",
-    layout="wide",
-    page_icon="🔋"
-)
+# RAG pipeline (clean RAG-skeleton)
+from rag_config import get_embedding_model
+from rag_query import retrieve_docs, call_llm, answer_with_rag
 
+
+# ------------------------------------------------
+# Paths & config
+# ------------------------------------------------
 NOTEBOOK_PATH = "Catalyst.ipynb"
 CSV_PATH = "data.csv"
 
-# ------------------------------------------------
-# INTERNAL RAG ENGINE (Replaces rag_config/rag_query)
-# ------------------------------------------------
-@st.cache_resource
-def get_rag_engine(df):
-    """
-    Builds a lightweight internal search engine using TF-IDF.
-    """
-    # 1. Create text representation of each row
-    docs = df.apply(lambda x: (
-        f"Catalyst: {x.get('Catalyst ID', '')}, {x.get('Composition', '')}. "
-        f"Method: {x.get('Synthesis Method', '')}. "
-        f"Performance: {x.get('Performance', '')}. "
-        f"Stats: {x.get('Conversion (%)', 0)}% conv, {x.get('Surface Area (m2/g)', 0)} m2/g."
-    ), axis=1).tolist()
-    
-    # 2. Vectorize
-    vectorizer = TfidfVectorizer(stop_words='english')
-    # Handle empty data case
-    if not docs:
-        return vectorizer, None, []
-        
-    tfidf_matrix = vectorizer.fit_transform(docs)
-    
-    return vectorizer, tfidf_matrix, docs
-
-class MockDoc:
-    """Simulates a LangChain Document object"""
-    def __init__(self, content, metadata):
-        self.page_content = content
-        self.metadata = metadata
-
-def retrieve_docs(question, top_k=5, mode="all"):
-    """
-    Retrieves documents using Cosine Similarity on TF-IDF vectors.
-    """
-    df = load_data()
-    vectorizer, matrix, text_docs = get_rag_engine(df)
-    
-    if matrix is None:
-        return []
-
-    # Query Vector
-    query_vec = vectorizer.transform([question])
-    
-    # Similarity
-    sims = cosine_similarity(query_vec, matrix).flatten()
-    
-    # Get top K indices
-    top_indices = sims.argsort()[::-1][:top_k]
-    
-    results = []
-    for idx in top_indices:
-        row = df.iloc[idx]
-        sim_score = sims[idx]
-        
-        # Assign a fake "chunk_type" based on data for the chart
-        perf = row.get('Performance', 'Average')
-        if perf == 'Excellent': c_type = "catalyst_card"
-        elif row.get('Surface Area (m2/g)', 0) > 1500: c_type = "mechanism" 
-        else: c_type = "background"
-        
-        if mode != "all" and mode not in c_type:
-            continue
-            
-        results.append(MockDoc(
-            content=text_docs[idx],
-            metadata={"chunk_type": c_type, "score": sim_score}
-        ))
-        
-    return results
-
-def call_llm(question, docs):
-    """
-    Mock LLM response for demo purposes.
-    """
-    if not docs:
-        return "No relevant data found in the dataset."
-        
-    return (
-        f"**Simulated Gemini Response:**\n\n"
-        f"Based on the {len(docs)} retrieved records, the dataset contains several catalysts relevant to '{question}'. "
-        f"Notably, **{docs[0].page_content.split(',')[0]}** appears to be a strong candidate.\n\n"
-        f"*(Note: To enable real Generative AI, insert your Google Gemini API key in the code.)*"
-    )
 
 # ------------------------------------------------
-# HELPER FUNCTIONS
+# Notebook loader
 # ------------------------------------------------
 @st.cache_resource
 def load_nb_namespace(nb_path: str):
     """
-    Execute code cells from a notebook and return the namespace.
-    Includes fallbacks if notebook is missing.
+    Execute code cells from a notebook
+    and return the namespace dictionary.
     """
     ns = {}
     if not os.path.exists(nb_path):
-        ns["__errors__"] = [f"Notebook '{nb_path}' not found. Using fallback functions."]
-        ns["normalize_text"] = lambda x: str(x).strip().upper()
-        ns["detect_type"] = lambda x: "MOF" if "MOF" in str(x) or "ZIF" in str(x) else "Metal Oxide"
-        ns["extract_form"] = lambda x: "Nanoparticle"
-        ns["extract_metals"] = lambda x: ["Zr"] if "Zr" in str(x) else ["Unknown"]
-        ns["infer_structure"] = lambda x, y: "Crystalline"
+        ns.setdefault("__errors__", []).append(f"Notebook not found at: {nb_path}")
         return ns
 
-    try:
-        nb = nbformat.read(nb_path, as_version=4)
-        for cell in nb.cells:
-            if cell.cell_type == "code":
-                src = "\n".join([line for line in cell.source.splitlines() if not line.strip().startswith(("%", "!"))])
+    nb = nbformat.read(nb_path, as_version=4)
+
+    for cell in nb.cells:
+        if cell.cell_type == "code":
+            src = "\n".join(
+                [
+                    line
+                    for line in cell.source.splitlines()
+                    if not line.strip().startswith(("%", "!"))
+                ]
+            )
+            try:
                 exec(compile(src, nb_path, "exec"), ns)
-    except Exception as e:
-        ns["__errors__"] = [repr(e)]
+            except Exception as e:
+                ns.setdefault("__errors__", []).append(repr(e))
+
     return ns
 
+
+# ------------------------------------------------
+# CSV Loader
+# ------------------------------------------------
 @st.cache_data
 def load_data():
-    """Load main catalyst CSV with robust encoding handling."""
-    if not os.path.exists(CSV_PATH):
-        return pd.DataFrame({
-            'Catalyst': ['Test'], 'Composition': ['A'], 'Performance': ['Good'], 
-            'Conversion (%)': [50], 'Surface Area (m2/g)': [100]
-        })
-    
-    # FIX: Try different encodings to prevent UnicodeDecodeError
-    try:
-        return pd.read_csv(CSV_PATH, encoding='utf-8')
-    except UnicodeDecodeError:
-        try:
-            # Latin1 handles most Windows/Excel files
-            return pd.read_csv(CSV_PATH, encoding='latin1')
-        except UnicodeDecodeError:
-            # Final attempt: replace weird characters
-            return pd.read_csv(CSV_PATH, encoding='utf-8', encoding_errors='replace')
+    """Load main catalyst CSV."""
+    return pd.read_csv(CSV_PATH)
 
 # ------------------------------------------------
-# RAG VISUALIZATION HELPERS
+# Extractive (local) answer builder
 # ------------------------------------------------
-def summarize_chunk_types(docs):
-    counts = Counter()
+def build_extractive_answer(question: str, docs):
+    """Local RAG (no LLM): extract structured bullet-points from retrieved docs."""
+    if not docs:
+        return "No documents retrieved."
+
+    catalysts, rules, mech, background, generic = [], [], [], [], []
+
     for d in docs:
-        counts[d.metadata.get("chunk_type", "unknown")] += 1
-    return counts
+        meta = d.metadata or {}
+        ctype = (meta.get("chunk_type") or "").lower()
+        text = (d.page_content or "").strip()
 
-def compute_similarity_scores(question, docs):
-    return np.array([d.metadata.get("score", 0.5) for d in docs])
+        # Short preview = first 1–2 sentences
+        parts = text.split(". ")
+        short = ". ".join(parts[:2]).strip()
 
-def project_embeddings(question, docs):
-    if not docs: return None, None
-    
-    df = load_data()
-    vectorizer, _, _ = get_rag_engine(df)
-    
-    texts = [question] + [d.page_content for d in docs]
-    vecs = vectorizer.transform(texts).toarray()
-    
-    if vecs.shape[0] < 3: return None, None 
-    
-    pca = PCA(n_components=2)
-    coords = pca.fit_transform(vecs)
-    
-    return coords[0], coords[1:]
+        if "catalyst" in ctype:
+            catalysts.append("– " + short)
+        elif "design" in ctype or "rule" in ctype:
+            rules.append("– " + short)
+        elif "mechanism" in ctype:
+            mech.append("– " + short)
+        elif "background" in ctype:
+            background.append("– " + short)
+        else:
+            generic.append("– " + short)
 
-def build_extractive_answer(question, docs):
-    if not docs: return "No documents found."
-    out = ["### 🧠 Database Insights\n"]
-    for d in docs[:3]:
-        out.append(f"- **{d.metadata.get('chunk_type','Record').title()}**: {d.page_content}")
+    out = [f"### 🧠 Local Extractive Answer (from {len(docs)} chunks)\n"]
+
+    if catalysts:
+        out.append("**Catalyst insights:**")
+        out += catalysts[:5]
+        out.append("")
+
+    if rules:
+        out.append("**Design rules:**")
+        out += rules[:5]
+        out.append("")
+
+    if mech:
+        out.append("**Mechanistic insights:**")
+        out += mech[:5]
+        out.append("")
+
+    if background and not (catalysts or rules or mech):
+        out.append("**Background info:**")
+        out += background[:5]
+        out.append("")
+
+    if not any([catalysts, rules, mech, background]):
+        out.append("No structured info found.")
+
     return "\n".join(out)
 
-# ------------------------------------------------
-# MAIN APP UI
-# ------------------------------------------------
 
+# ------------------------------------------------
+# Chunk type summary
+# ------------------------------------------------
+def summarize_chunk_types(docs):
+    """Count retrieved chunks by category."""
+    counts = Counter()
+    for d in docs:
+        meta = d.metadata or {}
+        ctype = (meta.get("chunk_type") or "unknown").lower()
+        counts[ctype] += 1
+    return counts
+
+
+# ------------------------------------------------
+# Cosine similarity heatmap computation
+# ------------------------------------------------
+def compute_similarity_scores(question: str, docs):
+    """Compute true cosine similarity between query and docs."""
+    if not docs:
+        return np.array([])
+
+    emb = get_embedding_model()
+
+    q_vec = np.array(emb.embed_query(question))
+    doc_texts = [d.page_content or "" for d in docs]
+    d_vecs = np.array(emb.embed_documents(doc_texts))
+
+    q_norm = np.linalg.norm(q_vec) + 1e-8
+    d_norms = np.linalg.norm(d_vecs, axis=1) + 1e-8
+
+    sims = (d_vecs @ q_vec) / (d_norms * q_norm)
+    return sims
+
+
+# ------------------------------------------------
+# PCA projection for semantic scatter plot
+# ------------------------------------------------
+def project_embeddings(question: str, docs):
+    if not docs:
+        return None, None
+
+    emb = get_embedding_model()
+
+    texts = [question] + [d.page_content or "" for d in docs]
+    vecs = np.array(emb.embed_documents(texts))
+
+    if vecs.shape[0] < 2:
+        return None, None
+
+    pca = PCA(n_components=2)
+    coords = pca.fit_transform(vecs)
+
+    return coords[0], coords[1:]
+
+# ------------------------------------------------
+# Streamlit page setup
+# ------------------------------------------------
+st.set_page_config(
+    page_title="SimuAI – Li–CO₂ Catalyst Assistant",
+    layout="wide",
+)
 st.title("SimuAI – Li–CO₂ Catalyst Assistant")
 
-# Load logic
+# Load notebook namespace & CSV
 ns = load_nb_namespace(NOTEBOOK_PATH)
+nb_errors = ns.get("__errors__", [])
+
+if not os.path.exists(CSV_PATH):
+    st.error(f"Missing data file: {CSV_PATH}")
+    st.stop()
+
 df = load_data()
 
-tab1, tab2 = st.tabs(["⚙️ Catalyst Explorer & Trainer", "🧪 RAG QA (Local / Gemini)"])
+tab1, tab2 = st.tabs(
+    ["⚙️ Catalyst Explorer & Trainer", "🧪 RAG QA (Local / Gemini)"]
+)
 
 # ------------------------------------------------
 # TAB 1: Explorer & Trainer
 # ------------------------------------------------
 with tab1:
-    st.caption("Filter catalysts, parse names, train models, and download classified results.")
+    st.caption(
+        "Filter catalysts, parse names, train models, and download classified results."
+    )
 
-    # Sidebar Filters
+    # ----------------------------
+    # Sidebar: Filters
+    # ----------------------------
     with st.sidebar:
         st.header("Filters")
-        obj_cols = df.select_dtypes("object").columns
-        if len(obj_cols) > 0:
-            txt_col = st.selectbox("Search column", obj_cols)
-            query = st.text_input("Contains text")
-        else:
-            txt_col = None
-            query = None
+        txt_col = st.selectbox(
+            "Search column", df.select_dtypes("object").columns
+        )
+        query = st.text_input("Contains text")
 
         num_cols = df.select_dtypes("number").columns
-        selected_num = st.multiselect("Numeric filters", num_cols)
+        selected_num = st.multiselect(
+            "Numeric filters", num_cols, default=list(num_cols)
+        )
         ranges = {}
         for c in selected_num:
             cmin, cmax = float(df[c].min()), float(df[c].max())
-            if cmin == cmax:
-                ranges[c] = (cmin, cmax)
-            else:
-                ranges[c] = st.slider(c, cmin, cmax, (cmin, cmax))
-        
-        show_cols = st.multiselect("Columns to show", list(df.columns), default=list(df.columns))
+            ranges[c] = st.slider(c, cmin, cmax, (cmin, cmax))
 
-    # Apply Filters
+        show_cols = st.multiselect(
+            "Columns to show", list(df.columns), default=list(df.columns)
+        )
+
     mask = pd.Series(True, index=df.index)
-    if query and txt_col:
+    if query:
         mask &= df[txt_col].fillna("").str.contains(query, case=False)
     for c, (lo, hi) in ranges.items():
         mask &= df[c].between(lo, hi)
-    
     filtered = df.loc[mask, show_cols].copy()
-    
+
     st.subheader("📄 Filtered Table")
     st.write(f"{len(filtered)}/{len(df)} rows")
     st.dataframe(filtered, use_container_width=True)
 
-    # Catalyst Parser Section
+    # ----------------------------
+    # Catalyst Parser (from notebook)
+    # ----------------------------
     st.subheader("🔎 Catalyst Parser")
-    
+
     normalize_text = ns.get("normalize_text")
     detect_type = ns.get("detect_type")
     extract_form = ns.get("extract_form")
     extract_metals = ns.get("extract_metals")
     infer_structure = ns.get("infer_structure")
 
-    cat_col_candidates = [c for c in df.columns if "ID" in c or "Catalyst" in c or "Composition" in c]
-    cat_col_name = cat_col_candidates[0] if cat_col_candidates else df.columns[0]
-
     row_list = filtered.index.tolist()
-    if row_list:
-        row_idx = st.selectbox("Select a row", options=row_list)
-        cat_input_default = str(filtered.loc[row_idx, cat_col_name])
-    else:
-        cat_input_default = ""
-    
-    cat_input = st.text_input(f"Catalyst name (from column: {cat_col_name})", value=cat_input_default)
+    row = (
+        st.selectbox("Select a row", options=row_list)
+        if len(row_list) > 0
+        else None
+    )
+    cat_input = ""
+    if row is not None and "Catalyst" in filtered.columns:
+        cat_input = filtered.loc[row, "Catalyst"]
+    cat_input = st.text_input("Catalyst name", value=cat_input)
 
     parsed = {}
     if cat_input:
         try:
-            parsed["normalized"] = normalize_text(cat_input)
-            parsed["type"] = detect_type(parsed["normalized"])
-            parsed["form"] = extract_form(parsed["normalized"])
-            parsed["metals"] = extract_metals(parsed["normalized"])
-            parsed["structure"] = infer_structure(parsed["normalized"], "")
+            parsed["normalized"] = (
+                normalize_text(cat_input) if normalize_text else cat_input
+            )
+            parsed["type"] = (
+                detect_type(parsed["normalized"]) if detect_type else None
+            )
+            parsed["form"] = (
+                extract_form(parsed["normalized"]) if extract_form else None
+            )
+            parsed["metals"] = (
+                extract_metals(parsed["normalized"])
+                if extract_metals
+                else None
+            )
+            parsed["structure"] = (
+                infer_structure(parsed["normalized"], "")
+                if infer_structure
+                else None
+            )
         except Exception as e:
-            parsed["error"] = str(e)
+            parsed["error"] = repr(e)
 
     st.json(parsed if parsed else {"info": "Enter or select a catalyst name"})
-    
-    if "__errors__" in ns:
-        with st.expander("System Warnings"):
-            for e in ns["__errors__"]:
-                st.warning(e)
 
-    # ML Trainer Section
-    st.divider()
+    if nb_errors:
+        with st.expander("Notebook load warnings"):
+            for e in nb_errors:
+                st.code(e)
+
+    # ----------------------------
+    # Model Trainer
+    # ----------------------------
     st.subheader("⚙️ Train Machine Learning Model")
-    
-    if len(df.columns) < 2:
-        st.error("Dataset needs at least 2 columns.")
+
+    st.markdown(
+        """
+Train an **XGBoost** classifier and see Accuracy, Macro-F1, Confusion Matrix, and Classification Report.
+The app automatically encodes text columns and handles missing data.
+"""
+    )
+
+    cols = list(df.columns)
+    if len(cols) < 2:
+        st.error("Dataset must have at least 2 columns.")
     else:
         c1, c2 = st.columns(2)
-        cols = list(df.columns)
         with c1:
-            x_cols = st.multiselect("Feature columns (X)", cols[:-1], default=cols[3:-1] if len(cols)>4 else cols[:-1])
+            x_cols = st.multiselect(
+                "Feature columns (X)", cols[:-1], default=cols[:-1]
+            )
         with c2:
-            default_y_idx = cols.index('Performance') if 'Performance' in cols else len(cols)-1
-            y_col = st.selectbox("Target column (y)", cols, index=default_y_idx)
+            y_col = st.selectbox("Target column (y)", cols, index=len(cols) - 1)
 
-        if st.button("🚀 Train XGBoost Model"):
-            if not x_cols:
-                st.error("Select features!")
+        test_size = st.slider("Test size (%)", 10, 50, 20) / 100.0
+        max_depth = st.slider("max_depth", 2, 12, 6)
+        n_estimators = st.slider(
+            "n_estimators", 50, 500, 200, step=50
+        )
+        learning_rate = st.slider("learning_rate", 0.01, 0.5, 0.1)
+
+        if st.button("🚀 Train Model"):
+            if len(x_cols) == 0 or y_col not in df.columns:
+                st.warning("Please select valid features and target.")
             else:
-                X = df[x_cols].copy()
-                y = df[y_col].copy()
-                
-                X = pd.get_dummies(X)
+                X_raw = df[x_cols].copy()
+                y_raw = df[y_col].copy()
+
+                # Clean X
+                for c in X_raw.columns:
+                    if pd.api.types.is_bool_dtype(X_raw[c]):
+                        X_raw[c] = X_raw[c].astype(int)
+                X = pd.get_dummies(X_raw, dummy_na=True)
                 X = X.fillna(0)
-                
+
+                # Clean y
+                y = y_raw.copy()
                 label_mapping = None
-                if y.dtype == 'object':
-                    le = {val: i for i, val in enumerate(y.unique())}
-                    label_mapping = {i: val for val, i in le.items()}
-                    y = y.map(le)
-                
-                X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-                
-                model = XGBClassifier(use_label_encoder=False, eval_metric='logloss')
+                if (
+                    y.dtype == "object"
+                    or pd.api.types.is_categorical_dtype(y)
+                ):
+                    y = y.astype("category")
+                    label_mapping = {
+                        k: v for v, k in enumerate(y.cat.categories)
+                    }
+                    y = y.cat.codes
+
+                # Split data
+                X_train, X_test, y_train, y_test = train_test_split(
+                    X,
+                    y,
+                    test_size=test_size,
+                    random_state=42,
+                    stratify=y if len(np.unique(y)) > 1 else None,
+                )
+
+                # Train model
+                model = XGBClassifier(
+                    use_label_encoder=False,
+                    eval_metric="mlogloss",
+                    max_depth=max_depth,
+                    n_estimators=n_estimators,
+                    learning_rate=learning_rate,
+                    subsample=1.0,
+                    colsample_bytree=1.0,
+                    n_jobs=-1,
+                )
                 model.fit(X_train, y_train)
-                
                 y_pred = model.predict(X_test)
+
+                # Evaluate
                 acc = accuracy_score(y_test, y_pred)
-                
-                st.success(f"Training Complete! Accuracy: {acc:.1%}")
-                
-                col_a, col_b = st.columns(2)
-                with col_a:
-                    st.markdown("**Confusion Matrix**")
-                    cm = confusion_matrix(y_test, y_pred)
-                    st.write(cm)
-                
-                res_df = pd.DataFrame({"Actual": y_test, "Predicted": y_pred})
+                f1m = f1_score(y_test, y_pred, average="macro")
+
+                cA, cB = st.columns(2)
+                with cA:
+                    st.metric("Accuracy", f"{acc*100:.2f}%")
+                with cB:
+                    st.metric("Macro F1", f"{f1m*100:.2f}%")
+
+                cm = confusion_matrix(y_test, y_pred)
+                st.markdown("### Confusion Matrix")
+                fig, ax = plt.subplots()
+                ax.imshow(cm)
+                ax.set_xlabel("Predicted")
+                ax.set_ylabel("True")
+                for i in range(cm.shape[0]):
+                    for j in range(cm.shape[1]):
+                        ax.text(
+                            j,
+                            i,
+                            str(cm[i, j]),
+                            ha="center",
+                            va="center",
+                        )
+                st.pyplot(fig)
+
+                st.markdown("### Classification Report")
                 if label_mapping:
-                    res_df["Actual"] = res_df["Actual"].map(label_mapping)
-                    res_df["Predicted"] = res_df["Predicted"].map(label_mapping)
-                
-                st.download_button("Download Predictions", res_df.to_csv().encode('utf-8'), "preds.csv")
+                    inv_map = {v: k for k, v in label_mapping.items()}
+                    y_test_named = pd.Series(y_test).map(inv_map).astype(str)
+                    y_pred_named = pd.Series(y_pred).map(inv_map).astype(str)
+                    report = classification_report(
+                        y_test_named, y_pred_named, digits=3
+                    )
+                else:
+                    report = classification_report(
+                        y_test, y_pred, digits=3
+                    )
+                st.code(report, language="text")
+
+                # Download test predictions
+                out = (
+                    pd.DataFrame(
+                        {
+                            "y_true": y_test
+                            if label_mapping is None
+                            else pd.Series(y_test).map(inv_map),
+                            "y_pred": y_pred
+                            if label_mapping is None
+                            else pd.Series(y_pred).map(inv_map),
+                        }
+                    )
+                    .reset_index(drop=True)
+                )
+                st.download_button(
+                    "Download Test Predictions (CSV)",
+                    data=out.to_csv(index=False).encode("utf-8"),
+                    file_name="model_predictions.csv",
+                    mime="text/csv",
+                )
+
+                # Predict full dataset and download
+                y_all_pred = model.predict(X)
+                if label_mapping:
+                    inv_map = {v: k for k, v in label_mapping.items()}
+                    y_all_pred = pd.Series(y_all_pred).map(inv_map)
+
+                classified_df = df.copy()
+                classified_df["Predicted_Label"] = y_all_pred
+
+                st.markdown("### 📁 Full Classified Dataset")
+                st.dataframe(
+                    classified_df.head(), use_container_width=True
+                )
+
+                st.download_button(
+                    "⬇️ Download Full Classified Data (CSV)",
+                    data=classified_df.to_csv(index=False).encode("utf-8"),
+                    file_name="full_classified_dataset.csv",
+                    mime="text/csv",
+                )
 
 # ------------------------------------------------
-# TAB 2: RAG QA
+# TAB 2: RAG QA (Local / Gemini)
 # ------------------------------------------------
 with tab2:
     st.header("🧪 Li–CO₂ RAG Question Answering")
-    
-    question = st.text_area("Ask about Li–CO₂ catalysts (e.g., 'Which MOF has the best stability?')", height=100)
-    
-    if st.button("🔍 Retrieve & Answer"):
+
+    # LLM provider selection
+    provider = st.selectbox(
+        "Answer mode",
+        ["Local only (no LLM)", "Gemini"],
+        index=1,
+    )
+
+    question = st.text_area(
+        "Ask about Li–CO₂ catalysts, mechanisms, design rules:",
+        height=100,
+    )
+
+    # Retrieval config
+    top_k = st.slider("Number of retrieved documents", 1, 12, 5)
+
+    # Optional: filter by chunk type (RAG-skeleton style)
+    retrieval_filter = st.selectbox(
+        "Filter retrieved chunks by type",
+        [
+            "All",
+            "Catalyst cards only",
+            "Mechanisms only",
+            "Design rules only",
+            "Background only",
+        ],
+        index=0,
+    )
+
+    mode_map = {
+        "All": "all",
+        "Catalyst cards only": "catalyst",
+        "Mechanisms only": "mechanism",
+        "Design rules only": "design",
+        "Background only": "background",
+    }
+    rag_mode = mode_map[retrieval_filter]
+
+    if st.button("🔍 Retrieve & Answer", key="rag_answer"):
         if not question.strip():
             st.warning("Please enter a question.")
         else:
-            with st.spinner("Analyzing database..."):
-                docs = retrieve_docs(question, top_k=5)
-                
-                if not docs:
-                    st.error("No matching data found or database is empty.")
+            # === RAG retrieval ===
+            with st.spinner("Retrieving from RAG index..."):
+                docs = retrieve_docs(question, top_k=top_k, mode=rag_mode)
+
+            # === Show retrieved context ===
+            st.subheader("📚 Retrieved context")
+            for i, d in enumerate(docs, 1):
+                meta = d.metadata or {}
+                st.markdown(
+                    f"**Doc {i} — {meta.get('chunk_type', 'unknown')}**"
+                )
+                text = d.page_content or ""
+                st.write(text if len(text) < 1000 else text[:1000] + " …")
+                st.markdown("---")
+
+            # === Graph A: distribution of chunk types ===
+            st.subheader("📊 Retrieved chunk types")
+            counts = summarize_chunk_types(docs)
+
+            if counts:
+                types = list(counts.keys())
+                values = [counts[t] for t in types]
+
+                fig, ax = plt.subplots(figsize=(5, 3))
+                ax.bar(types, values)
+                ax.set_xlabel("Chunk type")
+                ax.set_ylabel("Count in top-k")
+                ax.set_title("Distribution of retrieved chunk types")
+                ax.tick_params(axis="x", rotation=30, labelrotation=30)
+                st.pyplot(fig)
+            else:
+                st.write("No chunks retrieved to summarize.")
+
+            # === Graph B: true cosine similarity heatmap ===
+            if docs:
+                st.subheader("🎯 Relative relevance of retrieved docs")
+
+                sims = compute_similarity_scores(question, docs)  # shape (k,)
+                if sims.size > 0:
+                    # Normalize to 0–1 for nicer visualization
+                    sims_min, sims_max = float(sims.min()), float(sims.max())
+                    if sims_max > sims_min:
+                        sims_norm = (sims - sims_min) / (sims_max - sims_min)
+                    else:
+                        sims_norm = np.ones_like(sims)
+
+                    fig2, ax2 = plt.subplots(figsize=(5, 1.5))
+                    im = ax2.imshow([sims_norm], aspect="auto")
+                    ax2.set_yticks([])
+                    ax2.set_xticks(range(len(docs)))
+                    ax2.set_xticklabels([f"D{i+1}" for i in range(len(docs))])
+                    ax2.set_xlabel("Document (ranked by similarity)")
+                    cbar = fig2.colorbar(im, ax=ax2)
+                    cbar.set_label("Normalized cosine similarity")
+                    st.pyplot(fig2)
                 else:
-                    st.subheader("🎯 Document Relevance")
-                    sims = compute_similarity_scores(question, docs)
-                    
-                    fig, ax = plt.subplots(figsize=(8, 1))
-                    im = ax.imshow([sims], aspect='auto', cmap='Greens', vmin=0, vmax=1)
-                    ax.set_yticks([])
-                    ax.set_xticks(range(len(docs)))
-                    ax.set_xticklabels([f"Doc {i+1}" for i in range(len(docs))])
-                    plt.colorbar(im, orientation='horizontal')
-                    st.pyplot(fig)
-                    
-                    st.subheader("🗺️ Semantic Map")
-                    q_coord, d_coords = project_embeddings(question, docs)
-                    if q_coord is not None:
-                        fig2, ax2 = plt.subplots()
-                        ax2.scatter(d_coords[:,0], d_coords[:,1], label='Documents')
-                        ax2.scatter(q_coord[0], q_coord[1], c='red', marker='*', s=200, label='Query')
-                        for i, txt in enumerate(d_coords):
-                            ax2.annotate(f"Doc {i+1}", (d_coords[i,0], d_coords[i,1]))
-                        ax2.legend()
-                        ax2.set_title("TF-IDF PCA Projection")
-                        st.pyplot(fig2)
-                    
-                    st.subheader("📝 Generated Insights")
+                    st.write("Could not compute similarity scores.")
+
+            # === Graph C: semantic scatter plot (query vs docs) ===
+            if docs:
+                st.subheader("🗺️ Semantic map of query and retrieved chunks")
+                q_coord, doc_coords = project_embeddings(question, docs)
+
+                if q_coord is not None and doc_coords is not None:
+                    fig3, ax3 = plt.subplots(figsize=(5, 4))
+                    # Plot docs
+                    ax3.scatter(doc_coords[:, 0], doc_coords[:, 1], marker="o")
+                    for i, (x, y) in enumerate(doc_coords):
+                        ax3.text(x, y, f"D{i+1}", fontsize=8, ha="center", va="bottom")
+                    # Plot query
+                    ax3.scatter(q_coord[0], q_coord[1], marker="*", s=120)
+                    ax3.text(
+                        q_coord[0],
+                        q_coord[1],
+                        "Query",
+                        fontsize=9,
+                        fontweight="bold",
+                        ha="center",
+                        va="bottom",
+                    )
+                    ax3.set_xlabel("PCA dim 1")
+                    ax3.set_ylabel("PCA dim 2")
+                    ax3.set_title("2D projection of query + retrieved chunks")
+                    st.pyplot(fig3)
+                else:
+                    st.write("Not enough data to build semantic map.")
+
+            # === Explanation of the graphs ===
+            with st.expander("ℹ️ How to read these graphs"):
+                st.markdown(
+                    """
+- **Chunk types bar chart**: shows how many of the retrieved chunks come from each knowledge category (design rules, mechanisms, catalyst cards, background, etc.).  
+- **Relevance heatmap**: darker cells correspond to chunks with **higher cosine similarity** to the query, i.e. they are more relevant in embedding space.  
+- **Semantic map**: shows the query and the retrieved chunks in a 2D projection of the embedding space.  
+  Chunks closer to the "Query" point are more semantically similar to the question.
+"""
+                )
+
+            # === Answer generation ===
+            if provider == "Local only (no LLM)":
+                st.subheader("🧠 Local Extractive Answer")
+                st.markdown(build_extractive_answer(question, docs))
+
+            elif provider == "Gemini":
+                with st.expander("Show supporting extractive snippets"):
+                    st.markdown(build_extractive_answer(question, docs))
+
+                with st.spinner("Calling Gemini…"):
+                    st.subheader("🚀 LLM Answer (Gemini)")
                     st.markdown(call_llm(question, docs))
-                    
-                    with st.expander("View Source Snippets"):
-                        st.markdown(build_extractive_answer(question, docs))
