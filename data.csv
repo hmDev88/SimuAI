@@ -1,0 +1,501 @@
+Catalyst ID,Composition,Synthesis Method,Surface Area (m2/g),Pore Volume (cm3/g),Active Sites Density (sites/nm2),Reaction Temperature (°C),Pressure (bar),Time (h),Product Selectivity (%),Conversion (%),Performance
+CAT-001,UiO-66(Zr),Solvothermal,1250.5,1.55,8.2,180,15,5,93.5,95.2,Excellent
+CAT-002,Pt/TiO2,Impregnation,250.8,0.35,3.1,350,5,12,75.1,68.1,Average
+CAT-003,ZIF-8,Hydrothermal,1890.3,2.20,10.5,150,10,8,89.0,85.5,Good
+CAT-004,Ni/Al2O3,Co-precipitation,150.7,0.25,2.5,420,50,20,55.0,45.9,Poor
+CAT-005,MOF-5,Solvothermal,2100.9,2.85,12.1,200,20,6,96.8,91.0,Excellent
+CAT-006,Pd/CNT,Impregnation,850.1,1.1,6.5,300,10,15,80.5,78.9,Good
+CAT-007,Cu-BTC,Solvothermal,1500.0,1.8,9.0,160,25,4,90.1,92.5,Excellent
+CAT-008,Fe3O4/C,Precipitation,120.3,0.15,1.8,500,70,24,35.7,30.2,Poor
+CAT-009,Co/g-C3N4,Thermal decomposition,450.9,0.5,4.5,280,30,10,65.8,70.1,Good
+CAT-010,HKUST-1,Solvothermal,1950.7,2.5,11.2,175,18,7,94.0,96.1,Excellent
+CAT-011,Ru/Al2O3,Impregnation,320.6,0.4,3.8,400,60,18,72.3,60.5,Average
+CAT-012,Pt/C,Wet chemical,1100.2,1.3,7.9,100,5,3,98.1,99.5,Excellent
+CAT-013,Zn-MOF-74,Solvothermal,1700.1,2.0,10.1,220,12,9,88.2,84.7,Good
+CAT-014,V2O5/TiO2,Impregnation,60.5,0.1,1.1,450,100,22,25.9,15.8,Poor
+CAT-015,Ag/ZnO,Hydrothermal,950.4,1.2,7.0,250,40,14,79.5,82.0,Good
+CAT-016,MOF-808(Zr),Solvothermal,1650.0,1.9,9.5,190,16,6,91.2,93.4,Excellent
+CAT-017,NiO/CeO2,Precipitation,180.2,0.22,2.8,380,55,16,61.4,55.0,Average
+CAT-018,Rh/SiO2,Impregnation,550.6,0.7,5.0,320,20,11,77.0,75.5,Good
+CAT-019,IRMOF-3,Solvothermal,1400.8,1.7,8.8,210,14,7,86.0,88.8,Good
+CAT-020,MnO2/C,Hydrothermal,700.3,0.9,6.0,270,35,13,69.5,72.4,Good
+CAT-021,MOF-525(Zr),Solvothermal,1750.4,2.1,10.8,185,17,5,92.8,94.9,Excellent
+CAT-022,Au/Fe2O3,Impregnation,90.1,0.12,1.5,480,90,21,28.4,20.1,Poor
+CAT-023,ZIF-67,Hydrothermal,1600.9,1.85,9.8,205,13,8,89.9,91.8,Excellent
+CAT-024,W/ZrO2,Wet chemical,280.5,0.3,3.5,410,65,19,58.7,48.2,Poor
+CAT-025,Cr-MIL-101,Solvothermal,2800.0,3.5,14.5,150,10,3,97.0,98.5,Excellent
+CAT-026,CoFe2O4,Hydrothermal,110.4,0.14,1.7,470,85,23,32.1,25.6,Poor
+CAT-027,Pd/TiO2,Impregnation,380.7,0.45,4.2,330,22,10,74.5,77.9,Good
+CAT-028,MOF-74(Mg),Solvothermal,1550.2,1.75,9.2,215,11,8,87.5,85.0,Good
+CAT-029,Ni/ZSM-5,Impregnation,400.3,0.55,4.8,360,45,15,67.0,63.2,Average
+CAT-030,Pt-Co/C,Wet chemical,1050.6,1.25,7.5,110,6,4,96.5,97.1,Excellent
+CAT-031,Zr-MOF-808,Solvothermal,1680.1,1.95,10.0,195,15,6,90.5,92.0,Excellent
+CAT-032,Cu/ZnO/Al2O3,Co-precipitation,80.8,0.11,1.3,490,95,20,29.8,22.5,Poor
+CAT-033,CeO2/CNT,Hydrothermal,650.0,0.85,5.8,290,38,12,71.2,74.0,Good
+CAT-034,MIL-53(Al),Solvothermal,1300.5,1.6,8.5,200,14,7,85.0,87.5,Good
+CAT-035,MoS2/graphene,Wet chemical,500.9,0.6,5.2,340,28,13,63.5,58.9,Average
+CAT-036,Pt-Ru/C,Impregnation,1150.7,1.4,8.1,105,7,3,97.8,99.1,Excellent
+CAT-037,PCN-222(Zr),Solvothermal,2500.0,3.1,13.5,140,8,4,95.5,96.9,Excellent
+CAT-038,MnOx/AC,Hydrothermal,140.6,0.18,2.0,460,80,21,37.6,33.0,Poor
+CAT-039,Ni/SiO2,Impregnation,200.4,0.28,3.2,370,50,17,60.0,52.5,Average
+CAT-040,MOF-177,Solvothermal,3000.0,3.8,15.0,130,9,3,98.5,99.9,Excellent
+CAT-041,ZnO/C,Precipitation,750.3,0.95,6.2,260,32,11,70.0,73.5,Good
+CAT-042,Fe-BTC,Hydrothermal,1800.1,2.15,10.3,170,19,6,90.8,92.8,Excellent
+CAT-043,Rh/C,Wet chemical,900.5,1.15,6.8,310,18,14,78.5,81.1,Good
+CAT-044,Ti-MOF,Solvothermal,1600.8,1.8,9.4,210,13,8,88.5,89.9,Good
+CAT-045,Pt/SiO2-Al2O3,Impregnation,300.2,0.38,3.6,390,62,18,65.0,57.1,Average
+CAT-046,ZIF-90,Hydrothermal,1500.6,1.7,8.9,200,15,7,86.8,88.0,Good
+CAT-047,Cr-MIL-100,Solvothermal,2200.0,2.8,12.5,160,11,5,93.0,94.5,Excellent
+CAT-048,CuO/Al2O3,Co-precipitation,100.7,0.13,1.6,480,88,22,30.5,23.8,Poor
+CAT-049,Pd-Ag/C,Wet chemical,950.4,1.2,7.0,280,35,13,76.5,79.0,Good
+CAT-050,MOF-74(Co),Solvothermal,1700.5,2.0,10.1,225,12,9,89.5,90.5,Excellent
+CAT-051,Pt/graphene,Wet chemical,1300.0,1.5,8.5,95,4,2,99.0,99.8,Excellent
+CAT-052,UiO-66(Ce),Solvothermal,1450.7,1.7,9.1,190,16,6,91.5,93.0,Excellent
+CAT-053,V2O5/SBA-15,Impregnation,350.6,0.42,4.0,430,75,20,55.0,42.5,Poor
+CAT-054,Co-ZIF-67,Hydrothermal,1650.3,1.9,10.0,210,14,7,88.0,89.5,Good
+CAT-055,Fe-MOF-5,Solvothermal,2000.1,2.4,11.5,170,18,6,94.8,96.5,Excellent
+CAT-056,Ni/C,Impregnation,600.9,0.75,5.5,310,25,11,73.0,76.5,Good
+CAT-057,Pd/SiO2,Wet chemical,450.2,0.58,5.0,350,30,14,68.5,71.0,Good
+CAT-058,MIL-101(Cr),Solvothermal,2900.0,3.6,14.8,155,10,4,96.0,97.5,Excellent
+CAT-059,Ru/C,Impregnation,800.5,01.05,6.0,295,15,12,82.0,83.5,Good
+CAT-060,Cu/ZSM-5,Ion exchange,380.1,0.5,4.0,370,48,16,62.5,56.8,Average
+CAT-061,MOF-200,Solvothermal,1850.4,2.2,10.6,180,17,5,92.0,93.8,Excellent
+CAT-062,Au/TiO2,Deposition-Precipitation,120.9,0.16,1.9,460,85,21,34.0,28.5,Poor
+CAT-063,ZIF-11,Hydrothermal,1400.6,1.65,8.7,205,13,8,87.0,88.5,Good
+CAT-064,Pt/Al2O3,Impregnation,420.7,0.52,4.5,380,58,17,66.5,60.1,Average
+CAT-065,PCN-250(Fe),Solvothermal,2100.0,2.5,11.8,165,15,6,95.0,96.8,Excellent
+CAT-066,Co3O4/C,Hydrothermal,160.3,0.2,2.2,440,70,19,40.0,36.5,Poor
+CAT-067,Rh/Al2O3,Impregnation,500.4,0.65,5.2,325,23,10,75.5,78.0,Good
+CAT-068,MOF-74(Zn),Solvothermal,1720.8,02.05,10.2,220,13,9,89.0,90.0,Excellent
+CAT-069,Ni/Alumina,Impregnation,360.2,0.48,4.3,355,42,15,64.0,60.8,Average
+CAT-070,Pt-Fe/C,Wet chemical,1120.9,1.35,8.0,105,6,3,97.5,98.9,Excellent
+CAT-071,UiO-67(Zr),Solvothermal,1550.5,1.8,9.5,195,16,6,90.2,91.9,Excellent
+CAT-072,Fe/AC,Hydrothermal,130.1,0.17,2.0,470,80,22,31.5,24.5,Poor
+CAT-073,ZIF-4,Solvothermal,1200.7,1.4,8.0,200,12,7,84.5,86.5,Good
+CAT-074,W/AC,Impregnation,240.6,0.32,3.3,420,70,19,57.0,46.1,Poor
+CAT-075,Cr-MIL-101(V),Solvothermal,2750.0,3.4,14.2,145,9,4,96.5,98.0,Excellent
+CAT-076,CuO/ZnO,Co-precipitation,95.2,0.12,1.4,495,92,23,28.9,21.0,Poor
+CAT-077,Pd/ZSM-5,Ion exchange,400.5,0.55,4.8,335,26,11,73.5,77.0,Good
+CAT-078,MOF-74(Ni),Solvothermal,1650.9,1.9,9.8,210,14,8,88.5,89.0,Good
+CAT-079,Ni/MgO,Impregnation,220.3,0.3,3.4,375,52,16,59.5,51.8,Average
+CAT-080,Pt/Graphene Oxide,Wet chemical,1250.6,1.45,8.3,100,5,3,98.0,99.4,Excellent
+CAT-081,Zr-MOF-545,Solvothermal,1800.0,2.1,10.4,185,17,6,91.0,92.5,Excellent
+CAT-082,Au/CNT,Deposition-Precipitation,115.4,0.15,1.7,475,88,21,33.0,27.1,Poor
+CAT-083,ZIF-8(Co),Hydrothermal,1700.7,2.0,10.0,200,12,7,89.5,91.2,Excellent
+CAT-084,V2O5/AC,Impregnation,300.9,0.38,3.7,440,78,20,53.5,41.0,Poor
+CAT-085,Cr-MIL-53,Solvothermal,1400.0,1.65,8.6,205,13,8,86.5,88.0,Good
+CAT-086,Co/ZnO,Precipitation,105.1,0.13,1.5,485,90,22,30.0,23.0,Poor
+CAT-087,Rh/CNT,Impregnation,600.5,0.75,5.5,315,28,11,76.0,78.5,Good
+CAT-088,MOF-74(Mn),Solvothermal,1680.6,1.95,9.9,215,15,8,87.8,89.0,Good
+CAT-089,Ni/TiO2,Impregnation,280.4,0.35,3.9,365,47,16,61.5,54.9,Average
+CAT-090,Pt-Ni/C,Wet chemical,1080.8,1.3,7.8,115,7,4,96.9,98.5,Excellent
+CAT-091,UiO-68(Zr),Solvothermal,1600.5,1.85,9.6,200,16,6,91.8,93.5,Excellent
+CAT-092,Fe2O3/CNT,Hydrothermal,150.3,0.19,2.1,455,75,21,36.5,31.5,Poor
+CAT-093,ZIF-L,Solvothermal,1350.2,1.55,8.4,205,14,7,85.5,87.0,Good
+CAT-094,W/TiO2,Impregnation,260.7,0.35,3.6,415,68,19,58.0,47.5,Poor
+CAT-095,Cr-MIL-88B,Solvothermal,2600.0,3.2,13.8,150,10,4,95.8,97.2,Excellent
+CAT-096,CuO/Fe2O3,Co-precipitation,108.9,0.14,1.6,470,86,22,31.0,24.1,Poor
+CAT-097,Pd/AC,Impregnation,550.6,0.7,5.0,320,24,10,74.0,77.5,Good
+CAT-098,MOF-74(Fe),Solvothermal,1750.4,02.05,10.3,220,13,9,89.2,90.3,Excellent
+CAT-099,Ni/H-ZSM-5,Impregnation,420.5,0.58,4.9,360,49,15,65.5,61.5,Average
+CAT-100,Pt-Pd/C,Wet chemical,1150.9,1.4,8.1,110,6,3,97.2,98.7,Excellent
+CAT-101,Zr-MOF-848,Solvothermal,1720.0,2.0,10.2,190,16,6,91.1,92.8,Excellent
+CAT-102,Cu/AC,Hydrothermal,680.1,0.88,6.0,295,36,12,70.5,73.5,Good
+CAT-103,MIL-101(V),Solvothermal,2850.0,3.55,14.6,145,9,4,96.8,98.2,Excellent
+CAT-104,Au/Al2O3,Deposition-Precipitation,80.5,0.11,1.3,490,95,23,28.0,20.0,Poor
+CAT-105,ZIF-1,Hydrothermal,1300.7,1.5,8.2,215,12,7,84.0,86.0,Good
+CAT-106,Fe/TiO2,Impregnation,200.4,0.25,2.9,430,72,20,52.0,40.5,Poor
+CAT-107,Co-MOF-74,Solvothermal,1800.5,2.1,10.4,225,12,9,89.8,91.5,Excellent
+CAT-108,Ni/MCM-41,Impregnation,700.9,0.9,6.0,320,30,14,70.5,73.0,Good
+CAT-109,Pd/C,Wet chemical,1000.2,1.2,7.2,270,33,13,78.0,80.5,Good
+CAT-110,MOF-508,Solvothermal,1900.1,2.3,11.0,175,18,6,93.5,95.1,Excellent
+CAT-111,Pt/Carbon Black,Wet chemical,1050.5,1.25,7.6,105,6,4,97.0,98.5,Excellent
+CAT-112,UiO-66-NH2,Solvothermal,1350.7,1.6,8.8,185,15,5,92.5,94.1,Excellent
+CAT-113,V2O5/Al2O3,Impregnation,370.6,0.45,4.2,400,65,18,60.5,53.0,Average
+CAT-114,Co-ZIF-8,Hydrothermal,1600.3,1.85,9.8,200,13,8,88.8,90.1,Excellent
+CAT-115,Fe-MOF-74,Solvothermal,1850.1,2.2,10.7,210,14,7,90.2,92.0,Excellent
+CAT-116,Ni/SBA-15,Impregnation,550.9,0.7,5.3,340,35,15,69.5,72.5,Good
+CAT-117,Pd/MgO,Wet chemical,480.2,0.6,5.1,360,32,14,68.0,70.5,Good
+CAT-118,MIL-100(Fe),Solvothermal,2400.0,3.0,13.0,165,11,5,94.0,95.5,Excellent
+CAT-119,Ru/TiO2,Impregnation,300.5,0.38,3.5,330,25,11,73.0,76.5,Good
+CAT-120,Cu/Al2O3,Co-precipitation,150.1,0.18,2.0,460,78,20,38.5,34.0,Poor
+CAT-121,Zr-MOF-867,Solvothermal,1950.4,2.3,11.2,175,18,6,94.5,96.3,Excellent
+CAT-122,Au/SiO2,Deposition-Precipitation,105.9,0.14,1.6,480,92,22,32.0,26.5,Poor
+CAT-123,ZIF-6,Hydrothermal,1450.6,1.7,9.0,210,14,8,87.5,89.0,Good
+CAT-124,W/Al2O3,Impregnation,320.7,0.4,4.0,425,70,19,56.5,45.0,Poor
+CAT-125,Cr-MOF-74,Solvothermal,1800.0,2.1,10.5,220,13,9,89.1,90.2,Excellent
+CAT-126,Co/Al2O3,Impregnation,250.3,0.3,3.3,400,60,17,50.0,40.0,Poor
+CAT-127,Rh/MgO,Impregnation,580.4,0.72,5.3,320,26,10,75.0,77.5,Good
+CAT-128,MOF-74(Cu),Solvothermal,1780.8,2.1,10.3,215,13,8,88.7,89.8,Good
+CAT-129,Ni/MWCNTs,Impregnation,650.2,0.85,5.8,335,38,15,68.0,71.0,Good
+CAT-130,Pt-Ru-Mo/C,Wet chemical,1200.7,1.45,8.5,100,5,3,98.5,99.6,Excellent
+CAT-131,UiO-66-COOH,Solvothermal,1300.5,1.55,8.6,180,15,5,93.0,94.6,Excellent
+CAT-132,Fe/AC,Hydrothermal,160.1,0.2,2.3,465,85,21,35.0,30.0,Poor
+CAT-133,ZIF-9,Solvothermal,1400.7,1.65,8.8,205,14,7,86.0,87.5,Good
+CAT-134,V2O5/SiO2,Impregnation,390.6,0.48,4.3,410,68,18,61.0,53.5,Average
+CAT-135,Cr-MIL-47,Solvothermal,1500.0,1.75,9.0,200,15,6,90.0,91.5,Excellent
+CAT-136,CuO/CNT,Hydrothermal,200.3,0.25,2.8,440,75,20,40.0,35.5,Poor
+CAT-137,Pd/Ceria,Impregnation,450.5,0.55,4.6,345,30,13,72.5,75.0,Good
+CAT-138,MOF-74(Al),Solvothermal,1500.2,1.7,8.8,210,14,8,86.8,88.3,Good
+CAT-139,Ni/Graphene,Impregnation,750.8,0.95,6.2,325,36,14,70.0,73.5,Good
+CAT-140,Pt-Co-Fe/C,Wet chemical,1180.9,1.4,8.2,105,6,3,97.7,99.0,Excellent
+CAT-141,Zr-MOF-525,Solvothermal,1850.5,2.2,10.7,180,17,5,92.2,93.9,Excellent
+CAT-142,Au/CeO2,Deposition-Precipitation,130.4,0.17,2.0,470,86,21,34.5,29.0,Poor
+CAT-143,ZIF-7,Hydrothermal,1500.6,1.75,9.2,205,13,8,88.0,89.5,Good
+CAT-144,V2O5/TiO2-SiO2,Impregnation,420.7,0.52,4.5,435,72,19,54.5,43.5,Poor
+CAT-145,Cr-MIL-101-NH2,Solvothermal,2800.0,3.5,14.5,140,8,4,97.0,98.5,Excellent
+CAT-146,Co/MgO,Impregnation,180.2,0.22,2.5,450,78,22,33.5,27.5,Poor
+CAT-147,Rh/SiO2-Al2O3,Impregnation,520.4,0.68,5.0,330,28,12,74.0,76.5,Good
+CAT-148,MOF-74(Cr),Solvothermal,1600.8,1.85,9.6,220,13,9,88.9,89.9,Good
+CAT-149,Ni/Carbon Nanofibers,Impregnation,600.3,0.75,5.5,350,40,15,67.5,70.0,Good
+CAT-150,Pt-Fe-Mo/C,Wet chemical,1250.6,1.5,8.6,95,4,2,99.0,99.8,Excellent
+CAT-151,UiO-67-NH2,Solvothermal,1400.5,1.65,9.0,185,15,5,92.0,93.5,Excellent
+CAT-152,Fe/CNT,Hydrothermal,170.1,0.21,2.4,460,82,21,36.0,31.0,Poor
+CAT-153,ZIF-8(Ni),Hydrothermal,1650.7,1.9,9.9,200,13,7,89.0,90.5,Excellent
+CAT-154,W/ZnO,Wet chemical,290.6,0.36,3.6,410,65,18,57.5,46.8,Poor
+CAT-155,Cr-MOF-525,Solvothermal,2000.0,2.4,11.5,170,18,6,94.0,95.5,Excellent
+CAT-156,CuO/CNT-graphene,Hydrothermal,250.3,0.32,3.0,430,70,19,42.0,37.5,Poor
+CAT-157,Pd/Al2O3-SiO2,Impregnation,480.5,0.6,5.0,350,30,13,71.5,74.0,Good
+CAT-158,MOF-74(Ni),Solvothermal,1700.2,2.0,10.1,215,14,8,88.2,89.7,Good
+CAT-159,Ni/AC,Impregnation,450.8,0.58,4.8,360,45,15,66.0,62.1,Average
+CAT-160,Pt-Pd-Ni/C,Wet chemical,1100.9,1.35,8.0,110,6,3,97.5,99.0,Excellent
+CAT-161,Zr-MOF-501,Solvothermal,1750.5,02.05,10.4,195,16,6,91.5,93.2,Excellent
+CAT-162,Cu/graphene,Hydrothermal,700.1,0.9,6.2,290,34,12,70.0,73.0,Good
+CAT-163,MIL-101(Al),Solvothermal,2500.0,3.1,13.5,150,10,4,95.0,96.5,Excellent
+CAT-164,Au/ZnO,Deposition-Precipitation,90.5,0.12,1.4,480,90,22,29.5,21.5,Poor
+CAT-165,ZIF-60,Hydrothermal,1400.7,1.65,8.8,205,14,7,86.5,88.0,Good
+CAT-166,Fe/SBA-15,Impregnation,250.4,0.3,3.3,420,68,19,55.5,44.5,Poor
+CAT-167,Co-MOF-5,Solvothermal,2100.5,2.5,11.8,175,18,6,94.8,96.5,Excellent
+CAT-168,Ni/Zeolite,Impregnation,300.9,0.38,3.9,370,48,16,60.5,53.5,Average
+CAT-169,Rh/Ceria,Impregnation,550.6,0.7,5.0,325,27,11,74.5,77.0,Good
+CAT-170,MOF-519,Solvothermal,2000.1,2.4,11.5,170,18,6,93.8,95.4,Excellent
+CAT-171,Pt/Carbon Nanotubes,Wet chemical,1200.5,1.45,8.4,105,6,4,98.2,99.5,Excellent
+CAT-172,UiO-66-TDC,Solvothermal,1250.7,1.5,8.3,180,15,5,92.8,94.3,Excellent
+CAT-173,V2O5/Zeolite,Impregnation,410.6,0.5,4.4,415,70,18,59.0,50.1,Average
+CAT-174,Co-ZIF-4,Hydrothermal,1350.3,1.55,8.5,210,14,8,85.0,86.8,Good
+CAT-175,Fe-MOF-808,Solvothermal,1900.1,2.3,11.0,185,17,6,92.5,94.0,Excellent
+CAT-176,Ni/Graphene Oxide,Impregnation,680.9,0.88,5.9,330,37,14,69.0,72.0,Good
+CAT-177,Pd/TiO2-SiO2,Wet chemical,500.2,0.62,5.1,355,33,13,71.0,73.5,Good
+CAT-178,MIL-101(Sc),Solvothermal,2600.0,3.2,13.8,160,11,5,95.5,97.0,Excellent
+CAT-179,Ru/Alumina,Impregnation,340.5,0.42,3.8,340,28,11,72.0,75.5,Good
+CAT-180,Cu/MgO,Impregnation,120.1,0.15,1.8,470,85,21,37.0,32.5,Poor
+CAT-181,Zr-MOF-800,Solvothermal,1600.4,1.8,9.5,200,16,6,90.5,92.0,Excellent
+CAT-182,Au/CNT-graphene,Deposition-Precipitation,140.9,0.18,2.1,465,82,20,35.5,30.0,Poor
+CAT-183,ZIF-67(Ni),Hydrothermal,1750.6,02.05,10.2,195,13,7,89.5,91.0,Excellent
+CAT-184,W/AC-CNT,Impregnation,310.7,0.38,3.8,405,62,17,60.0,52.0,Average
+CAT-185,Cr-MOF-808,Solvothermal,2200.0,2.8,12.5,160,11,5,94.5,96.0,Excellent
+CAT-186,Co/TiO2,Impregnation,280.3,0.35,3.6,390,55,16,55.0,45.0,Poor
+CAT-187,Rh/Alumina-Silica,Impregnation,580.4,0.72,5.4,325,29,12,75.5,78.0,Good
+CAT-188,MOF-74(Zn-Co),Solvothermal,1730.8,02.05,10.1,210,14,8,88.5,89.5,Good
+CAT-189,Ni/Activated Carbon,Impregnation,480.2,0.6,5.0,345,39,15,66.5,69.0,Good
+CAT-190,Pt-Rh/C,Wet chemical,1150.9,1.4,8.1,105,6,3,97.8,99.2,Excellent
+CAT-191,UiO-66-NO2,Solvothermal,1200.5,1.45,8.0,175,14,5,92.0,93.8,Excellent
+CAT-192,Fe/Al2O3,Impregnation,220.1,0.28,3.0,430,75,20,45.0,39.5,Poor
+CAT-193,ZIF-8(Cu),Hydrothermal,1550.7,1.8,9.5,205,14,7,87.0,88.5,Good
+CAT-194,V2O5/Carbon Nanofibers,Impregnation,450.6,0.55,4.7,420,72,19,53.0,40.0,Poor
+CAT-195,Cr-MOF-71,Solvothermal,1600.0,1.85,9.6,215,13,9,89.0,90.5,Excellent
+CAT-196,CuO/Fe3O4,Hydrothermal,150.3,0.19,2.1,450,75,21,39.0,34.5,Poor
+CAT-197,Pd/MCM-41,Impregnation,600.5,0.75,5.5,330,30,13,73.0,75.5,Good
+CAT-198,MOF-74(Co-Ni),Solvothermal,1700.2,2.0,10.0,210,14,8,88.0,89.0,Good
+CAT-199,Ni/Silica Gel,Impregnation,400.8,0.5,4.5,350,42,16,63.5,58.0,Average
+CAT-200,Pt-Ir/C,Wet chemical,1280.7,1.5,8.8,90,3,2,99.5,99.9,Excellent
+CAT-201,Zr-MOF-800-NH2,Solvothermal,1550.5,1.75,9.4,195,16,6,90.0,91.5,Excellent
+CAT-202,Cu/SBA-15,Impregnation,650.1,0.85,5.8,300,35,12,71.5,74.0,Good
+CAT-203,MIL-101(Al)-NH2,Solvothermal,2450.0,03.05,13.2,145,9,4,94.8,96.3,Excellent
+CAT-204,Au/Al2O3-CeO2,Deposition-Precipitation,120.5,0.16,1.9,475,88,22,32.5,26.8,Poor
+CAT-205,ZIF-8(Ag),Hydrothermal,1400.7,1.65,8.8,200,13,7,86.0,87.5,Good
+CAT-206,Fe/TiO2-SiO2,Impregnation,280.4,0.35,3.6,440,75,20,48.0,38.0,Poor
+CAT-207,Co-MOF-71,Solvothermal,1550.5,1.8,9.4,220,13,9,88.5,89.5,Good
+CAT-208,Ni/Hydrotalcite,Impregnation,350.9,0.42,4.0,365,46,15,64.5,60.1,Average
+CAT-209,Rh/MWCNTs,Impregnation,620.4,0.78,5.5,315,28,11,76.5,78.8,Good
+CAT-210,MOF-520,Solvothermal,1950.1,2.35,11.3,175,18,6,93.5,95.0,Excellent
+CAT-211,Pt/CNT-Graphene,Wet chemical,1300.5,1.5,8.5,95,4,2,99.2,99.9,Excellent
+CAT-212,UiO-66-BPDC,Solvothermal,1350.7,1.6,8.9,185,15,5,92.5,94.0,Excellent
+CAT-213,V2O5/MWCNTs,Impregnation,480.6,0.6,5.0,400,60,17,62.0,55.1,Average
+CAT-214,Co-ZIF-6,Hydrothermal,1200.3,1.4,8.0,215,14,8,84.0,85.5,Good
+CAT-215,Fe-MIL-101,Solvothermal,2300.1,2.9,12.8,165,11,5,94.0,95.5,Excellent
+CAT-216,Ni/AC-CNT,Impregnation,500.9,0.62,5.1,340,38,14,68.5,71.5,Good
+CAT-217,Pd/Zeolite,Ion exchange,350.2,0.45,4.0,360,32,13,69.5,72.0,Good
+CAT-218,MIL-101(In),Solvothermal,2700.0,3.35,14.0,155,10,4,96.0,97.5,Excellent
+CAT-219,Ru/SiO2-Al2O3,Impregnation,400.5,0.5,4.5,335,26,10,73.5,76.0,Good
+CAT-220,Cu/Zeolite,Ion exchange,180.1,0.22,2.5,450,78,21,38.0,33.5,Poor
+CAT-221,Zr-MOF-600,Solvothermal,1650.4,1.9,9.8,200,16,6,91.0,92.5,Excellent
+CAT-222,Au/TiO2-SiO2,Deposition-Precipitation,135.9,0.17,2.0,460,80,20,34.0,28.0,Poor
+CAT-223,ZIF-8(Pt),Wet chemical,1300.7,1.5,8.5,190,12,7,86.5,88.0,Good
+CAT-224,W/Fe2O3,Impregnation,350.6,0.42,4.2,425,75,19,55.0,44.0,Poor
+CAT-225,Cr-MIL-100(Fe),Solvothermal,2550.0,3.15,13.6,150,9,4,95.5,97.0,Excellent
+CAT-226,Co/ZnO-Al2O3,Co-precipitation,100.3,0.13,1.5,490,92,23,29.0,21.5,Poor
+CAT-227,Pd/AC-CNT,Impregnation,520.4,0.65,5.2,340,29,12,72.0,74.5,Good
+CAT-228,MOF-74(Cr-Fe),Solvothermal,1780.8,2.1,10.3,215,13,8,88.0,89.0,Good
+CAT-229,Ni/CNT-Graphene,Impregnation,700.2,0.9,6.2,330,35,14,70.5,73.0,Good
+CAT-230,Pt-Fe-Co/C,Wet chemical,1200.9,1.45,8.3,100,5,3,98.0,99.3,Excellent
+CAT-231,UiO-67-TDC,Solvothermal,1450.5,1.7,9.1,190,16,6,91.8,93.5,Excellent
+CAT-232,Fe/SBA-15-CNT,Impregnation,200.1,0.25,2.8,450,78,21,46.0,41.0,Poor
+CAT-233,ZIF-12,Hydrothermal,1300.7,1.5,8.2,205,14,7,84.5,86.0,Good
+CAT-234,V2O5/Al2O3-SiO2,Impregnation,430.6,0.53,4.6,445,75,20,52.5,39.5,Poor
+CAT-235,Cr-MOF-90,Solvothermal,1700.0,2.0,10.1,210,14,8,89.5,91.0,Excellent
+CAT-236,CuO/Zeolite,Ion exchange,130.3,0.16,1.9,465,85,22,35.0,29.5,Poor
+CAT-237,Pd/TiO2-CeO2,Wet chemical,400.5,0.5,4.5,350,30,13,70.0,72.5,Good
+CAT-238,MOF-74(Mn-Fe),Solvothermal,1750.2,02.05,10.2,220,13,9,88.8,89.8,Good
+CAT-239,Ni/CNT-graphene oxide,Impregnation,680.8,0.88,5.9,340,37,14,67.0,70.0,Good
+CAT-240,Pt-Co-Ni/C,Wet chemical,1250.6,1.5,8.6,95,4,2,98.8,99.7,Excellent
+CAT-241,Zr-MOF-808-BPDC,Solvothermal,1750.5,02.05,10.4,190,16,6,91.2,93.0,Excellent
+CAT-242,Au/Zeolite,Ion exchange,100.1,0.13,1.5,490,95,23,28.5,20.5,Poor
+CAT-243,ZIF-8(Fe),Hydrothermal,1500.7,1.75,9.2,200,13,7,87.5,89.0,Good
+CAT-244,W/CNT,Impregnation,380.6,0.45,4.3,430,78,20,53.5,41.5,Poor
+CAT-245,Cr-MIL-101(V)-NH2,Solvothermal,2900.0,3.6,14.8,140,8,4,97.5,99.0,Excellent
+CAT-246,Co/SBA-15,Impregnation,300.3,0.38,3.7,400,65,17,45.5,35.5,Poor
+CAT-247,Rh/Zeolite,Ion exchange,450.5,0.55,4.6,335,26,11,74.0,76.5,Good
+CAT-248,MOF-74(Mg-Zn),Solvothermal,1700.8,2.0,10.0,210,14,8,88.2,89.3,Good
+CAT-249,Ni/Carbon Spheres,Hydrothermal,550.2,0.7,5.0,350,42,15,65.0,68.5,Good
+CAT-250,Pt-Fe-Rh/C,Wet chemical,1320.7,1.55,8.9,90,3,2,99.7,99.9,Excellent
+CAT-251,UiO-66-NDC,Solvothermal,1280.5,1.5,8.5,185,15,5,92.5,94.0,Excellent
+CAT-252,Fe/Zeolite,Ion exchange,250.1,0.3,3.3,450,75,20,41.0,36.0,Poor
+CAT-253,ZIF-8(Ni-Co),Hydrothermal,1600.7,1.85,9.7,205,14,7,88.0,89.5,Good
+CAT-254,V2O5/TiO2-CeO2,Impregnation,400.6,0.5,4.5,410,68,18,61.5,54.0,Average
+CAT-255,Cr-MOF-200,Solvothermal,2400.0,3.0,13.0,165,11,5,94.0,95.5,Excellent
+CAT-256,CuO/Fe2O3-Al2O3,Co-precipitation,180.3,0.22,2.5,440,70,19,40.5,36.0,Poor
+CAT-257,Pd/CNT-Graphene,Wet chemical,600.5,0.75,5.5,325,28,11,73.5,76.0,Good
+CAT-258,MOF-74(Co-Mn),Solvothermal,1750.8,02.05,10.3,220,13,9,89.0,90.0,Excellent
+CAT-259,Ni/Carbon Films,PVD,150.2,0.18,2.0,380,55,16,58.0,48.5,Poor
+CAT-260,Pt-Fe-Ir/C,Wet chemical,1350.6,1.6,9.0,90,3,2,99.8,99.9,Excellent
+CAT-261,Zr-MOF-808-NDC,Solvothermal,1800.5,2.1,10.5,190,16,6,91.5,93.2,Excellent
+CAT-262,Cu/TiO2-CeO2,Impregnation,250.1,0.3,3.3,430,72,19,43.5,38.0,Poor
+CAT-263,MIL-53(Fe),Solvothermal,1200.7,1.4,8.0,205,14,7,84.0,85.5,Good
+CAT-264,Au/CNT-Graphene,Deposition-Precipitation,150.9,0.19,2.2,460,80,20,36.0,31.0,Poor
+CAT-265,ZIF-14,Hydrothermal,1300.7,1.5,8.3,215,12,7,85.0,86.5,Good
+CAT-266,Fe/ZnO-Al2O3,Co-precipitation,90.4,0.12,1.4,495,95,23,28.0,20.0,Poor
+CAT-267,Co-MOF-525,Solvothermal,2150.5,2.6,12.0,170,18,6,94.5,96.0,Excellent
+CAT-268,Ni/MWCNTs-GO,Impregnation,720.9,0.92,6.3,320,35,13,71.0,73.5,Good
+CAT-269,Pd/C-SiO2,Wet chemical,550.2,0.7,5.0,355,32,14,69.0,71.5,Good
+CAT-270,MOF-521,Solvothermal,2050.1,2.45,11.6,165,17,5,93.0,94.5,Excellent
+CAT-271,Pt/Al2O3-C,Impregnation,380.5,0.48,4.2,370,50,16,63.0,57.5,Average
+CAT-272,UiO-66-BDC,Solvothermal,1200.5,1.45,8.0,175,14,5,91.5,93.0,Excellent
+CAT-273,V2O5/SBA-15-CNT,Impregnation,500.6,0.62,5.1,405,62,18,60.5,53.0,Average
+CAT-274,Co-ZIF-7,Hydrothermal,1450.3,1.7,9.0,205,14,7,86.5,88.0,Good
+CAT-275,Fe-MIL-53,Solvothermal,1350.1,1.55,8.5,210,14,8,85.5,87.0,Good
+CAT-276,Ni/AC-Zeolite,Impregnation,420.9,0.52,4.5,360,45,15,65.5,61.0,Average
+CAT-277,Rh/TiO2-SiO2,Impregnation,480.4,0.6,5.0,340,28,11,74.5,77.0,Good
+CAT-278,MOF-74(Ni-Zn),Solvothermal,1720.8,2.0,10.1,200,15,6,88.0,89.5,Good
+CAT-279,Pd/Zeolite-C,Ion exchange,400.2,0.5,4.5,350,30,14,70.0,72.5,Good
+CAT-280,Pt-Ru-Fe/C,Wet chemical,1250.7,1.5,8.6,100,5,3,98.0,99.3,Excellent
+CAT-281,Zr-MOF-601,Solvothermal,1700.5,2.0,10.1,195,16,6,91.0,92.8,Excellent
+CAT-282,Cu/Al2O3-SiO2,Co-precipitation,180.1,0.22,2.5,450,78,21,39.5,35.0,Poor
+CAT-283,ZIF-8(Au),Wet chemical,1250.7,1.45,8.2,190,12,7,86.0,87.5,Good
+CAT-284,W/AC-Zeolite,Impregnation,360.6,0.42,4.0,430,75,20,54.0,42.0,Poor
+CAT-285,Cr-MIL-101(Al),Solvothermal,2700.0,3.35,14.0,150,9,4,96.0,97.5,Excellent
+CAT-286,Co/MWCNTs,Impregnation,350.3,0.42,4.0,380,55,16,56.0,46.0,Poor
+CAT-287,Rh/CNT-Graphene,Impregnation,650.4,0.85,5.8,310,25,10,75.0,77.5,Good
+CAT-288,MOF-74(Fe-Ni),Solvothermal,1750.8,02.05,10.2,220,13,9,88.5,89.5,Good
+CAT-289,Ni/Graphene Nanoribbons,Hydrothermal,700.2,0.9,6.2,320,35,14,70.0,72.5,Good
+CAT-290,Pt-Pd-Fe/C,Wet chemical,1300.9,1.55,8.8,105,6,3,98.5,99.6,Excellent
+CAT-291,UiO-67-BDC,Solvothermal,1400.5,1.65,9.0,180,15,5,92.0,93.8,Excellent
+CAT-292,Fe/AC-Zeolite,Impregnation,280.1,0.35,3.6,440,70,19,40.0,35.5,Poor
+CAT-293,ZIF-8(Pd),Wet chemical,1350.7,1.6,8.8,195,13,7,87.0,88.5,Good
+CAT-294,V2O5/Zeolite-C,Impregnation,460.6,0.58,4.8,420,70,19,55.0,44.0,Poor
+CAT-295,Cr-MOF-90(Ni),Solvothermal,1800.0,2.1,10.5,215,14,8,90.0,91.5,Excellent
+CAT-296,CuO/NiO,Co-precipitation,110.3,0.14,1.7,480,90,23,30.5,23.5,Poor
+CAT-297,Pd/MCM-41-C,Impregnation,650.5,0.85,5.8,340,30,13,72.5,75.0,Good
+CAT-298,MOF-74(Cu-Ni),Solvothermal,1700.2,2.0,10.0,205,14,8,87.5,88.5,Good
+CAT-299,Ni/Carbon Tubes,Hydrothermal,500.8,0.62,5.1,350,42,15,64.0,60.5,Average
+CAT-300,Pt-Au/C,Wet chemical,1380.7,1.65,9.2,90,3,2,99.9,99.9,Excellent
+CAT-301,Zr-MOF-800-BDC,Solvothermal,1600.5,1.8,9.5,190,15,5,90.5,92.0,Excellent
+CAT-302,Cu/MWCNTs,Hydrothermal,750.1,0.95,6.5,280,32,11,71.0,73.5,Good
+CAT-303,MIL-101(Cr)-Fe,Solvothermal,2600.0,3.2,13.8,155,10,4,95.5,97.0,Excellent
+CAT-304,Au/Graphene Oxide,Deposition-Precipitation,180.5,0.22,2.5,450,75,20,38.0,33.5,Poor
+CAT-305,ZIF-8(Rh),Wet chemical,1400.7,1.65,8.8,200,13,7,86.5,88.0,Good
+CAT-306,Fe/SBA-15-Zeolite,Impregnation,320.4,0.4,4.0,430,70,19,51.5,40.0,Poor
+CAT-307,Co-MOF-90,Solvothermal,1650.5,1.9,9.8,210,14,8,88.8,90.1,Excellent
+CAT-308,Ni/AC-CNT-Zeolite,Impregnation,580.9,0.72,5.3,345,39,15,68.0,71.0,Good
+CAT-309,Rh/Zeolite-C,Ion exchange,500.4,0.62,5.1,330,27,12,74.5,77.0,Good
+CAT-310,MOF-74(Mn-Ni),Solvothermal,1780.8,2.1,10.3,215,13,9,88.0,89.0,Good
+CAT-311,Pt/SiO2-C,Impregnation,420.5,0.52,4.5,360,45,16,65.0,61.5,Average
+CAT-312,UiO-66-TDC-NH2,Solvothermal,1350.5,1.6,8.8,185,15,5,92.0,93.5,Excellent
+CAT-313,V2O5/CNTs-Graphene,Impregnation,550.6,0.7,5.5,395,60,17,62.5,56.0,Average
+CAT-314,Co-ZIF-11,Hydrothermal,1400.3,1.65,8.8,200,13,7,85.5,87.0,Good
+CAT-315,Fe-MIL-100,Solvothermal,2200.1,2.8,12.5,170,12,5,93.5,95.0,Excellent
+CAT-316,Ni/Graphene-Zeolite,Impregnation,650.9,0.85,5.8,335,38,14,69.5,72.0,Good
+CAT-317,Pd/Al2O3-C,Impregnation,580.2,0.72,5.3,350,30,13,71.5,74.0,Good
+CAT-318,MIL-101(Cr)-Al,Solvothermal,2800.0,3.5,14.5,150,9,4,96.5,98.0,Excellent
+CAT-319,Ru/MWCNTs,Hydrothermal,450.5,0.55,4.6,340,28,11,73.0,75.5,Good
+CAT-320,Cu/Zeolite-C,Ion exchange,220.1,0.28,3.0,460,82,21,38.5,34.0,Poor
+CAT-321,Zr-MOF-808-TDC,Solvothermal,1850.4,2.2,10.7,180,17,5,92.0,93.8,Excellent
+CAT-322,Au/TiO2-C,Deposition-Precipitation,160.9,0.2,2.3,440,70,19,39.0,34.5,Poor
+CAT-323,ZIF-8(Ni-Fe),Hydrothermal,1550.7,1.8,9.5,205,14,7,87.5,89.0,Good
+CAT-324,W/SBA-15,Impregnation,400.6,0.5,4.5,420,70,19,56.0,45.0,Poor
+CAT-325,Cr-MOF-5,Solvothermal,2300.0,2.9,12.8,170,12,5,93.5,95.0,Excellent
+CAT-326,Co/Zeolite-C,Ion exchange,320.3,0.4,4.0,390,58,17,52.5,42.5,Poor
+CAT-327,Rh/Al2O3-C,Impregnation,520.4,0.65,5.2,320,26,11,74.0,76.5,Good
+CAT-328,MOF-74(Zn-Fe),Solvothermal,1700.8,2.0,10.0,210,14,8,88.2,89.3,Good
+CAT-329,Ni/Carbon Mesh,Hydrothermal,480.2,0.6,5.0,355,42,15,65.0,61.5,Average
+CAT-330,Pt-Pd-Rh/C,Wet chemical,1350.9,1.6,9.0,95,4,2,99.0,99.8,Excellent
+CAT-331,UiO-66-NDC-NH2,Solvothermal,1300.5,1.5,8.6,180,15,5,92.5,94.0,Excellent
+CAT-332,Fe/CNT-Zeolite,Impregnation,350.1,0.42,4.0,450,78,21,39.0,34.5,Poor
+CAT-333,ZIF-13,Hydrothermal,1450.7,1.7,9.0,200,13,7,86.0,87.5,Good
+CAT-334,V2O5/AC-Zeolite,Impregnation,480.6,0.6,5.0,435,72,19,53.0,40.5,Poor
+CAT-335,Cr-MIL-101(Al)-NH2,Solvothermal,2800.0,3.5,14.5,140,8,4,97.0,98.5,Excellent
+CAT-336,CuO/NiO-Fe2O3,Co-precipitation,150.3,0.19,2.1,470,85,22,33.5,27.5,Poor
+CAT-337,Pd/TiO2-C,Impregnation,480.5,0.6,5.0,350,30,13,71.0,73.5,Good
+CAT-338,MOF-74(Mg-Fe),Solvothermal,1750.2,02.05,10.2,215,14,8,88.5,89.5,Good
+CAT-339,Ni/Carbon Cloth,Impregnation,550.8,0.7,5.5,330,37,14,68.5,71.0,Good
+CAT-340,Pt-Fe-Co-Ni/C,Wet chemical,1400.9,1.65,9.2,90,3,2,99.9,99.9,Excellent
+CAT-341,Zr-MOF-800-NDC,Solvothermal,1550.5,1.75,9.4,195,16,6,90.0,91.5,Excellent
+CAT-342,Cu/SBA-15-CNT,Impregnation,600.1,0.75,5.5,300,35,12,70.5,73.0,Good
+CAT-343,MIL-101(Cr)-Co,Solvothermal,2650.0,3.25,13.8,155,10,4,95.8,97.2,Excellent
+CAT-344,Au/CNT-Zeolite,Deposition-Precipitation,140.5,0.18,2.1,460,80,21,35.5,30.5,Poor
+CAT-345,ZIF-8(V),Wet chemical,1300.7,1.5,8.5,190,12,7,86.0,87.5,Good
+CAT-346,Fe/TiO2-C,Impregnation,250.4,0.3,3.3,440,75,20,44.5,39.0,Poor
+CAT-347,Co-MOF-74-Ni,Solvothermal,1800.5,2.1,10.5,220,13,9,89.0,90.5,Excellent
+CAT-348,Ni/Zeolite-CNT,Impregnation,450.9,0.55,4.7,360,45,15,65.0,61.0,Average
+CAT-349,Rh/MWCNTs-GO,Impregnation,680.4,0.88,5.9,325,29,11,75.0,77.5,Good
+CAT-350,MOF-522,Solvothermal,2000.1,2.4,11.5,170,18,6,93.0,94.5,Excellent
+CAT-351,Pt/Graphene-Zeolite,Wet chemical,1180.5,1.4,8.2,105,6,3,97.5,99.0,Excellent
+CAT-352,UiO-66-NH2-COOH,Solvothermal,1250.7,1.5,8.3,180,15,5,92.0,93.5,Excellent
+CAT-353,V2O5/Al2O3-C,Impregnation,400.6,0.5,4.5,415,70,18,60.0,52.5,Average
+CAT-354,Co-ZIF-67-Fe,Hydrothermal,1700.3,2.0,10.0,205,14,7,89.5,91.0,Excellent
+CAT-355,Fe-MIL-101-NH2,Solvothermal,2350.1,2.95,13.0,165,11,5,94.5,96.0,Excellent
+CAT-356,Ni/CNT-Zeolite,Impregnation,520.9,0.65,5.2,340,39,14,67.5,70.0,Good
+CAT-357,Pd/AC-Fe2O3,Impregnation,550.2,0.7,5.0,355,32,13,71.5,74.0,Good
+CAT-358,MOF-74(Co-Zn),Solvothermal,1700.8,2.0,10.0,200,15,6,88.0,89.5,Good
+CAT-359,Rh/Carbon Nanofibers,Hydrothermal,600.4,0.75,5.5,315,28,11,75.5,78.0,Good
+CAT-360,Pt-Fe-Pd-Rh/C,Wet chemical,1450.9,1.7,9.5,90,3,2,99.9,99.9,Excellent
+CAT-361,Zr-MOF-808-BPDC-NH2,Solvothermal,1850.5,2.2,10.7,190,16,6,92.0,93.8,Excellent
+CAT-362,Cu/AC-Graphene,Hydrothermal,800.1,1.0,7.0,290,34,12,70.0,72.5,Good
+CAT-363,MIL-53(Fe)-NH2,Solvothermal,1250.7,1.45,8.2,210,14,7,84.5,86.0,Good
+CAT-364,Au/SiO2-C,Deposition-Precipitation,110.5,0.14,1.6,480,90,23,31.0,25.5,Poor
+CAT-365,ZIF-8(Co-Fe),Hydrothermal,1650.7,1.9,9.8,205,14,7,88.5,90.0,Excellent
+CAT-366,Fe/Al2O3-C,Impregnation,200.4,0.25,2.8,450,78,21,43.0,37.5,Poor
+CAT-367,Co-MOF-5-Fe,Solvothermal,2200.5,2.8,12.5,175,18,6,94.0,95.5,Excellent
+CAT-368,Ni/MWCNTs-Zeolite,Impregnation,600.9,0.75,5.5,330,37,14,68.0,70.5,Good
+CAT-369,Pd/Zeolite-CNT,Ion exchange,420.2,0.52,4.5,360,32,13,69.5,72.0,Good
+CAT-370,MOF-74(Zn-Cr),Solvothermal,1730.8,02.05,10.1,215,14,8,88.7,89.8,Good
+CAT-371,Pt/TiO2-C,Impregnation,450.5,0.55,4.7,370,50,16,63.5,58.0,Average
+CAT-372,UiO-67-TDC-BDC,Solvothermal,1500.5,1.75,9.2,190,16,6,91.5,93.2,Excellent
+CAT-373,V2O5/SBA-15-Zeolite,Impregnation,520.6,0.65,5.2,400,60,17,61.0,54.0,Average
+CAT-374,Co-ZIF-90,Hydrothermal,1550.3,1.8,9.5,210,14,8,87.5,89.0,Good
+CAT-375,Fe-MIL-47,Solvothermal,1400.1,1.65,8.8,205,14,7,86.5,88.0,Good
+CAT-376,Ni/AC-CNT-Graphene,Impregnation,750.9,0.95,6.5,325,35,14,70.0,72.5,Good
+CAT-377,Rh/TiO2-C,Impregnation,550.4,0.7,5.5,315,25,10,74.5,77.0,Good
+CAT-378,MOF-74(Co-Cr),Solvothermal,1780.8,2.1,10.3,220,13,9,89.0,90.0,Excellent
+CAT-379,Pd/CNTs-Graphene,Wet chemical,620.2,0.78,5.5,330,30,13,72.0,74.5,Good
+CAT-380,Pt-Ir-Rh/C,Wet chemical,1480.7,1.75,9.8,90,3,2,99.9,99.9,Excellent
+CAT-381,Zr-MOF-800-BPDC-NH2,Solvothermal,1650.5,1.9,9.8,195,16,6,90.5,92.0,Excellent
+CAT-382,Cu/Zeolite-CNT,Ion exchange,280.1,0.35,3.6,440,75,20,40.0,35.5,Poor
+CAT-383,ZIF-8(W),Wet chemical,1300.7,1.5,8.5,190,12,7,85.5,87.0,Good
+CAT-384,W/AC-CNT-Graphene,Impregnation,420.6,0.52,4.5,435,72,19,54.0,42.5,Poor
+CAT-385,Cr-MOF-808-NH2,Solvothermal,2250.0,2.85,12.6,160,11,5,94.0,95.5,Excellent
+CAT-386,Co/Al2O3-C,Impregnation,380.3,0.45,4.2,380,55,16,58.0,48.0,Poor
+CAT-387,Rh/Al2O3-Ceria,Impregnation,580.4,0.72,5.4,325,29,11,75.0,77.5,Good
+CAT-388,MOF-74(Mg-Ni),Solvothermal,1700.8,2.0,10.0,205,14,8,87.8,89.0,Good
+CAT-389,Ni/Carbon Dots,Hydrothermal,800.2,1.0,7.0,320,35,14,70.5,73.0,Good
+CAT-390,Pt-Ru-Fe-Rh/C,Wet chemical,1500.9,1.75,10.0,95,4,2,99.5,99.9,Excellent
+CAT-391,UiO-66-NDC-BDC,Solvothermal,1200.5,1.45,8.0,175,14,5,91.0,92.8,Excellent
+CAT-392,Fe/TiO2-CNT,Impregnation,250.1,0.3,3.3,450,78,21,41.0,36.0,Poor
+CAT-393,ZIF-15,Hydrothermal,1500.7,1.75,9.2,200,13,7,86.5,88.0,Good
+CAT-394,V2O5/AC-CNT,Impregnation,440.6,0.55,4.7,420,70,19,55.0,43.5,Poor
+CAT-395,Cr-MIL-101(Sc),Solvothermal,2600.0,3.2,13.8,160,11,5,95.0,96.5,Excellent
+CAT-396,CuO/ZnO-C,Co-precipitation,100.3,0.13,1.5,490,92,23,29.5,22.0,Poor
+CAT-397,Pd/Zeolite-MWCNTs,Ion exchange,450.5,0.55,4.6,335,26,11,73.0,75.5,Good
+CAT-398,MOF-74(Co-Fe-Ni),Solvothermal,1780.8,2.1,10.3,220,13,9,88.5,89.5,Good
+CAT-399,Ni/Carbon Nanotubes-GO,Impregnation,700.2,0.9,6.2,330,35,14,70.0,72.5,Good
+CAT-400,Pt-Pd-Au/C,Wet chemical,1550.6,1.8,10.2,90,3,2,99.8,99.9,Excellent
+CAT-401,Zr-MOF-525-NH2,Solvothermal,1850.5,2.2,10.7,185,17,5,92.0,93.8,Excellent
+CAT-402,Cu/AC-CNT,Hydrothermal,650.1,0.85,5.8,295,36,12,71.5,74.0,Good
+CAT-403,MIL-101(In)-NH2,Solvothermal,2750.0,3.4,14.2,150,9,4,96.5,98.0,Excellent
+CAT-404,Au/TiO2-Al2O3,Deposition-Precipitation,130.5,0.17,2.0,465,85,21,34.5,29.0,Poor
+CAT-405,ZIF-8(Ni-Cr),Hydrothermal,1500.7,1.75,9.2,205,14,7,87.0,88.5,Good
+CAT-406,Fe/SBA-15-CNT-Graphene,Impregnation,350.4,0.42,4.0,430,70,19,50.0,39.5,Poor
+CAT-407,Co-MOF-74-Fe,Solvothermal,1850.5,2.2,10.7,210,14,8,90.0,91.5,Excellent
+CAT-408,Ni/Hydrotalcite-CNT,Impregnation,380.9,0.48,4.2,360,45,15,63.0,57.5,Average
+CAT-409,Rh/Carbon Black,Wet chemical,550.4,0.7,5.0,320,26,10,74.0,76.5,Good
+CAT-410,MOF-523,Solvothermal,2100.1,2.5,11.8,165,17,5,93.5,95.0,Excellent
+CAT-411,Pt/Carbon Nanofibers,Wet chemical,1200.5,1.45,8.4,100,5,3,98.0,99.3,Excellent
+CAT-412,UiO-66-NH2-BDC,Solvothermal,1280.7,1.5,8.5,180,15,5,92.5,94.0,Excellent
+CAT-413,V2O5/Zeolite-MWCNTs,Impregnation,500.6,0.62,5.1,405,62,18,61.5,54.5,Average
+CAT-414,Co-ZIF-14,Hydrothermal,1350.3,1.6,8.8,200,13,7,85.5,87.0,Good
+CAT-415,Fe-MIL-101-BDC,Solvothermal,2400.1,3.0,13.0,165,11,5,94.0,95.5,Excellent
+CAT-416,Ni/AC-CNT-Zeolite-GO,Impregnation,680.9,0.88,5.9,335,38,14,68.5,71.0,Good
+CAT-417,Pd/Zeolite-MWCNTs-GO,Ion exchange,480.2,0.6,5.0,350,32,13,70.0,72.5,Good
+CAT-418,MIL-101(Cr)-Zn,Solvothermal,2650.0,3.25,13.8,155,10,4,95.5,97.0,Excellent
+CAT-419,Ru/Al2O3-Ceria,Impregnation,500.5,0.62,5.1,320,26,10,74.5,77.0,Good
+CAT-420,Cu/Zeolite-MWCNTs,Ion exchange,200.1,0.25,2.8,460,82,21,39.0,34.5,Poor
+CAT-421,Zr-MOF-808-NDC-NH2,Solvothermal,1900.5,2.3,11.0,190,16,6,92.5,94.0,Excellent
+CAT-422,Au/CNT-Graphene-Zeolite,Deposition-Precipitation,160.9,0.2,2.3,450,75,20,38.5,33.0,Poor
+CAT-423,ZIF-8(Pt-Au),Wet chemical,1450.7,1.7,9.1,200,13,7,87.5,89.0,Good
+CAT-424,W/TiO2-C,Impregnation,380.6,0.45,4.2,430,75,20,53.0,41.0,Poor
+CAT-425,Cr-MOF-5-NH2,Solvothermal,2350.0,2.95,13.0,170,12,5,94.0,95.5,Excellent
+CAT-426,Co/ZnO-C,Co-precipitation,120.3,0.15,1.8,470,85,22,32.0,26.0,Poor
+CAT-427,Rh/CNT-Graphene-Zeolite,Impregnation,700.4,0.9,6.2,315,25,10,75.0,77.5,Good
+CAT-428,MOF-74(Fe-Co),Solvothermal,1750.8,02.05,10.2,210,14,8,88.0,89.0,Good
+CAT-429,Ni/Carbon Films-CNT,PVD,200.2,0.25,2.8,370,50,16,59.0,50.0,Average
+CAT-430,Pt-Fe-Co-Ir/C,Wet chemical,1500.9,1.75,9.8,95,4,2,99.5,99.9,Excellent
+CAT-431,Zr-MOF-600-NH2,Solvothermal,1650.5,1.9,9.8,190,15,5,91.0,92.5,Excellent
+CAT-432,Fe/Zeolite-C,Ion exchange,320.1,0.4,4.0,440,70,19,41.5,36.5,Poor
+CAT-433,ZIF-16,Hydrothermal,1550.7,1.8,9.5,205,14,7,87.0,88.5,Good
+CAT-434,V2O5/SBA-15-C,Impregnation,450.6,0.55,4.7,430,75,20,52.0,39.0,Poor
+CAT-435,Cr-MIL-53-NH2,Solvothermal,1450.0,1.7,9.0,200,15,6,89.0,90.5,Excellent
+CAT-436,CuO/Al2O3-C,Co-precipitation,130.3,0.16,1.9,465,85,22,34.0,28.0,Poor
+CAT-437,Pd/MCM-41-CNT,Impregnation,700.5,0.9,6.2,330,30,13,72.5,75.0,Good
+CAT-438,MOF-74(Mg-Co),Solvothermal,1700.8,2.0,10.0,205,14,8,87.5,88.5,Good
+CAT-439,Ni/Carbon Spheres-CNT,Hydrothermal,600.2,0.75,5.5,340,39,14,68.0,70.5,Good
+CAT-440,Pt-Fe-Rh-Au/C,Wet chemical,1580.9,1.85,10.5,90,3,2,99.8,99.9,Excellent
+CAT-441,Zr-MOF-808-TDC-NH2,Solvothermal,1950.5,2.35,11.3,195,16,6,92.8,94.3,Excellent
+CAT-442,Cu/TiO2-CNT,Impregnation,300.1,0.38,3.9,430,70,19,43.0,37.5,Poor
+CAT-443,ZIF-17,Hydrothermal,1600.7,1.85,9.7,210,14,8,87.5,89.0,Good
+CAT-444,V2O5/AC-Zeolite-CNT,Impregnation,500.6,0.62,5.1,440,70,19,53.5,41.5,Poor
+CAT-445,Cr-MOF-71-Fe,Solvothermal,1700.0,2.0,10.1,215,14,8,89.5,91.0,Excellent
+CAT-446,Co/MWCNTs-C,Impregnation,400.3,0.5,4.5,390,58,17,54.0,44.0,Poor
+CAT-447,Rh/Zeolite-CNT,Ion exchange,520.4,0.65,5.2,330,27,11,74.0,76.5,Good
+CAT-448,MOF-74(Ni-Cr),Solvothermal,1780.8,2.1,10.3,220,13,9,88.0,89.0,Good
+CAT-449,Ni/Carbon Tubes-C,Hydrothermal,550.8,0.7,5.5,350,42,15,66.0,62.5,Average
+CAT-450,Pt-Fe-Ir-Au/C,Wet chemical,1650.9,1.9,11.0,90,3,2,99.9,99.9,Excellent
+CAT-451,Zr-MOF-525-BDC,Solvothermal,1900.5,2.3,11.0,185,17,5,92.5,94.0,Excellent
+CAT-452,Cu/AC-Zeolite,Impregnation,700.1,0.9,6.2,300,35,12,71.0,73.5,Good
+CAT-453,MIL-101(Cr)-Ni,Solvothermal,2700.0,3.35,14.0,155,10,4,96.0,97.5,Excellent
+CAT-454,Au/CNT-Zeolite-C,Deposition-Precipitation,150.5,0.19,2.2,460,80,21,37.0,32.0,Poor
+CAT-455,ZIF-8(V-Fe),Wet chemical,1400.7,1.65,8.8,195,13,7,86.0,87.5,Good
+CAT-456,Fe/TiO2-Al2O3,Impregnation,280.4,0.35,3.6,440,75,20,44.0,38.5,Poor
+CAT-457,Co-MOF-90-Fe,Solvothermal,1750.5,02.05,10.2,210,14,8,89.0,90.5,Excellent
+CAT-458,Ni/Hydrotalcite-Zeolite,Impregnation,420.9,0.52,4.5,360,45,15,64.0,58.5,Average
+CAT-459,Rh/Carbon Nanotubes,Hydrothermal,650.4,0.85,5.8,325,29,11,75.0,77.5,Good
+CAT-460,MOF-524,Solvothermal,2150.1,2.6,12.0,165,17,5,94.0,95.5,Excellent
+CAT-461,Pt/Carbon Cloth,Wet chemical,1150.5,1.4,8.1,105,6,3,97.5,99.0,Excellent
+CAT-462,UiO-66-NDC-BDC-NH2,Solvothermal,1350.7,1.6,8.8,185,15,5,92.0,93.5,Excellent
+CAT-463,V2O5/MWCNTs-C,Impregnation,550.6,0.7,5.5,395,60,17,62.0,55.5,Average
+CAT-464,Co-ZIF-16,Hydrothermal,1500.3,1.75,9.2,205,14,7,86.5,88.0,Good
+CAT-465,Fe-MIL-101-C,Solvothermal,2300.1,2.9,12.8,165,11,5,93.5,95.0,Excellent
+CAT-466,Ni/AC-CNT-Graphene-Zeolite,Impregnation,700.9,0.9,6.2,330,35,14,69.5,72.0,Good
+CAT-467,Pd/TiO2-Al2O3,Impregnation,580.2,0.72,5.3,350,30,13,71.0,73.5,Good
+CAT-468,MOF-74(Mg-Cr),Solvothermal,1700.8,2.0,10.0,215,14,8,87.5,88.5,Good
+CAT-469,Rh/Zeolite-MWCNTs,Ion exchange,550.4,0.7,5.5,340,28,11,74.5,77.0,Good
+CAT-470,Pt-Fe-Pd-Au/C,Wet chemical,1600.9,1.85,10.5,90,3,2,99.8,99.9,Excellent
+CAT-471,Zr-MOF-800-NDC-BDC,Solvothermal,1600.5,1.8,9.5,190,15,5,90.5,92.0,Excellent
+CAT-472,Cu/Zeolite-CNT-C,Ion exchange,350.1,0.42,4.0,440,70,19,41.0,36.0,Poor
+CAT-473,ZIF-18,Hydrothermal,1650.7,1.9,9.8,205,14,7,88.0,89.5,Good
+CAT-474,V2O5/AC-CNT-Graphene-Zeolite,Impregnation,600.6,0.75,5.5,400,60,17,62.5,56.0,Average
+CAT-475,Cr-MIL-101(V)-BDC,Solvothermal,2850.0,3.55,14.6,145,8,4,97.0,98.5,Excellent
+CAT-476,Co/Zeolite-C-CNT,Ion exchange,380.3,0.45,4.2,390,58,17,55.0,45.0,Poor
+CAT-477,Rh/CNT-Graphene-C,Impregnation,750.4,0.95,6.5,310,25,10,75.5,78.0,Good
+CAT-478,MOF-74(Fe-Cr),Solvothermal,1750.8,02.05,10.2,215,14,8,88.5,89.5,Good
+CAT-479,Ni/Carbon Mesh-CNT,Hydrothermal,550.2,0.7,5.5,340,39,14,67.5,70.0,Good
+CAT-480,Pt-Pd-Ir-Rh/C,Wet chemical,1700.9,2.0,11.5,90,3,2,99.9,99.9,Excellent
+CAT-481,Zr-MOF-600-BDC,Solvothermal,1700.5,2.0,10.1,195,16,6,91.0,92.8,Excellent
+CAT-482,Cu/SBA-15-C,Impregnation,650.1,0.85,5.8,300,35,12,71.5,74.0,Good
+CAT-483,ZIF-19,Hydrothermal,1700.7,2.0,10.0,205,14,7,88.5,90.0,Excellent
+CAT-484,W/Fe2O3-C,Impregnation,320.6,0.4,4.0,430,75,20,54.0,42.0,Poor
+CAT-485,Cr-MIL-53-BDC,Solvothermal,1500.0,1.75,9.0,200,15,6,89.5,91.0,Excellent
+CAT-486,Co/TiO2-C,Impregnation,300.3,0.38,3.7,400,65,17,55.5,45.5,Poor
+CAT-487,Rh/Alumina-Silica-C,Impregnation,600.4,0.75,5.5,320,26,11,74.0,76.5,Good
+CAT-488,MOF-74(Mg-Fe-Ni),Solvothermal,1750.8,02.05,10.2,215,14,8,88.2,89.3,Good
+CAT-489,Ni/Carbon Cloth-CNT,Impregnation,600.2,0.75,5.5,340,39,14,67.0,70.0,Good
+CAT-490,Pt-Pd-Rh-Au/C,Wet chemical,1750.9,02.05,11.8,90,3,2,99.9,99.9,Excellent
+CAT-491,Zr-MOF-808-NDC-BDC,Solvothermal,2000.5,2.4,11.5,190,16,6,93.0,94.5,Excellent
+CAT-492,Cu/MWCNTs-C,Hydrothermal,800.1,1.0,7.0,290,32,11,70.0,72.5,Good
+CAT-493,ZIF-20,Hydrothermal,1750.7,02.05,10.2,210,14,8,89.0,90.5,Excellent
+CAT-494,V2O5/Zeolite-CNT-C,Impregnation,580.6,0.72,5.3,420,70,19,54.5,43.0,Poor
+CAT-495,Cr-MOF-90-Fe-Ni,Solvothermal,1850.0,2.2,10.7,215,14,8,90.0,91.5,Excellent
+CAT-496,CuO/NiO-C,Co-precipitation,130.3,0.16,1.9,465,85,22,33.0,27.0,Poor
+CAT-497,Pd/Ceria-C,Impregnation,500.5,0.62,5.1,330,27,11,73.5,76.0,Good
+CAT-498,MOF-74(Co-Fe-Cr),Solvothermal,1800.8,2.1,10.3,220,13,9,88.5,89.5,Good
+CAT-499,Ni/Carbon Tubes-CNT,Hydrothermal,650.2,0.85,5.8,340,39,14,68.0,70.5,Good
+CAT-500,Pt-Rh-Au-Ir/C,Wet chemical,1800.9,2.15,12.0,90,3,2,99.9,99.9,Excellent

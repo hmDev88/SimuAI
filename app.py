@@ -25,7 +25,7 @@ from rag_query import retrieve_docs, call_llm, answer_with_rag
 # Paths & config
 # ------------------------------------------------
 NOTEBOOK_PATH = "Catalyst.ipynb"
-CSV_PATH = "Catalyst Database.csv"
+CSV_PATH = "data.csv"
 
 
 # ------------------------------------------------
