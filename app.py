@@ -256,7 +256,7 @@ if not os.path.exists(CSV_PATH):
     st.error(f"Missing data file: {CSV_PATH}")
     st.stop()
 
-df = load_data(CSV_PATH)
+df = load_data()
 
 tab1, tab2 = st.tabs(
     ["⚙️ Catalyst Explorer & Trainer", "🧪 RAG QA (Local / Gemini)"]
