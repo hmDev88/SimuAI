@@ -60,18 +60,33 @@ def load_nb_namespace(nb_path: str):
 
 @st.cache_data
 def load_data():
-    """Load and merge multiple CSVs with robust encoding handling."""
+    """Load and merge multiple CSVs with robust encoding & parsing."""
     df_list = []
 
     def read_csv_robust(path: str):
-        # Try a few common encodings before giving up
+        from pandas.errors import ParserError
+
+        # Try several encodings with default engine first
         for enc in ["utf-8", "utf-8-sig", "latin1"]:
             try:
                 return pd.read_csv(path, encoding=enc)
             except UnicodeDecodeError:
                 continue
-        # Final fallback: replace invalid characters
-        return pd.read_csv(path, encoding="latin1", errors="replace")
+            except ParserError:
+                # if the structure is messy, try more flexible engine below
+                break
+
+        # Try again with the Python engine and skip bad lines
+        try:
+            return pd.read_csv(
+                path,
+                encoding="latin1",
+                engine="python",        # more forgiving parser
+                on_bad_lines="skip",    # skip malformed rows
+            )
+        except Exception as e:
+            # Final fallback: surface a small dataframe with error info
+            raise RuntimeError(f"Failed to parse CSV '{path}': {e}")
 
     # OLD dataset
     if os.path.exists("Catalyst Database.csv"):
@@ -81,7 +96,7 @@ def load_data():
     if os.path.exists("mof_database_2023_2025_synthetic_12000.csv"):
         df_list.append(read_csv_robust("mof_database_2023_2025_synthetic_12000.csv"))
 
-    # NEW dataset 2 (change the name to your actual second file)
+    # NEW dataset 2 (change filename to your real second file if needed)
     if os.path.exists("convertcsv.csv"):
         df_list.append(read_csv_robust("convertcsv.csv"))
 
@@ -90,6 +105,7 @@ def load_data():
 
     df = pd.concat(df_list, ignore_index=True)
     return df
+
 
 
 
