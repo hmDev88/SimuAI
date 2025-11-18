@@ -33,16 +33,12 @@ CSV_PATH = "data.csv"
 # ------------------------------------------------
 # INTERNAL RAG ENGINE (Replaces rag_config/rag_query)
 # ------------------------------------------------
-# We use TF-IDF to simulate embeddings and retrieval so the app 
-# runs standalone without external API keys or heavy models.
-
 @st.cache_resource
 def get_rag_engine(df):
     """
     Builds a lightweight internal search engine using TF-IDF.
     """
     # 1. Create text representation of each row
-    # We combine relevant columns to form the "Document" content
     docs = df.apply(lambda x: (
         f"Catalyst: {x.get('Catalyst ID', '')}, {x.get('Composition', '')}. "
         f"Method: {x.get('Synthesis Method', '')}. "
@@ -52,6 +48,10 @@ def get_rag_engine(df):
     
     # 2. Vectorize
     vectorizer = TfidfVectorizer(stop_words='english')
+    # Handle empty data case
+    if not docs:
+        return vectorizer, None, []
+        
     tfidf_matrix = vectorizer.fit_transform(docs)
     
     return vectorizer, tfidf_matrix, docs
@@ -69,6 +69,9 @@ def retrieve_docs(question, top_k=5, mode="all"):
     df = load_data()
     vectorizer, matrix, text_docs = get_rag_engine(df)
     
+    if matrix is None:
+        return []
+
     # Query Vector
     query_vec = vectorizer.transform([question])
     
@@ -80,15 +83,13 @@ def retrieve_docs(question, top_k=5, mode="all"):
     
     results = []
     for idx in top_indices:
-        # We simulate metadata for the charts
         row = df.iloc[idx]
         sim_score = sims[idx]
         
         # Assign a fake "chunk_type" based on data for the chart
-        # In a real app, this comes from the source document structure
         perf = row.get('Performance', 'Average')
         if perf == 'Excellent': c_type = "catalyst_card"
-        elif row.get('Surface Area (m2/g)', 0) > 1500: c_type = "mechanism" # Arbitrary rule for demo
+        elif row.get('Surface Area (m2/g)', 0) > 1500: c_type = "mechanism" 
         else: c_type = "background"
         
         if mode != "all" and mode not in c_type:
@@ -105,6 +106,9 @@ def call_llm(question, docs):
     """
     Mock LLM response for demo purposes.
     """
+    if not docs:
+        return "No relevant data found in the dataset."
+        
     return (
         f"**Simulated Gemini Response:**\n\n"
         f"Based on the {len(docs)} retrieved records, the dataset contains several catalysts relevant to '{question}'. "
@@ -124,11 +128,10 @@ def load_nb_namespace(nb_path: str):
     ns = {}
     if not os.path.exists(nb_path):
         ns["__errors__"] = [f"Notebook '{nb_path}' not found. Using fallback functions."]
-        # define fallbacks so the UI doesn't break
-        ns["normalize_text"] = lambda x: x.strip().upper()
-        ns["detect_type"] = lambda x: "MOF" if "MOF" in x or "ZIF" in x else "Metal Oxide"
+        ns["normalize_text"] = lambda x: str(x).strip().upper()
+        ns["detect_type"] = lambda x: "MOF" if "MOF" in str(x) or "ZIF" in str(x) else "Metal Oxide"
         ns["extract_form"] = lambda x: "Nanoparticle"
-        ns["extract_metals"] = lambda x: ["Zr"] if "Zr" in x else ["Unknown"]
+        ns["extract_metals"] = lambda x: ["Zr"] if "Zr" in str(x) else ["Unknown"]
         ns["infer_structure"] = lambda x, y: "Crystalline"
         return ns
 
@@ -144,14 +147,23 @@ def load_nb_namespace(nb_path: str):
 
 @st.cache_data
 def load_data():
-    """Load main catalyst CSV."""
+    """Load main catalyst CSV with robust encoding handling."""
     if not os.path.exists(CSV_PATH):
-        # Return dummy data if file missing to prevent crash
         return pd.DataFrame({
             'Catalyst': ['Test'], 'Composition': ['A'], 'Performance': ['Good'], 
             'Conversion (%)': [50], 'Surface Area (m2/g)': [100]
         })
-    return pd.read_csv(CSV_PATH)
+    
+    # FIX: Try different encodings to prevent UnicodeDecodeError
+    try:
+        return pd.read_csv(CSV_PATH, encoding='utf-8')
+    except UnicodeDecodeError:
+        try:
+            # Latin1 handles most Windows/Excel files
+            return pd.read_csv(CSV_PATH, encoding='latin1')
+        except UnicodeDecodeError:
+            # Final attempt: replace weird characters
+            return pd.read_csv(CSV_PATH, encoding='utf-8', encoding_errors='replace')
 
 # ------------------------------------------------
 # RAG VISUALIZATION HELPERS
@@ -163,14 +175,9 @@ def summarize_chunk_types(docs):
     return counts
 
 def compute_similarity_scores(question, docs):
-    # In our mock engine, we already computed these. 
-    # We'll re-extract them from metadata or recompute if needed.
     return np.array([d.metadata.get("score", 0.5) for d in docs])
 
 def project_embeddings(question, docs):
-    """
-    Uses the global vectorizer to project texts into 2D space for plotting.
-    """
     if not docs: return None, None
     
     df = load_data()
@@ -179,7 +186,7 @@ def project_embeddings(question, docs):
     texts = [question] + [d.page_content for d in docs]
     vecs = vectorizer.transform(texts).toarray()
     
-    if vecs.shape[0] < 3: return None, None # Need enough points for PCA
+    if vecs.shape[0] < 3: return None, None 
     
     pca = PCA(n_components=2)
     coords = pca.fit_transform(vecs)
@@ -203,7 +210,6 @@ st.title("SimuAI – Li–CO₂ Catalyst Assistant")
 ns = load_nb_namespace(NOTEBOOK_PATH)
 df = load_data()
 
-# --- TAB LAYOUT ---
 tab1, tab2 = st.tabs(["⚙️ Catalyst Explorer & Trainer", "🧪 RAG QA (Local / Gemini)"])
 
 # ------------------------------------------------
@@ -215,7 +221,6 @@ with tab1:
     # Sidebar Filters
     with st.sidebar:
         st.header("Filters")
-        # Handle case where no object columns exist
         obj_cols = df.select_dtypes("object").columns
         if len(obj_cols) > 0:
             txt_col = st.selectbox("Search column", obj_cols)
@@ -229,7 +234,6 @@ with tab1:
         ranges = {}
         for c in selected_num:
             cmin, cmax = float(df[c].min()), float(df[c].max())
-            # Handle case where min == max
             if cmin == cmax:
                 ranges[c] = (cmin, cmax)
             else:
@@ -253,14 +257,12 @@ with tab1:
     # Catalyst Parser Section
     st.subheader("🔎 Catalyst Parser")
     
-    # Fallbacks are handled in load_nb_namespace, so we just retrieve them
     normalize_text = ns.get("normalize_text")
     detect_type = ns.get("detect_type")
     extract_form = ns.get("extract_form")
     extract_metals = ns.get("extract_metals")
     infer_structure = ns.get("infer_structure")
 
-    # Try to find a sensible default column for catalyst names
     cat_col_candidates = [c for c in df.columns if "ID" in c or "Catalyst" in c or "Composition" in c]
     cat_col_name = cat_col_candidates[0] if cat_col_candidates else df.columns[0]
 
@@ -303,7 +305,6 @@ with tab1:
         with c1:
             x_cols = st.multiselect("Feature columns (X)", cols[:-1], default=cols[3:-1] if len(cols)>4 else cols[:-1])
         with c2:
-            # Try to auto-select 'Performance' as target
             default_y_idx = cols.index('Performance') if 'Performance' in cols else len(cols)-1
             y_col = st.selectbox("Target column (y)", cols, index=default_y_idx)
 
@@ -311,11 +312,9 @@ with tab1:
             if not x_cols:
                 st.error("Select features!")
             else:
-                # Data Prep
                 X = df[x_cols].copy()
                 y = df[y_col].copy()
                 
-                # Simple encoding
                 X = pd.get_dummies(X)
                 X = X.fillna(0)
                 
@@ -325,7 +324,6 @@ with tab1:
                     label_mapping = {i: val for val, i in le.items()}
                     y = y.map(le)
                 
-                # Train/Test
                 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
                 
                 model = XGBClassifier(use_label_encoder=False, eval_metric='logloss')
@@ -336,14 +334,12 @@ with tab1:
                 
                 st.success(f"Training Complete! Accuracy: {acc:.1%}")
                 
-                # Metrics
                 col_a, col_b = st.columns(2)
                 with col_a:
                     st.markdown("**Confusion Matrix**")
                     cm = confusion_matrix(y_test, y_pred)
                     st.write(cm)
                 
-                # Download Predictions
                 res_df = pd.DataFrame({"Actual": y_test, "Predicted": y_pred})
                 if label_mapping:
                     res_df["Actual"] = res_df["Actual"].map(label_mapping)
@@ -364,37 +360,36 @@ with tab2:
             st.warning("Please enter a question.")
         else:
             with st.spinner("Analyzing database..."):
-                # Use our internal retrieval function
                 docs = retrieve_docs(question, top_k=5)
                 
-                # 1. Visualization: Similarity Heatmap
-                st.subheader("🎯 Document Relevance")
-                sims = compute_similarity_scores(question, docs)
-                
-                fig, ax = plt.subplots(figsize=(8, 1))
-                im = ax.imshow([sims], aspect='auto', cmap='Greens', vmin=0, vmax=1)
-                ax.set_yticks([])
-                ax.set_xticks(range(len(docs)))
-                ax.set_xticklabels([f"Doc {i+1}" for i in range(len(docs))])
-                plt.colorbar(im, orientation='horizontal')
-                st.pyplot(fig)
-                
-                # 2. Visualization: PCA Scatter
-                st.subheader("🗺️ Semantic Map")
-                q_coord, d_coords = project_embeddings(question, docs)
-                if q_coord is not None:
-                    fig2, ax2 = plt.subplots()
-                    ax2.scatter(d_coords[:,0], d_coords[:,1], label='Documents')
-                    ax2.scatter(q_coord[0], q_coord[1], c='red', marker='*', s=200, label='Query')
-                    for i, txt in enumerate(d_coords):
-                        ax2.annotate(f"Doc {i+1}", (d_coords[i,0], d_coords[i,1]))
-                    ax2.legend()
-                    ax2.set_title("TF-IDF PCA Projection")
-                    st.pyplot(fig2)
-                
-                # 3. Text Answer
-                st.subheader("📝 Generated Insights")
-                st.markdown(call_llm(question, docs))
-                
-                with st.expander("View Source Snippets"):
-                    st.markdown(build_extractive_answer(question, docs))
+                if not docs:
+                    st.error("No matching data found or database is empty.")
+                else:
+                    st.subheader("🎯 Document Relevance")
+                    sims = compute_similarity_scores(question, docs)
+                    
+                    fig, ax = plt.subplots(figsize=(8, 1))
+                    im = ax.imshow([sims], aspect='auto', cmap='Greens', vmin=0, vmax=1)
+                    ax.set_yticks([])
+                    ax.set_xticks(range(len(docs)))
+                    ax.set_xticklabels([f"Doc {i+1}" for i in range(len(docs))])
+                    plt.colorbar(im, orientation='horizontal')
+                    st.pyplot(fig)
+                    
+                    st.subheader("🗺️ Semantic Map")
+                    q_coord, d_coords = project_embeddings(question, docs)
+                    if q_coord is not None:
+                        fig2, ax2 = plt.subplots()
+                        ax2.scatter(d_coords[:,0], d_coords[:,1], label='Documents')
+                        ax2.scatter(q_coord[0], q_coord[1], c='red', marker='*', s=200, label='Query')
+                        for i, txt in enumerate(d_coords):
+                            ax2.annotate(f"Doc {i+1}", (d_coords[i,0], d_coords[i,1]))
+                        ax2.legend()
+                        ax2.set_title("TF-IDF PCA Projection")
+                        st.pyplot(fig2)
+                    
+                    st.subheader("📝 Generated Insights")
+                    st.markdown(call_llm(question, docs))
+                    
+                    with st.expander("View Source Snippets"):
+                        st.markdown(build_extractive_answer(question, docs))
