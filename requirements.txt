@@ -2,11 +2,10 @@ streamlit
 pandas
 numpy
 matplotlib
+nbformat
 scikit-learn
 xgboost
-langchain>=0.2
-langchain-community>=0.2
-langchain-text-splitters>=0.2
-chromadb
-sentence-transformers
+langchain-core
+langchain-community
 google-genai
+chromadb
