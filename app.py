@@ -96,7 +96,9 @@ def load_data():
     if os.path.exists("mof_database_2023_2025_synthetic_12000.csv"):
         df_list.append(read_csv_robust("mof_database_2023_2025_synthetic_12000.csv"))
 
-
+    # NEW dataset 2 (change filename to your real second file if needed)
+    if os.path.exists("convertcsv.csv"):
+        df_list.append(read_csv_robust("convertcsv.csv"))
 
     if not df_list:
         raise FileNotFoundError("No CSV files found to load.")
@@ -446,7 +448,7 @@ The app automatically encodes text columns and handles missing data.
                 X.columns = safe_cols
 
                 # ---------------------------------------------------
-                # 2) Clean y: drop NaNs, encode categories if needed
+                # 2) Clean y: drop NaNs, encode to 0..N-1 classes
                 # ---------------------------------------------------
                 y = y_raw.copy()
 
@@ -455,14 +457,24 @@ The app automatically encodes text columns and handles missing data.
                 X = X.loc[mask]
                 y = y.loc[mask]
 
-                label_mapping = None
+                # Convert object / categorical to category codes first
                 if (y.dtype == "object") or pd.api.types.is_categorical_dtype(y):
                     y = y.astype("category")
-                    label_mapping = {k: v for v, k in enumerate(y.cat.categories)}
+                    # categories_ might not be contiguous ints, but we handle next
                     y = y.cat.codes
 
-                # Convert to numpy array for safety
-                y = np.array(y)
+                # Now ALWAYS remap unique labels to 0..N-1
+                # This fixes the XGBoost error you saw.
+                unique_labels, y_encoded = np.unique(y, return_inverse=True)
+                y = y_encoded  # y is now in [0..num_classes-1]
+
+                # Save mapping so we can map back to original labels later
+                # orig_label -> encoded_index
+                label_mapping = {orig: idx for idx, orig in enumerate(unique_labels)}
+
+                # Convert to numpy array
+                y = np.array(y, dtype=int)
+
 
                 # ---------------------------------------------------
                 # 3) Check that we have enough samples and classes
