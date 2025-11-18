@@ -526,10 +526,14 @@ The app automatically encodes text columns and handles missing data.
                     colsample_bytree=1.0,
                     n_jobs=-1,
                 )
-                model.fit(X_train, y_train)
 
-                model.fit(X_train, y_train)
-                y_pred = model.predict(X_test)
+                # Convert to NumPy to avoid pandas/XGBoost dtype issues
+                X_train_np = X_train.to_numpy(dtype=np.float32)
+                X_test_np = X_test.to_numpy(dtype=np.float32)
+
+                model.fit(X_train_np, y_train)
+                y_pred = model.predict(X_test_np)
+
 
                 # Evaluate
                 acc = accuracy_score(y_test, y_pred)
@@ -594,7 +598,9 @@ The app automatically encodes text columns and handles missing data.
                 )
 
                 # Predict full dataset and download
-                y_all_pred = model.predict(X)
+                X_all_np = X.to_numpy(dtype=np.float32)
+                y_all_pred = model.predict(X_all_np)
+
                 if label_mapping:
                     inv_map = {v: k for k, v in label_mapping.items()}
                     y_all_pred = pd.Series(y_all_pred).map(inv_map)
