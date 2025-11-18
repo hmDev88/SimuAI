@@ -425,6 +425,20 @@ The app automatically encodes text columns and handles missing data.
                 X = pd.get_dummies(X_raw, dummy_na=True)
                 X = X.fillna(0)
 
+                                # ---------------------------------------------------
+                # Sanitize feature names for XGBoost
+                # XGBoost doesn't allow [, ], < in feature_names
+                # and expects them all to be strings.
+                # ---------------------------------------------------
+                safe_cols = []
+                for col in X.columns:
+                    c = str(col)
+                    for bad in ["[", "]", "<", ">", "{", "}", " "]:
+                        c = c.replace(bad, "_")
+                    safe_cols.append(c)
+
+                X.columns = safe_cols
+
                 # ---------------------------------------------------
                 # 2) Clean y: drop NaNs, encode categories if needed
                 # ---------------------------------------------------
