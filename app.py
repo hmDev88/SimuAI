@@ -1,6 +1,4 @@
 import os
-from dotenv import load_dotenv
-load_dotenv() 
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -8,8 +6,6 @@ import matplotlib.pyplot as plt
 import nbformat
 from collections import Counter
 from sklearn.decomposition import PCA
-from langchain_core.documents import Document
-
 
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import (
@@ -20,9 +16,10 @@ from sklearn.metrics import (
 )
 from xgboost import XGBClassifier
 
-# RAG pipeline
+# RAG pipeline (clean RAG-skeleton)
 from rag_config import get_embedding_model
 from rag_query import retrieve_docs, call_llm, answer_with_rag
+
 
 # ------------------------------------------------
 # Paths & config
@@ -32,16 +29,21 @@ CSV_PATH = "Catalyst Database.csv"
 
 
 # ------------------------------------------------
-# Helpers: notebook loading & data
+# Notebook loader
 # ------------------------------------------------
 @st.cache_resource
 def load_nb_namespace(nb_path: str):
-    """Executes code cells from a notebook and returns its namespace."""
+    """
+    Execute code cells from a notebook
+    and return the namespace dictionary.
+    """
     ns = {}
     if not os.path.exists(nb_path):
         ns.setdefault("__errors__", []).append(f"Notebook not found at: {nb_path}")
         return ns
+
     nb = nbformat.read(nb_path, as_version=4)
+
     for cell in nb.cells:
         if cell.cell_type == "code":
             src = "\n".join(
@@ -55,68 +57,23 @@ def load_nb_namespace(nb_path: str):
                 exec(compile(src, nb_path, "exec"), ns)
             except Exception as e:
                 ns.setdefault("__errors__", []).append(repr(e))
+
     return ns
 
 
+# ------------------------------------------------
+# CSV Loader
+# ------------------------------------------------
 @st.cache_data
 def load_data():
-    """Load and merge multiple CSVs with robust encoding & parsing."""
-    df_list = []
+    """Load main catalyst CSV."""
+    return pd.read_csv(CSV_PATH)
 
-    def read_csv_robust(path: str):
-        from pandas.errors import ParserError
-
-        # Try several encodings with default engine first
-        for enc in ["utf-8", "utf-8-sig", "latin1"]:
-            try:
-                return pd.read_csv(path, encoding=enc)
-            except UnicodeDecodeError:
-                continue
-            except ParserError:
-                # if the structure is messy, try more flexible engine below
-                break
-
-        # Try again with the Python engine and skip bad lines
-        try:
-            return pd.read_csv(
-                path,
-                encoding="latin1",
-                engine="python",        # more forgiving parser
-                on_bad_lines="skip",    # skip malformed rows
-            )
-        except Exception as e:
-            # Final fallback: surface a small dataframe with error info
-            raise RuntimeError(f"Failed to parse CSV '{path}': {e}")
-
-    # OLD dataset
-    if os.path.exists("Catalyst Database.csv"):
-        df_list.append(read_csv_robust("Catalyst Database.csv"))
-
-    # NEW dataset 1
-    if os.path.exists("mof_database_2023_2025_synthetic_12000.csv"):
-        df_list.append(read_csv_robust("mof_database_2023_2025_synthetic_12000.csv"))
-
-    # NEW dataset 2 (change filename to your real second file if needed)
-    if os.path.exists("convertcsv.csv"):
-        df_list.append(read_csv_robust("convertcsv.csv"))
-
-    if not df_list:
-        raise FileNotFoundError("No CSV files found to load.")
-
-    df = pd.concat(df_list, ignore_index=True)
-    return df
-
-
-
-
-
-
-
-
-
-
+# ------------------------------------------------
+# Extractive (local) answer builder
+# ------------------------------------------------
 def build_extractive_answer(question: str, docs):
-    """Local, LLM-free extractive answer from retrieved docs."""
+    """Local RAG (no LLM): extract structured bullet-points from retrieved docs."""
     if not docs:
         return "No documents retrieved."
 
@@ -126,6 +83,8 @@ def build_extractive_answer(question: str, docs):
         meta = d.metadata or {}
         ctype = (meta.get("chunk_type") or "").lower()
         text = (d.page_content or "").strip()
+
+        # Short preview = first 1–2 sentences
         parts = text.split(". ")
         short = ". ".join(parts[:2]).strip()
 
@@ -163,16 +122,16 @@ def build_extractive_answer(question: str, docs):
         out.append("")
 
     if not any([catalysts, rules, mech, background]):
-        out.append(
-            "No clear structured information was extracted, but see retrieved context above."
-        )
+        out.append("No structured info found.")
 
     return "\n".join(out)
 
 
-
+# ------------------------------------------------
+# Chunk type summary
+# ------------------------------------------------
 def summarize_chunk_types(docs):
-    """Count how many retrieved chunks of each type we have."""
+    """Count retrieved chunks by category."""
     counts = Counter()
     for d in docs:
         meta = d.metadata or {}
@@ -181,103 +140,57 @@ def summarize_chunk_types(docs):
     return counts
 
 
+# ------------------------------------------------
+# Cosine similarity heatmap computation
+# ------------------------------------------------
 def compute_similarity_scores(question: str, docs):
-    """Compute true cosine similarity between query and each doc chunk."""
+    """Compute true cosine similarity between query and docs."""
     if not docs:
         return np.array([])
 
     emb = get_embedding_model()
-    # Query embedding
+
     q_vec = np.array(emb.embed_query(question))
-    # Doc embeddings
     doc_texts = [d.page_content or "" for d in docs]
     d_vecs = np.array(emb.embed_documents(doc_texts))
 
-    # Cosine similarity
     q_norm = np.linalg.norm(q_vec) + 1e-8
     d_norms = np.linalg.norm(d_vecs, axis=1) + 1e-8
+
     sims = (d_vecs @ q_vec) / (d_norms * q_norm)
-    return sims  # shape (k,)
+    return sims
 
 
+# ------------------------------------------------
+# PCA projection for semantic scatter plot
+# ------------------------------------------------
 def project_embeddings(question: str, docs):
-    """Project query + doc embeddings into 2D with PCA for visualization."""
     if not docs:
         return None, None
 
     emb = get_embedding_model()
+
     texts = [question] + [d.page_content or "" for d in docs]
-    vecs = np.array(emb.embed_documents(texts))  # (1 + k, dim)
+    vecs = np.array(emb.embed_documents(texts))
 
     if vecs.shape[0] < 2:
         return None, None
 
     pca = PCA(n_components=2)
-    coords = pca.fit_transform(vecs)  # (1 + k, 2)
-    q_coord = coords[0]
-    doc_coords = coords[1:]
-    return q_coord, doc_coords
+    coords = pca.fit_transform(vecs)
 
-
-def recommend_mof_candidates(anode: str, cathode: str, df: pd.DataFrame, top_k: int = 5):
-    """
-    Given anode + cathode chemical names and the catalyst dataframe,
-    return top-k MOF-like catalysts ranked by embedding similarity
-    to the query.
-    """
-    if "Catalyst" not in df.columns:
-        return pd.DataFrame()  # fail gracefully
-
-    # 1) Filter to MOF-like catalysts (very simple heuristic)
-    cat_series = df["Catalyst"].fillna("").astype(str)
-
-    mof_mask = cat_series.str.contains(
-        r"mof|zif|uio-|hkust", case=False, regex=True
-    )
-    mof_df = df[mof_mask].copy()
-
-    if mof_df.empty:
-        return pd.DataFrame()  # no MOFs found
-
-    # 2) Build a text representation for each MOF
-    texts = mof_df["Catalyst"].fillna("").astype(str).tolist()
-
-    # 3) Embed query + candidates
-    emb = get_embedding_model()
-
-    query_text = (
-        f"Best MOF catalyst for a Li-CO₂ battery "
-        f"with cathode {cathode} and anode {anode}. "
-        f"Prioritise stability, low overpotential and good CO₂ reduction activity."
-    )
-    q_vec = np.array(emb.embed_query(query_text))
-
-    cand_vecs = np.array(emb.embed_documents(texts))
-
-    # 4) Cosine similarity
-    q_norm = np.linalg.norm(q_vec) + 1e-8
-    c_norms = np.linalg.norm(cand_vecs, axis=1) + 1e-8
-    sims = (cand_vecs @ q_vec) / (c_norms * q_norm)  # shape (n_candidates,)
-
-    # 5) Sort and keep top-k
-    order = np.argsort(-sims)  # descending
-    top_idx = order[:top_k]
-    top_sims = sims[top_idx]
-
-    result = mof_df.iloc[top_idx].copy()
-    result["similarity"] = top_sims
-
-    return result
+    return coords[0], coords[1:]
 
 # ------------------------------------------------
 # Streamlit page setup
 # ------------------------------------------------
 st.set_page_config(
-    page_title="SimuAI – Li–CO₂ Catalyst Assistant", layout="wide"
+    page_title="SimuAI – Li–CO₂ Catalyst Assistant",
+    layout="wide",
 )
 st.title("SimuAI – Li–CO₂ Catalyst Assistant")
 
-# load notebook namespace & CSV
+# Load notebook namespace & CSV
 ns = load_nb_namespace(NOTEBOOK_PATH)
 nb_errors = ns.get("__errors__", [])
 
@@ -299,13 +212,16 @@ with tab1:
         "Filter catalysts, parse names, train models, and download classified results."
     )
 
+    # ----------------------------
     # Sidebar: Filters
+    # ----------------------------
     with st.sidebar:
         st.header("Filters")
         txt_col = st.selectbox(
             "Search column", df.select_dtypes("object").columns
         )
         query = st.text_input("Contains text")
+
         num_cols = df.select_dtypes("number").columns
         selected_num = st.multiselect(
             "Numeric filters", num_cols, default=list(num_cols)
@@ -314,6 +230,7 @@ with tab1:
         for c in selected_num:
             cmin, cmax = float(df[c].min()), float(df[c].max())
             ranges[c] = st.slider(c, cmin, cmax, (cmin, cmax))
+
         show_cols = st.multiselect(
             "Columns to show", list(df.columns), default=list(df.columns)
         )
@@ -329,7 +246,9 @@ with tab1:
     st.write(f"{len(filtered)}/{len(df)} rows")
     st.dataframe(filtered, use_container_width=True)
 
-    # Parsing
+    # ----------------------------
+    # Catalyst Parser (from notebook)
+    # ----------------------------
     st.subheader("🔎 Catalyst Parser")
 
     normalize_text = ns.get("normalize_text")
@@ -373,6 +292,7 @@ with tab1:
             )
         except Exception as e:
             parsed["error"] = repr(e)
+
     st.json(parsed if parsed else {"info": "Enter or select a catalyst name"})
 
     if nb_errors:
@@ -380,7 +300,9 @@ with tab1:
             for e in nb_errors:
                 st.code(e)
 
+    # ----------------------------
     # Model Trainer
+    # ----------------------------
     st.subheader("⚙️ Train Machine Learning Model")
 
     st.markdown(
@@ -416,124 +338,36 @@ The app automatically encodes text columns and handles missing data.
                 X_raw = df[x_cols].copy()
                 y_raw = df[y_col].copy()
 
-
-                # ---------------------------------------------------
-                # Remove non-useful or problematic columns (e.g. URLs)
-                # ---------------------------------------------------
-                X_raw = X_raw.drop(
-                    columns=[col for col in X_raw.columns if "url" in col.lower()],
-                    errors="ignore"
-)
-                # ---------------------------------------------------
-                # 1) Clean X
-                # ---------------------------------------------------
+                # Clean X
                 for c in X_raw.columns:
                     if pd.api.types.is_bool_dtype(X_raw[c]):
                         X_raw[c] = X_raw[c].astype(int)
                 X = pd.get_dummies(X_raw, dummy_na=True)
                 X = X.fillna(0)
 
-                                # ---------------------------------------------------
-                # Sanitize feature names for XGBoost
-                # XGBoost doesn't allow [, ], < in feature_names
-                # and expects them all to be strings.
-                # ---------------------------------------------------
-                safe_cols = []
-                for col in X.columns:
-                    c = str(col)
-                    for bad in ["[", "]", "<", ">", "{", "}", " "]:
-                        c = c.replace(bad, "_")
-                    safe_cols.append(c)
-
-                X.columns = safe_cols
-
-                # ---------------------------------------------------
-                # 2) Clean y: drop NaNs, encode to 0..N-1 classes
-                # ---------------------------------------------------
+                # Clean y
                 y = y_raw.copy()
-
-                # Drop rows where y is NaN
-                mask = ~pd.isna(y)
-                X = X.loc[mask]
-                y = y.loc[mask]
-
-                # Convert object / categorical to category codes first
-                if (y.dtype == "object") or pd.api.types.is_categorical_dtype(y):
+                label_mapping = None
+                if (
+                    y.dtype == "object"
+                    or pd.api.types.is_categorical_dtype(y)
+                ):
                     y = y.astype("category")
-                    # categories_ might not be contiguous ints, but we handle next
+                    label_mapping = {
+                        k: v for v, k in enumerate(y.cat.categories)
+                    }
                     y = y.cat.codes
 
-                # Now ALWAYS remap unique labels to 0..N-1
-                # This fixes the XGBoost error you saw.
-                unique_labels, y_encoded = np.unique(y, return_inverse=True)
-                y = y_encoded  # y is now in [0..num_classes-1]
+                # Split data
+                X_train, X_test, y_train, y_test = train_test_split(
+                    X,
+                    y,
+                    test_size=test_size,
+                    random_state=42,
+                    stratify=y if len(np.unique(y)) > 1 else None,
+                )
 
-                # Save mapping so we can map back to original labels later
-                # orig_label -> encoded_index
-                label_mapping = {orig: idx for idx, orig in enumerate(unique_labels)}
-
-                # Convert to numpy array
-                y = np.array(y, dtype=int)
-
-
-                # ---------------------------------------------------
-                # 3) Check that we have enough samples and classes
-                # ---------------------------------------------------
-                if len(y) < 5:
-                    st.error(
-                        "Not enough labelled samples after cleaning to train a model "
-                        f"(got {len(y)} samples). Try a different target column or filter."
-                    )
-                    st.stop()
-
-                unique_classes = np.unique(y)
-                if len(unique_classes) < 2:
-                    st.error(
-                        "The target column has only one class after cleaning. "
-                        "XGBoost needs at least two classes to train.\n\n"
-                        f"Unique labels found: {unique_classes}"
-                    )
-                    st.stop()
-
-                # ---------------------------------------------------
-                # 4) Split data with safe stratification
-                # ---------------------------------------------------
-                unique, counts = np.unique(y, return_counts=True)
-                stratify_arg = None
-                if len(unique) > 1 and counts.min() >= 2:
-                    stratify_arg = y
-
-                try:
-                    X_train, X_test, y_train, y_test = train_test_split(
-                        X,
-                        y,
-                        test_size=test_size,
-                        random_state=42,
-                        stratify=stratify_arg,
-                    )
-                except ValueError:
-                    # Fallback: no stratification
-                    X_train, X_test, y_train, y_test = train_test_split(
-                        X,
-                        y,
-                        test_size=test_size,
-                        random_state=42,
-                        stratify=None,
-                    )
-
-                # ---------------------------------------------------
-                # 5) Final guard before training
-                # ---------------------------------------------------
-                if len(np.unique(y_train)) < 2:
-                    st.error(
-                        "Training split ended up with only one class in y_train. "
-                        "Try changing the test size or choosing a different target column."
-                    )
-                    st.stop()
-
-                # ---------------------------------------------------
-                # 6) Train model
-                # ---------------------------------------------------
+                # Train model
                 model = XGBClassifier(
                     use_label_encoder=False,
                     eval_metric="mlogloss",
@@ -544,29 +378,8 @@ The app automatically encodes text columns and handles missing data.
                     colsample_bytree=1.0,
                     n_jobs=-1,
                 )
-
-                # Convert to NumPy to avoid pandas/XGBoost dtype issues
-                X_train_np = X_train.to_numpy(dtype=np.float32)
-                X_test_np = X_test.to_numpy(dtype=np.float32)
-
-                try:
-                    model.fit(X_train_np, y_train)
-                except ValueError as e:
-                    # Show the REAL error message and some debug info in the UI
-                    st.error(
-                        "XGBoost training failed with ValueError:\n\n"
-                        f"{e}\n\n"
-                        "Debug info:\n"
-                        f"- y_train classes: {np.unique(y_train)}\n"
-                        f"- y_train size: {len(y_train)}\n"
-                        f"- X_train shape: {X_train_np.shape}"
-                    )
-                    st.stop()
-
-                # Only reached if training succeeded
-                y_pred = model.predict(X_test_np)
-
-
+                model.fit(X_train, y_train)
+                y_pred = model.predict(X_test)
 
                 # Evaluate
                 acc = accuracy_score(y_test, y_pred)
@@ -631,9 +444,7 @@ The app automatically encodes text columns and handles missing data.
                 )
 
                 # Predict full dataset and download
-                X_all_np = X.to_numpy(dtype=np.float32)
-                y_all_pred = model.predict(X_all_np)
-
+                y_all_pred = model.predict(X)
                 if label_mapping:
                     inv_map = {v: k for k, v in label_mapping.items()}
                     y_all_pred = pd.Series(y_all_pred).map(inv_map)
@@ -654,7 +465,7 @@ The app automatically encodes text columns and handles missing data.
                 )
 
 # ------------------------------------------------
-# TAB 2: RAG QA (Local / Gemini) + MOF Recommender
+# TAB 2: RAG QA (Local / Gemini)
 # ------------------------------------------------
 with tab2:
     st.header("🧪 Li–CO₂ RAG Question Answering")
@@ -801,3 +612,12 @@ with tab2:
             # === Answer generation ===
             if provider == "Local only (no LLM)":
                 st.subheader("🧠 Local Extractive Answer")
+                st.markdown(build_extractive_answer(question, docs))
+
+            elif provider == "Gemini":
+                with st.expander("Show supporting extractive snippets"):
+                    st.markdown(build_extractive_answer(question, docs))
+
+                with st.spinner("Calling Gemini…"):
+                    st.subheader("🚀 LLM Answer (Gemini)")
+                    st.markdown(call_llm(question, docs))
