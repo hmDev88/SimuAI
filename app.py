@@ -60,24 +60,37 @@ def load_nb_namespace(nb_path: str):
 
 @st.cache_data
 def load_data():
+    """Load and merge multiple CSVs with robust encoding handling."""
     df_list = []
 
-    # old dataset
+    def read_csv_robust(path: str):
+        # Try a few common encodings before giving up
+        for enc in ["utf-8", "utf-8-sig", "latin1"]:
+            try:
+                return pd.read_csv(path, encoding=enc)
+            except UnicodeDecodeError:
+                continue
+        # Final fallback: replace invalid characters
+        return pd.read_csv(path, encoding="latin1", errors="replace")
+
+    # OLD dataset
     if os.path.exists("Catalyst Database.csv"):
-        df_list.append(pd.read_csv("Catalyst Database.csv"))
+        df_list.append(read_csv_robust("Catalyst Database.csv"))
 
-    # new dataset 1
-    if os.path.exists("convertcsv.csv"):
-        df_list.append(pd.read_csv("convertcsv.csv"))
-
-    # new dataset 2
+    # NEW dataset 1
     if os.path.exists("mof_database_2023_2025_synthetic_12000.csv"):
-        df_list.append(pd.read_csv("mof_database_2023_2025_synthetic_12000.csv"))
+        df_list.append(read_csv_robust("mof_database_2023_2025_synthetic_12000.csv"))
 
-    # merge all files
+    # NEW dataset 2 (change the name to your actual second file)
+    if os.path.exists("convertcsv.csv"):
+        df_list.append(read_csv_robust("convertcsv.csv"))
+
+    if not df_list:
+        raise FileNotFoundError("No CSV files found to load.")
+
     df = pd.concat(df_list, ignore_index=True)
-
     return df
+
 
 
 
