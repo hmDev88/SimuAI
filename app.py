@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 import nbformat
 from collections import Counter
 from sklearn.decomposition import PCA
+from langchain_core.documents import Document
+
 
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import (
@@ -16,27 +18,16 @@ from sklearn.metrics import (
 )
 from xgboost import XGBClassifier
 
-# RAG / embeddings
-from langchain_community.vectorstores import Chroma
-from langchain_community.embeddings import HuggingFaceEmbeddings
-
-# Gemini LLM
-from google import genai
+# RAG pipeline
+from rag_config import get_embedding_model
+from rag_query import retrieve_docs, call_llm, answer_with_rag
 
 # ------------------------------------------------
 # Paths & config
 # ------------------------------------------------
 NOTEBOOK_PATH = "Catalyst.ipynb"
 CSV_PATH = "Catalyst Database.csv"
-EMBED_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
-CHROMA_DIR = "rag_index"
-CHROMA_COLLECTION = "lico2_unified_rag"
 
-# Init Gemini client (reads GEMINI_API_KEY from env)
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
-gemini_client = None
-if GEMINI_API_KEY:
-    gemini_client = genai.Client(api_key=GEMINI_API_KEY)
 
 # ------------------------------------------------
 # Helpers: notebook loading & data
@@ -69,35 +60,10 @@ def load_nb_namespace(nb_path: str):
 def load_data(path: str):
     return pd.read_csv(path)
 
-@st.cache_resource
-def get_embedding_model():
-    """Load and cache the sentence-transformer embedding model."""
-    from langchain_community.embeddings import HuggingFaceEmbeddings
-    return HuggingFaceEmbeddings(model_name=EMBED_MODEL)
-
-@st.cache_resource
-def load_vectorstore():
-    embeddings = get_embedding_model()
-    vs = Chroma(
-        embedding_function=embeddings,
-        persist_directory=CHROMA_DIR,
-        collection_name=CHROMA_COLLECTION,
-    )
-    return vs
 
 
-# ------------------------------------------------
-# RAG helper functions
-# ------------------------------------------------
-def retrieve_docs(query: str, top_k: int = 5, mode: str = "semantic"):
-    vs = load_vectorstore()
-    if mode == "semantic":
-        docs = vs.similarity_search(query, k=top_k)
-    elif mode == "mmr":
-        docs = vs.max_marginal_relevance_search(query, k=top_k)
-    else:
-        docs = vs.similarity_search(query, k=top_k)
-    return docs
+
+
 
 
 def build_extractive_answer(question: str, docs):
@@ -204,44 +170,55 @@ def project_embeddings(question: str, docs):
     return q_coord, doc_coords
 
 
+def recommend_mof_candidates(anode: str, cathode: str, df: pd.DataFrame, top_k: int = 5):
+    """
+    Given anode + cathode chemical names and the catalyst dataframe,
+    return top-k MOF-like catalysts ranked by embedding similarity
+    to the query.
+    """
+    if "Catalyst" not in df.columns:
+        return pd.DataFrame()  # fail gracefully
 
+    # 1) Filter to MOF-like catalysts (very simple heuristic)
+    cat_series = df["Catalyst"].fillna("").astype(str)
 
-def llm_answer_gemini(question: str, docs) -> str:
-    """Use Gemini to synthesize an answer from retrieved docs."""
-    if not docs:
-        return "No documents retrieved."
-
-    if gemini_client is None:
-        return "Gemini client not configured. Set GEMINI_API_KEY in the environment."
-
-    chunks = []
-    for i, d in enumerate(docs[:8]):
-        meta = d.metadata or {}
-        ctype = meta.get("chunk_type", "unknown")
-        text = (d.page_content or "").strip()
-        if len(text) > 800:
-            text = text[:800] + " ..."
-        chunks.append(f"[DOC {i+1} – {ctype}]\n{text}")
-
-    context = "\n\n".join(chunks)
-
-    prompt = (
-        "You are a Li–CO₂ battery and catalyst expert.\n"
-        "Use ONLY the following context from our curated corpus to answer.\n\n"
-        f"QUESTION:\n{question}\n\n"
-        f"CONTEXT:\n{context}\n\n"
-        "Write a clear, technical answer (2–4 paragraphs), "
-        "summarising catalysts, design rules, and mechanisms."
+    mof_mask = cat_series.str.contains(
+        r"mof|zif|uio-|hkust", case=False, regex=True
     )
+    mof_df = df[mof_mask].copy()
 
-    try:
-        resp = gemini_client.models.generate_content(
-            model="gemini-2.5-flash",
-            contents=prompt,
-        )
-        return resp.text.strip()
-    except Exception as e:
-        return f"Gemini error: {e}"
+    if mof_df.empty:
+        return pd.DataFrame()  # no MOFs found
+
+    # 2) Build a text representation for each MOF
+    texts = mof_df["Catalyst"].fillna("").astype(str).tolist()
+
+    # 3) Embed query + candidates
+    emb = get_embedding_model()
+
+    query_text = (
+        f"Best MOF catalyst for a Li-CO₂ battery "
+        f"with cathode {cathode} and anode {anode}. "
+        f"Prioritise stability, low overpotential and good CO₂ reduction activity."
+    )
+    q_vec = np.array(emb.embed_query(query_text))
+
+    cand_vecs = np.array(emb.embed_documents(texts))
+
+    # 4) Cosine similarity
+    q_norm = np.linalg.norm(q_vec) + 1e-8
+    c_norms = np.linalg.norm(cand_vecs, axis=1) + 1e-8
+    sims = (cand_vecs @ q_vec) / (c_norms * q_norm)  # shape (n_candidates,)
+
+    # 5) Sort and keep top-k
+    order = np.argsort(-sims)  # descending
+    top_idx = order[:top_k]
+    top_sims = sims[top_idx]
+
+    result = mof_df.iloc[top_idx].copy()
+    result["similarity"] = top_sims
+
+    return result
 
 # ------------------------------------------------
 # Streamlit page setup
@@ -517,12 +494,12 @@ The app automatically encodes text columns and handles missing data.
                 )
 
 # ------------------------------------------------
-# TAB 2: RAG QA (Local / Gemini)
+# TAB 2: RAG QA (Local / Gemini) + MOF Recommender
 # ------------------------------------------------
 with tab2:
     st.header("🧪 Li–CO₂ RAG Question Answering")
 
-    # Gemini default
+    # LLM provider selection
     provider = st.selectbox(
         "Answer mode",
         ["Local only (no LLM)", "Gemini"],
@@ -534,17 +511,40 @@ with tab2:
         height=100,
     )
 
-    # fixed semantic retrieval
-    mode = "semantic"
+    # Retrieval config
     top_k = st.slider("Number of retrieved documents", 1, 12, 5)
+
+    # Optional: filter by chunk type (RAG-skeleton style)
+    retrieval_filter = st.selectbox(
+        "Filter retrieved chunks by type",
+        [
+            "All",
+            "Catalyst cards only",
+            "Mechanisms only",
+            "Design rules only",
+            "Background only",
+        ],
+        index=0,
+    )
+
+    mode_map = {
+        "All": "all",
+        "Catalyst cards only": "catalyst",
+        "Mechanisms only": "mechanism",
+        "Design rules only": "design",
+        "Background only": "background",
+    }
+    rag_mode = mode_map[retrieval_filter]
 
     if st.button("🔍 Retrieve & Answer", key="rag_answer"):
         if not question.strip():
             st.warning("Please enter a question.")
         else:
+            # === RAG retrieval ===
             with st.spinner("Retrieving from RAG index..."):
-                docs = retrieve_docs(question, top_k=top_k, mode=mode)
+                docs = retrieve_docs(question, top_k=top_k, mode=rag_mode)
 
+            # === Show retrieved context ===
             st.subheader("📚 Retrieved context")
             for i, d in enumerate(docs, 1):
                 meta = d.metadata or {}
@@ -552,12 +552,10 @@ with tab2:
                     f"**Doc {i} — {meta.get('chunk_type', 'unknown')}**"
                 )
                 text = d.page_content or ""
-                st.write(
-                    text if len(text) < 1000 else text[:1000] + " …"
-                )
+                st.write(text if len(text) < 1000 else text[:1000] + " …")
                 st.markdown("---")
 
-                        # === Graph A: distribution of chunk types ===
+            # === Graph A: distribution of chunk types ===
             st.subheader("📊 Retrieved chunk types")
             counts = summarize_chunk_types(docs)
 
@@ -633,24 +631,13 @@ with tab2:
             with st.expander("ℹ️ How to read these graphs"):
                 st.markdown(
                     """
-    - **Chunk types bar chart**: shows how many of the retrieved chunks come from each knowledge category (design rules, mechanisms, catalyst cards, background, etc.).  
-    - **Relevance heatmap**: darker cells correspond to chunks with **higher cosine similarity** to the query, i.e. they are more relevant in embedding space.  
-    - **Semantic map**: shows the query and the retrieved chunks in a 2D projection of the embedding space.  
-    Chunks closer to the "Query" point are more semantically similar to the question.
-    """
+- **Chunk types bar chart**: shows how many of the retrieved chunks come from each knowledge category (design rules, mechanisms, catalyst cards, background, etc.).  
+- **Relevance heatmap**: darker cells correspond to chunks with **higher cosine similarity** to the query, i.e. they are more relevant in embedding space.  
+- **Semantic map**: shows the query and the retrieved chunks in a 2D projection of the embedding space.  
+  Chunks closer to the "Query" point are more semantically similar to the question.
+"""
                 )
 
-
-
+            # === Answer generation ===
             if provider == "Local only (no LLM)":
                 st.subheader("🧠 Local Extractive Answer")
-                st.markdown(build_extractive_answer(question, docs))
-
-            elif provider == "Gemini":
-                # optional: show extractive answer in an expander
-                with st.expander("Show supporting extractive snippets"):
-                    st.markdown(build_extractive_answer(question, docs))
-
-                with st.spinner("Calling Gemini…"):
-                    st.subheader("🚀 LLM Answer (Gemini)")
-                    st.markdown(llm_answer_gemini(question, docs))
