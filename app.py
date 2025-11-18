@@ -416,6 +416,14 @@ The app automatically encodes text columns and handles missing data.
                 X_raw = df[x_cols].copy()
                 y_raw = df[y_col].copy()
 
+
+                # ---------------------------------------------------
+                # Remove non-useful or problematic columns (e.g. URLs)
+                # ---------------------------------------------------
+                X_raw = X_raw.drop(
+                    columns=[col for col in X_raw.columns if "url" in col.lower()],
+                    errors="ignore"
+)
                 # ---------------------------------------------------
                 # 1) Clean X
                 # ---------------------------------------------------
