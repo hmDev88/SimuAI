@@ -539,8 +539,23 @@ The app automatically encodes text columns and handles missing data.
                 X_train_np = X_train.to_numpy(dtype=np.float32)
                 X_test_np = X_test.to_numpy(dtype=np.float32)
 
-                model.fit(X_train_np, y_train)
+                try:
+                    model.fit(X_train_np, y_train)
+                except ValueError as e:
+                    # Show the REAL error message and some debug info in the UI
+                    st.error(
+                        "XGBoost training failed with ValueError:\n\n"
+                        f"{e}\n\n"
+                        "Debug info:\n"
+                        f"- y_train classes: {np.unique(y_train)}\n"
+                        f"- y_train size: {len(y_train)}\n"
+                        f"- X_train shape: {X_train_np.shape}"
+                    )
+                    st.stop()
+
+                # Only reached if training succeeded
                 y_pred = model.predict(X_test_np)
+
 
 
                 # Evaluate
