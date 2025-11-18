@@ -11,3 +11,4 @@ google-genai
 chromadb
 sentence-transformers
 huggingface-hub
+python-dotenv
