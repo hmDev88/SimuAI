@@ -160,6 +160,38 @@ def compute_similarity_scores(question: str, docs):
     sims = (d_vecs @ q_vec) / (d_norms * q_norm)
     return sims
 
+def agent_rank_mofs(df, score_col, top_k=5):
+    """
+    Agent 1: rank MOFs globally by performance (or after any filters
+    already applied in Tab 1). Returns (best_row, top_subset).
+    """
+    if df.empty or score_col not in df.columns:
+        return None, df
+
+    subset_sorted = df.sort_values(by=score_col, ascending=False)
+    best_row = subset_sorted.iloc[0]
+    top_subset = subset_sorted.head(top_k)
+    return best_row, top_subset
+def agent_pipeline_mof_recommendation(df, anode, cathode,
+                                      mof_name_col, score_col,
+                                      top_k=5):
+    """
+    Coordinator: run Agent 1 (rank) then Agent 2 (explain) sequentially.
+    """
+    best_row, top_subset = agent_rank_mofs(
+        df,
+        score_col,
+        top_k=top_k,
+    )
+
+    if best_row is None:
+        return None, None, "No MOFs were found or the score column is missing.", ""
+
+    llm_answer, support = agent_explain_choice(
+        anode, cathode, top_subset, mof_name_col
+    )
+
+    return best_row, top_subset, llm_answer, support
 
 # ------------------------------------------------
 # PCA projection for semantic scatter plot
@@ -180,6 +212,7 @@ def project_embeddings(question: str, docs):
     coords = pca.fit_transform(vecs)
 
     return coords[0], coords[1:]
+
 
 # ------------------------------------------------
 # Streamlit page setup
@@ -621,3 +654,67 @@ with tab2:
                 with st.spinner("Calling Gemini…"):
                     st.subheader("🚀 LLM Answer (Gemini)")
                     st.markdown(call_llm(question, docs))
+
+    # ------------------------------------------------
+    # 🔮 Multi-Agent MOF Design Assistant
+    # ------------------------------------------------
+    st.markdown("---")
+    st.subheader("🔮 Multi-Agent MOF Design Assistant")
+
+    st.caption(
+        "Sequential workflow: (1) rank MOFs from the dataset by Performance, "
+        "(2) use RAG + Gemini to explain which are promising for your anode/cathode."
+    )
+
+    MOF_NAME_COL = "Composition"
+    SCORE_COL = "Performance"
+
+    anode_input = st.text_input("Anode chemical", "")
+    cathode_input = st.text_input("Cathode chemical", "")
+
+    top_k_mofs = st.slider("Number of top MOF candidates to pass to the explainer", 1, 20, 5)
+
+    if st.button("✨ Run Multi-Agent Pipeline"):
+        if not anode_input.strip() or not cathode_input.strip():
+            st.warning("Please enter both anode and cathode chemicals.")
+        else:
+            missing = [
+                col for col in [MOF_NAME_COL, SCORE_COL]
+                if col not in df.columns
+            ]
+            if missing:
+                st.error(
+                    "The following expected columns are missing from the current dataset:\n\n"
+                    + "\n".join(f"- {m}" for m in missing)
+                )
+            else:
+                with st.spinner("Running multi-agent workflow..."):
+                    best_row, top_subset, llm_answer, support = agent_pipeline_mof_recommendation(
+                        df,
+                        anode_input,
+                        cathode_input,
+                        MOF_NAME_COL,
+                        SCORE_COL,
+                        top_k=top_k_mofs,
+                    )
+
+                if best_row is None:
+                    st.warning("No MOFs were found in the dataset.")
+                else:
+                    st.markdown("### 🏆 Best MOF candidate (Agent 1: Ranking)")
+                    st.write(f"**{best_row[MOF_NAME_COL]}**")
+                    st.write(f"*Performance*: `{best_row[SCORE_COL]}`")
+
+                    st.markdown("### 📊 Top-ranked MOF candidates (Agent 1 output)")
+                    st.dataframe(
+                        top_subset[[MOF_NAME_COL, SCORE_COL]]
+                        .reset_index(drop=True),
+                        use_container_width=True,
+                    )
+
+                    st.markdown("### 🤖 Explanation (Agent 2: RAG + Gemini)")
+                    st.markdown(llm_answer)
+
+                    with st.expander("Show supporting extractive snippets (local RAG)"):
+                        st.markdown(support)
+
