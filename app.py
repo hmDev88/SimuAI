@@ -59,8 +59,26 @@ def load_nb_namespace(nb_path: str):
 
 
 @st.cache_data
-def load_data(path: str):
-    return pd.read_csv(path)
+def load_data():
+    df_list = []
+
+    # old dataset
+    if os.path.exists("Catalyst Database.csv"):
+        df_list.append(pd.read_csv("Catalyst Database.csv"))
+
+    # new dataset 1
+    if os.path.exists("convertcsv.csv"):
+        df_list.append(pd.read_csv("convertcsv.csv"))
+
+    # new dataset 2
+    if os.path.exists("mof_database_2023_2025_synthetic_12000.csv"):
+        df_list.append(pd.read_csv("mof_database_2023_2025_synthetic_12000.csv"))
+
+    # merge all files
+    df = pd.concat(df_list, ignore_index=True)
+
+    return df
+
 
 
 
