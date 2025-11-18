@@ -416,35 +416,58 @@ The app automatically encodes text columns and handles missing data.
                 X_raw = df[x_cols].copy()
                 y_raw = df[y_col].copy()
 
-                # Clean X
+                # ---------------------------------------------------
+                # 1) Clean X
+                # ---------------------------------------------------
                 for c in X_raw.columns:
                     if pd.api.types.is_bool_dtype(X_raw[c]):
                         X_raw[c] = X_raw[c].astype(int)
                 X = pd.get_dummies(X_raw, dummy_na=True)
                 X = X.fillna(0)
 
-                # Clean y
+                # ---------------------------------------------------
+                # 2) Clean y: drop NaNs, encode categories if needed
+                # ---------------------------------------------------
                 y = y_raw.copy()
+
+                # Drop rows where y is NaN
+                mask = ~pd.isna(y)
+                X = X.loc[mask]
+                y = y.loc[mask]
+
                 label_mapping = None
-                if (
-                    y.dtype == "object"
-                    or pd.api.types.is_categorical_dtype(y)
-                ):
+                if (y.dtype == "object") or pd.api.types.is_categorical_dtype(y):
                     y = y.astype("category")
-                    label_mapping = {
-                        k: v for v, k in enumerate(y.cat.categories)
-                    }
+                    label_mapping = {k: v for v, k in enumerate(y.cat.categories)}
                     y = y.cat.codes
 
-                # Split data with safe stratification
-                stratify_arg = None
+                # Convert to numpy array for safety
+                y = np.array(y)
 
-                # check class distribution
+                # ---------------------------------------------------
+                # 3) Check that we have enough samples and classes
+                # ---------------------------------------------------
+                if len(y) < 5:
+                    st.error(
+                        "Not enough labelled samples after cleaning to train a model "
+                        f"(got {len(y)} samples). Try a different target column or filter."
+                    )
+                    st.stop()
+
+                unique_classes = np.unique(y)
+                if len(unique_classes) < 2:
+                    st.error(
+                        "The target column has only one class after cleaning. "
+                        "XGBoost needs at least two classes to train.\n\n"
+                        f"Unique labels found: {unique_classes}"
+                    )
+                    st.stop()
+
+                # ---------------------------------------------------
+                # 4) Split data with safe stratification
+                # ---------------------------------------------------
                 unique, counts = np.unique(y, return_counts=True)
-
-                # Only stratify if:
-                #  - we have more than 1 class
-                #  - every class has at least 2 samples
+                stratify_arg = None
                 if len(unique) > 1 and counts.min() >= 2:
                     stratify_arg = y
 
@@ -457,7 +480,7 @@ The app automatically encodes text columns and handles missing data.
                         stratify=stratify_arg,
                     )
                 except ValueError:
-                    # Fallback: no stratification at all
+                    # Fallback: no stratification
                     X_train, X_test, y_train, y_test = train_test_split(
                         X,
                         y,
@@ -466,8 +489,19 @@ The app automatically encodes text columns and handles missing data.
                         stratify=None,
                     )
 
+                # ---------------------------------------------------
+                # 5) Final guard before training
+                # ---------------------------------------------------
+                if len(np.unique(y_train)) < 2:
+                    st.error(
+                        "Training split ended up with only one class in y_train. "
+                        "Try changing the test size or choosing a different target column."
+                    )
+                    st.stop()
 
-                # Train model
+                # ---------------------------------------------------
+                # 6) Train model
+                # ---------------------------------------------------
                 model = XGBClassifier(
                     use_label_encoder=False,
                     eval_metric="mlogloss",
@@ -478,6 +512,8 @@ The app automatically encodes text columns and handles missing data.
                     colsample_bytree=1.0,
                     n_jobs=-1,
                 )
+                model.fit(X_train, y_train)
+
                 model.fit(X_train, y_train)
                 y_pred = model.predict(X_test)
 
