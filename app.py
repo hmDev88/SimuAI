@@ -4,6 +4,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import nbformat
+from collections import Counter
+from sklearn.decomposition import PCA
 
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import (
@@ -67,16 +69,22 @@ def load_nb_namespace(nb_path: str):
 def load_data(path: str):
     return pd.read_csv(path)
 
+@st.cache_resource
+def get_embedding_model():
+    """Load and cache the sentence-transformer embedding model."""
+    from langchain_community.embeddings import HuggingFaceEmbeddings
+    return HuggingFaceEmbeddings(model_name=EMBED_MODEL)
 
 @st.cache_resource
 def load_vectorstore():
-    embeddings = HuggingFaceEmbeddings(model_name=EMBED_MODEL)
+    embeddings = get_embedding_model()
     vs = Chroma(
         embedding_function=embeddings,
         persist_directory=CHROMA_DIR,
         collection_name=CHROMA_COLLECTION,
     )
     return vs
+
 
 # ------------------------------------------------
 # RAG helper functions
@@ -145,6 +153,57 @@ def build_extractive_answer(question: str, docs):
         )
 
     return "\n".join(out)
+
+
+
+def summarize_chunk_types(docs):
+    """Count how many retrieved chunks of each type we have."""
+    counts = Counter()
+    for d in docs:
+        meta = d.metadata or {}
+        ctype = (meta.get("chunk_type") or "unknown").lower()
+        counts[ctype] += 1
+    return counts
+
+
+def compute_similarity_scores(question: str, docs):
+    """Compute true cosine similarity between query and each doc chunk."""
+    if not docs:
+        return np.array([])
+
+    emb = get_embedding_model()
+    # Query embedding
+    q_vec = np.array(emb.embed_query(question))
+    # Doc embeddings
+    doc_texts = [d.page_content or "" for d in docs]
+    d_vecs = np.array(emb.embed_documents(doc_texts))
+
+    # Cosine similarity
+    q_norm = np.linalg.norm(q_vec) + 1e-8
+    d_norms = np.linalg.norm(d_vecs, axis=1) + 1e-8
+    sims = (d_vecs @ q_vec) / (d_norms * q_norm)
+    return sims  # shape (k,)
+
+
+def project_embeddings(question: str, docs):
+    """Project query + doc embeddings into 2D with PCA for visualization."""
+    if not docs:
+        return None, None
+
+    emb = get_embedding_model()
+    texts = [question] + [d.page_content or "" for d in docs]
+    vecs = np.array(emb.embed_documents(texts))  # (1 + k, dim)
+
+    if vecs.shape[0] < 2:
+        return None, None
+
+    pca = PCA(n_components=2)
+    coords = pca.fit_transform(vecs)  # (1 + k, 2)
+    q_coord = coords[0]
+    doc_coords = coords[1:]
+    return q_coord, doc_coords
+
+
 
 
 def llm_answer_gemini(question: str, docs) -> str:
@@ -497,6 +556,91 @@ with tab2:
                     text if len(text) < 1000 else text[:1000] + " …"
                 )
                 st.markdown("---")
+
+                        # === Graph A: distribution of chunk types ===
+            st.subheader("📊 Retrieved chunk types")
+            counts = summarize_chunk_types(docs)
+
+            if counts:
+                types = list(counts.keys())
+                values = [counts[t] for t in types]
+
+                fig, ax = plt.subplots(figsize=(5, 3))
+                ax.bar(types, values)
+                ax.set_xlabel("Chunk type")
+                ax.set_ylabel("Count in top-k")
+                ax.set_title("Distribution of retrieved chunk types")
+                ax.tick_params(axis="x", rotation=30, labelrotation=30)
+                st.pyplot(fig)
+            else:
+                st.write("No chunks retrieved to summarize.")
+
+            # === Graph B: true cosine similarity heatmap ===
+            if docs:
+                st.subheader("🎯 Relative relevance of retrieved docs")
+
+                sims = compute_similarity_scores(question, docs)  # shape (k,)
+                if sims.size > 0:
+                    # Normalize to 0–1 for nicer visualization
+                    sims_min, sims_max = float(sims.min()), float(sims.max())
+                    if sims_max > sims_min:
+                        sims_norm = (sims - sims_min) / (sims_max - sims_min)
+                    else:
+                        sims_norm = np.ones_like(sims)
+
+                    fig2, ax2 = plt.subplots(figsize=(5, 1.5))
+                    im = ax2.imshow([sims_norm], aspect="auto")
+                    ax2.set_yticks([])
+                    ax2.set_xticks(range(len(docs)))
+                    ax2.set_xticklabels([f"D{i+1}" for i in range(len(docs))])
+                    ax2.set_xlabel("Document (ranked by similarity)")
+                    cbar = fig2.colorbar(im, ax=ax2)
+                    cbar.set_label("Normalized cosine similarity")
+                    st.pyplot(fig2)
+                else:
+                    st.write("Could not compute similarity scores.")
+
+            # === Graph C: semantic scatter plot (query vs docs) ===
+            if docs:
+                st.subheader("🗺️ Semantic map of query and retrieved chunks")
+                q_coord, doc_coords = project_embeddings(question, docs)
+
+                if q_coord is not None and doc_coords is not None:
+                    fig3, ax3 = plt.subplots(figsize=(5, 4))
+                    # Plot docs
+                    ax3.scatter(doc_coords[:, 0], doc_coords[:, 1], marker="o")
+                    for i, (x, y) in enumerate(doc_coords):
+                        ax3.text(x, y, f"D{i+1}", fontsize=8, ha="center", va="bottom")
+                    # Plot query
+                    ax3.scatter(q_coord[0], q_coord[1], marker="*", s=120)
+                    ax3.text(
+                        q_coord[0],
+                        q_coord[1],
+                        "Query",
+                        fontsize=9,
+                        fontweight="bold",
+                        ha="center",
+                        va="bottom",
+                    )
+                    ax3.set_xlabel("PCA dim 1")
+                    ax3.set_ylabel("PCA dim 2")
+                    ax3.set_title("2D projection of query + retrieved chunks")
+                    st.pyplot(fig3)
+                else:
+                    st.write("Not enough data to build semantic map.")
+
+            # === Explanation of the graphs ===
+            with st.expander("ℹ️ How to read these graphs"):
+                st.markdown(
+                    """
+    - **Chunk types bar chart**: shows how many of the retrieved chunks come from each knowledge category (design rules, mechanisms, catalyst cards, background, etc.).  
+    - **Relevance heatmap**: darker cells correspond to chunks with **higher cosine similarity** to the query, i.e. they are more relevant in embedding space.  
+    - **Semantic map**: shows the query and the retrieved chunks in a 2D projection of the embedding space.  
+    Chunks closer to the "Query" point are more semantically similar to the question.
+    """
+                )
+
+
 
             if provider == "Local only (no LLM)":
                 st.subheader("🧠 Local Extractive Answer")
